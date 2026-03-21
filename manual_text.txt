@@ -1,0 +1,1966 @@
+
+
+=== PAGE 1 ===
+Tipo di documento: Manuale guida in Airside
+Titolo del documento: Volume 1 - Abilitazione alla guida
+in Apron Fiumicino/Ciampino
+Edizione 1 - revisione 3
+\
+Aeroporto Leonardo da Vinci Fiumicino
+Aeroporto G. B. Pastine Ciampino
+Copia non controllata qualora stampata Pag. 1 di 62
+
+=== PAGE 2 ===
+Volume 1 - Abilitazione alla guida in Apron FCO/CIA
+Edizione 1 - Rev.3
+INDICE
+23/01/2026
+Indice
+1 INTRODUZIONE / SCOPO .................................................................................... 5
+1.1 NORMATIVA DI RIFERIMENTO ............................................................................. 6
+1.2 PROCESSO SANZIONATORIO ................................................................................ 6
+1.3 GLOSSARIO DEI TERMINI .................................................................................... 9
+1.4 LAY-OUT AEROPORTUALE ................................................................................. 10
+1.5 MEZZI IN USO PRESSO GLI SCALI DI FCO E CIA: ...................................................... 11
+2 REQUISITI E DISPOSIZIONI GENERALI ................................................................ 17
+2.1 REQUISITI OBBLIGATORI PER LA GUIDA IN AIRSIDE .................................................. 17
+2.2 CONSEGUIMENTO DELL’ABILITAZIONE ALLA GUIDA IN APRON ADC - A ........................ 17
+2.3 FORMAZIONE INIZIALE ED ESAME ....................................................................... 18
+2.4 VALIDITÀ DELL’ABILITAZIONE ALLA GUIDA ............................................................ 19
+2.5 RECURRENT TRAINING ADC-A E PROFICIENCY CHECK: ............................................. 20
+2.5.1 REMEDIAL TRAINING ............................................................................................................ 21
+2.6 ESTENSIONE ADC AD ALTRO SCALO .................................................................... 21
+2.7 FORMATORI ADC/A.D.E................................................................................. 22
+2.8 ACCESSO SENZA ADC, VISITATORI E PERSONALE IN CASO DI EMERGENZA ...................... 22
+2.9 ENTI PUBBLICI E DI STATO................................................................................. 24
+3 DOTAZIONE ED EQUIPAGGIAMENTI DEI VEICOLI ............................................... 25
+3.1 LASCIAPASSARE PERMESSI MEZZI (LPM) ............................................................. 25
+3.2 AUTORIZZAZIONE ALLA CIRCOLAZIONE DEI MEZZI IN AIRSIDE (ACA) ........................... 26
+3.3 IMMATRICOLAZIONE STRADALE ......................................................................... 26
+3.4 POLIZZA ASSICURATIVA RCT ............................................................................. 27
+3.5 DISPOSITIVO OBU (ON BOARD UNIT) ESCLUSIVAMENTE PER FCO ............................. 27
+3.6 DISPOSITIVI DI ARRESTO FIAMMA ....................................................................... 27
+3.7 ESTINTORE ................................................................................................... 27
+3.8 LOGO AZIENDALE, NUMERO SOCIALE, TARGHETTA IDENTIFICATIVA CON LOGO CE,
+COSTRUTTORE MARCA, MODELLO E NUMERO DI SERIE ............................................ 27
+3.9 PANNELLI CON BANDIERA A SCACCHI ................................................................... 27
+3.10 ELEMENTI CATARIFRANGENTI ............................................................................ 28
+3.11 LUCI OSTACOLO ............................................................................................. 28
+3.12 LAMPEGGIANTE UNECE .................................................................................. 28
+3.13 SIRENA ........................................................................................................ 28
+3.14 SIGLA NUMERICA ........................................................................................... 28
+3.15 COLORE DELLA CARROZZERIA (CONSPICUOUS COLOR) .............................................. 28
+3.16 LUCE OSTACOLO EASA TYPE C .......................................................................... 28
+3.17 BARRA LUMINOSA EASA TYPE D ....................................................................... 29
+3.18 TRASPONDER A-SMGCS ................................................................................. 29
+3.19 RADIO FREQUENZA TORRE UHF ........................................................................ 29
+3.20 RADIO PORTATILE FREQUENZA ‘GROUND’............................................................. 29
+3.21 TELEFONO CELLULARE ..................................................................................... 29
+3.22 CARTINA PIAZZALI (SOLTANTO PER FIUMICINO) .................................................. 29
+Copia non controllata qualora stampata Pag. 2 di 62
+
+=== PAGE 3 ===
+Volume 1 - Abilitazione alla guida in Apron FCO/CIA
+Edizione 1 - Rev.3
+INDICE
+23/01/2026
+3.23 GRID MAP AEROPORTUALE .............................................................................. 29
+3.24 LOW VISIBILITY PROCEDURE MAP ...................................................................... 29
+4 OBBLIGHI DEL CONDUCENTE ............................................................................ 30
+4.1 STRADA PERIMETRALE ..................................................................................... 31
+4.2 DISTANZE DI SICUREZZA ................................................................................... 33
+4.3 VEICOLI ALTI O ELEVABILI ................................................................................. 33
+4.4 VERIFICA DEL MEZZO ....................................................................................... 33
+4.5 SEGNALAZIONE PERDITE DI IDROCARBURI ............................................................. 34
+4.6 VEICOLO IN AVARIA O INDECISIONE SULLA PROPRIA POSIZIONE .................................. 34
+4.7 SEGNALETICA ORIZZONTALE E VERTICALE .............................................................. 35
+4.8 PRECEDENZE ................................................................................................. 35
+4.9 LIMITI DI VELOCITÀ ......................................................................................... 36
+4.10 DIVIETI GENERALI ........................................................................................... 37
+4.11 OBBLIGHI GENERALI ........................................................................................ 38
+4.12 SOSTA E FERMATA .......................................................................................... 39
+5 VIABILITA’ VEICOLARE ...................................................................................... 41
+5.1 SEGNALETICA ORIZZONTALE .............................................................................. 41
+5.2 SEGNALETICA ORIZZONTALE APRON ........................................................... 46
+5.3 APRON E VIE DI RULLAGGIO .............................................................................. 46
+5.3.1 Via di rullaggio sul piazzale (apron taxiway) ........................................................................ 46
+5.3.2 Via di accesso alle piazzole (aircraft stand taxilane) ............................................................ 46
+5.4 SEGNALETICA ORIZZONTALE DI PERICOLO ............................................................. 51
+5.5 SEGNALETICA PROVVISORIA CANTIERI .................................................................. 52
+5.6 APRON BORDER LINE....................................................................................... 52
+5.7 LA SEGNALETICA VERTICALE .............................................................................. 55
+5.8 REGOLE DI ATTRAVERSAMENTO DELLE VIE DI RULLAGGIO SUI PIAZZALI ......................... 56
+5.9 CIRCOLAZIONE IN BASSA VISIBILITÀ ED IN CONDIZIONI METEOROLOGICHE AVVERSE ......... 57
+5.9.1 Procedure per la bassa visibilità ........................................................................................... 57
+5.9.2 Forte vento e/o raffiche........................................................................................................ 58
+5.9.3 Piogge intense ...................................................................................................................... 58
+5.9.4 Neve, ghiaccio e grandine .................................................................................................... 59
+5.10 PRINCIPALI REGOLE DA OSSERVARE IN PIAZZOLA .................................................... 59
+5.11 SICUREZZA DURANTE LE OPERAZIONI DI RIFORNIMENTO CARBURANTE ......................... 60
+5.12 MERCI PERICOLOSE (DANGEROUS GOODS) .......................................................... 61
+Copia non controllata qualora stampata Pag. 3 di 62
+
+=== PAGE 4 ===
+Volume 1 - Abilitazione alla guida in Apron FCO/CIA
+paragrafo 1.1 Edizione 1 - Rev. 3
+INTRODUZIONE /
+CAPITOLO 1
+SCOPO 26/01/2026
+Cross Reference reg. EU 139/14 ADR.OPS.B.024 Authorisation of vehicle drivers
+1.1,1.3,
+(A) regulatory framework and
+personal responsibilities;
+(B) vehicle standards, 1.3, 1.4, 2.1, 2.2, 2.3, 2.4, 2.5, 2.6,
+aerodrome operational 2.7, 2.8, 2.9, all chapt. 3, 4.3, 4.4,
+(i) theoretical and requirements and 4.7, 4.8, 4.9, 4.10, 4.12,
+practical training procedures;
+of adequate
+(2) include: (C) communications; 4.5, 4.6, 5.10
+duration, at least
+(D) radiotelephony, for drivers
+in the following
+that operate in the N.A.
+areas:
+manoeuvring area;
+(E) human performance; and Airside Safety Training
+(F) familiarisation with the
+Airside Safety Training + 5.1, 5.2,
+operating environment;
+5.3, 5.4, 5.5, 5.6, 5.7, 5.8, 5.9
+Copia non controllata qualora stampata Pag. 4 di 62
+
+=== PAGE 5 ===
+Volume 1 - Abilitazione alla guida in Apron FCO/CIA
+paragrafo 1.1 Edizione 1 - Rev. 3
+INTRODUZIONE /
+CAPITOLO 1
+SCOPO 26/01/2026
+1 INTRODUZIONE / SCOPO
+Il presente documento costituisce parte integrante della formazione teorica per il conseguimento
+dell’abilitazione alla guida in area di Apron nell’Aeroporto di Fiumicino “Leonardo da Vinci” e
+Ciampino “Giovan Battista Pastine”.
+Il presente manuale che non ha valore dispositivo, riporta le regole di circolazione in Airside, la cui
+conoscenza è fondamentale al fine di ottenere l’abilitazione alla guida in Airside (di seguito anche
+“ADC” ovvero Airside Driving Certificate), ed è rivolto a tutti coloro i quali intendano condurre
+un’autovettura / mezzo operativo / attrezzatura all’interno dell’area Airside degli Aeroporti di Roma
+– Fiumicino e Ciampino.
+Poiché gli aspetti di tutela della sicurezza operativa (Airside Safety) costituiscono parte integrante
+delle conoscenze necessarie per operare in Airside, l’operatore che voglia conseguire l’ADC/A dovrà,
+obbligatoriamente, effettuare prima il corso Airside Safety (Safety Modulo 2) e successivamente il
+corso di abilitazione alla guida in Airside.
+Al fine di superare l’esame di abilitazione alla guida in Airside l’operatore deve apprendere i
+contenuti dei seguenti documenti:
+- ADC tipo A (apron): Volume 1_Apron Abilitazione alla guida in Apron FCO/CIA
+- ADC tipo M (area di manovra): Volume 2_Area di Manovra: Abilitazione alla guida in Area di Manovra
+Volume 3_Radiotelefonia Comunicazioni radio
+AIRSIDE DRIVING CERTIFICATE - ADC di tipo A (Apron)
+FIUMICINO CIAMPINO
+abilita alla guida:
+- sui piazzali aeromobili,
+- sulla viabilità veicolare in Airside,
+- sulla strada perimetrale (soggetti autorizzati/attività consentite).
+Copia non controllata qualora stampata Pag. 5 di 62
+
+=== PAGE 6 ===
+Volume 1 - Abilitazione alla guida in Apron FCO/CIA
+paragrafo 1.1 Edizione 1 - Rev. 3
+INTRODUZIONE /
+CAPITOLO 1
+SCOPO 26/01/2026
+ADC di tipo M (Area di Manovra)
+FIUMICINO CIAMPINO
+abilita alla guida anche in Area di Manovra.
+1.1 Normativa di riferimento
+La circolazione in Airside è disciplinata da:
+• Regolamento (EU) 139/2014
+• Manuale di Aeroporto di Fiumicino /Ciampino;
+• Il Codice della Strada (D.L. vo 30 aprile 1992 n.285 e successive modifiche ed integrazioni).
+1.2 Processo sanzionatorio
+Presso gli scali di Fiumicino e Ciampino è stato istituito un sistema sanzionatorio accessorio basato
+sulla decurtazione dei punti dell’ADC:
+1) le abilitazioni alla guida, ivi comprese quelle già rilasciate ed in corso di validità, hanno in
+dotazione cinque punti;
+2) I punti dell’Airside Driving Certificate possono essere decurtati in funzione dell’infrazione
+commessa, sulla base della tabella di seguito riportata:
+3) Tabella Punti FCO e CIA:
+Copia non controllata qualora stampata Pag. 6 di 62
+
+=== PAGE 7 ===
+Volume 1 - Abilitazione alla guida in Apron FCO/CIA
+paragrafo 1.2 Edizione 1 - Rev. 3
+INTRODUZIONE /
+CAPITOLO 1
+SCOPO 26/01/2026
+NB. il ritiro della patente di guida personale, per guida sotto effetto di alcool o sostanze psicor
+ope riscontrata dagli Enti di Stato preposti, secondo le normative vigenti, comporta di con
+seguenza la decadenza della patente ADCA.
+4) all’esaurimento dei punti in dotazione, l’abilitazione verrà revocata e potrà essere nuovamente
+conseguita, con le stesse modalità previste per il primo rilascio. In questo caso, il corso di
+formazione teorico e pratico dovrà essere frequentato obbligatoriamente presso il Training
+Center di ADR e non potrà essere erogato da Istruttori qualificati o A.D.E. (Airside Driving Expert)
+esterni ad ADR
+5) Nell’ipotesi in cui una delle violazioni, abbia messo a repentaglio la sicurezza degli aeromobili o
+sia la causa di un incidente che comporti il ferimento di persone e/o danni gravi ad aeromobili
+e/o a strutture aeroportuali, ADR revocherà l’abilitazione per un periodo commisurato alla
+gravità del caso. Al termine di tale periodo, l’abilitazione potrà essere nuovamente conseguita
+con le stesse modalità previste per il primo rilascio. In tale circostanza il corso di formazione
+teorico e pratico dovrà essere frequentato obbligatoriamente presso il Training Center di ADR
+e non ne sarà consentita l’erogazione da parte di Istruttori qualificati o A.D.E. esterni ad ADR.
+6) In caso di guida con ADC scaduta:
+• se l’ADC risulta scaduta da un periodo pari o inferiore 60 gg: questa potrà essere nuovamente
+conseguita, con le stesse modalità previste per il primo rilascio non prima che siano trascorsi 60
+gg dalla data di riconsegna dell’abilitazione alla guida scaduta.
+Copia non controllata qualora stampata Pag. 7 di 62
+
+=== PAGE 8 ===
+Volume 1 - Abilitazione alla guida in Apron FCO/CIA
+paragrafo 1.2 Edizione 1 - Rev. 3
+INTRODUZIONE /
+CAPITOLO 1
+SCOPO 26/01/2026
+• Se l’ADC risulta scaduta da un periodo superiore a 60 gg: questa potrà essere nuovamente
+conseguita, con le stesse modalità previste per il primo rilascio non prima che siano trascorsi
+120 gg dalla data di riconsegna dell’abilitazione alla guida scaduta.
+In entrambi i casi il corso di formazione teorico dovrà essere frequentato obbligatoriamente
+presso il Training Center di ADR e non ne sarà consentita l’erogazione da parte di istruttori
+qualificati esterni ad ADR.
+In caso di guida senza aver mai conseguito l’ADC (ad esclusione della guida durante
+l’addestramento pratico previsto per il conseguimento dell’ADC), questa potrà essere
+conseguita, con le modalità previste per il primo rilascio, non prima che siano trascorsi 365 gg
+dalla data di accertamento della violazione. In tale circostanza il corso di formazione teorico
+dovrà essere frequentato obbligatoriamente presso il Training Center di ADR e non ne sarà
+consentita l’erogazione da parte di istruttori qualificati esterni ad ADR.
+La guida in airside con formazione obbligatoria ADC-A non in corso di validità è assimilato alla
+guida con ADC scaduta e sarà sanzionato con le medesime modalità previste al punto 6).
+Nell’ipotesi in cui una delle violazioni, abbia comportato la decurtazione di punti dell’Airside
+Driving Certificate senza comportarne la revoca, i punti verranno ripristinati alla dotazione
+iniziale di cinque punti al momento del rinnovo dell’abilitazione.
+Sono preposti alla vigilanza e controllo del rispetto di tutte le norme sulla circolazione veicolare in
+aeroporto i seguenti soggetti:
+a. Polizia di Stato
+b. Comando Compagnia Carabinieri
+c. Guardia di Finanza
+d. Personale della Sicurezza Operativa ADR
+e. Personale ADR del Safety & Compliance Monitoring Management
+f. (SOLO PER FCO: Guardie Particolari Giurate delegate al controllo delle viabilità
+interne alle aree di smistamento bagagli)
+Il personale della Sicurezza Operativa che rilevi un’infrazione alle regole di circolazione contesta la
+violazione del presente documento. Eventuali comportamenti lesivi delle normative sulla sicurezza
+sul lavoro che venissero rilevati (quali ad esempio il mancato / scorretto utilizzo delle cinture di
+sicurezza), verranno segnalati al Datore di Lavoro per le opportune azioni di sua competenza.
+Copia non controllata qualora stampata Pag. 8 di 62
+
+=== PAGE 9 ===
+Volume 1 - Abilitazione alla guida in Apron FCO/CIA
+paragrafo 1.3 Edizione 1 - Rev. 3
+INTRODUZIONE /
+CAPITOLO 1
+SCOPO 26/01/2026
+1.3 Glossario dei termini
+Società di gestione aeroportuale (ADR – Aeroporti di Roma) Il soggetto cui è affidato, insieme ad
+altre attività o in via esclusiva, il compito di amministrare e di gestire le infrastrutture aeroportuali
+e di coordinare e controllare le attività dei vari operatori presenti nell’aeroporto considerato. Il
+Gestore Aeroportuale definisce, in accordo con le previsioni del Reg. EU 139/2014, le regole per la
+guida in airside e per l’emissione delle autorizzazioni (ADC) verificando la compliance del processo.
+Aeroporto (Aerodrome) ogni area definita (inclusi edifici, impianti ed equipaggiamenti) su terra o
+acqua o su una struttura fissa, offshore fissa o galleggiante, destinata a essere utilizzata totalmente
+o in parte per l’arrivo, la partenza e gli spostamenti di terra degli aeromobili.
+Airside area aeroportuale (es. piste, piazzali aeromobili, viabilità, aree di sicurezza) interna ai varchi
+doganali e/o alle postazioni di controllo di sicurezza.
+Aiuti Visivi Luminosi (AVL) (Aeronautical Ground Light AGL) Qualsiasi luce specificamente adibita
+quale aiuto alla navigazione aerea. Sono escluse le luci poste sugli aeromobili.
+Nota: la definizione include le luci e i segnali luminosi aeroportuali di aiuto per il movimento e il
+controllo degli aeromobili e dei veicoli che operano sull’area di movimento.
+Area di Manovra (Manoeuvring Area) La parte di un aeroporto adibita al decollo, all’atterraggio ed
+al movimento al suolo degli aeromobili, con esclusione dei piazzali (APRONS).
+Area di Movimento (Movement Area) La parte di un aeroporto adibita al decollo, all’atterraggio ed
+al movimento al suolo degli aeromobili costituita da Area di Manovra e i piazzali.
+ASA (Aircraft Safety Area) Area di sicurezza degli aeromobili.
+ENAC Ente Nazionale per l'Aviazione Civile, è l’autorità di regolazione tecnica, certificazione,
+vigilanza e controllo nel settore dell'Aviazione Civile in Italia.
+ENAV Ente Nazionale Assistenza al Volo: è la società che gestisce il traffico aereo civile in Italia, in
+area di manovra, ha il compito di istruire il movimento degli aeromobili e dei veicoli.
+ERA (Equipment Restriction Area) Area di accesso limitato per i mezzi di rampa.
+ESA (Equipment Service Area) Area di attesa per il servizio dei mezzi di rampa.
+F.O.D. (Foreign Object Damage or Debris) Danno da corpo estraneo. Qualunque oggetto o sostanza
+che potrebbe potenzialmente causare danni ad un aeromobile.
+Incursioni di pista (Runway Incursions) Qualsiasi evento che si possa verificare su di una superficie
+aeroportuale che coinvolge la erronea presenza di aeromobile, veicolo o persona nell’aera protetta
+della superficie destinata per l’atterraggio e per il decollo dell’aereo.
+Manuale di Aeroporto Il manuale di aeroporto è un documento redatto dalla Società di Gestione
+(ADR), che raccoglie le procedure da adottare nelle diverse situazioni ordinarie o d’emergenza che
+si verificano in aeroporto in ottemperanza al Regolamento EU 139/2014.
+Merci Pericolose (Dangerous goods) Articoli o sostanze in grado di arrecare rischi alla salute delle
+persone, alla sicurezza del volo, alla proprietà o all’ambiente.
+Pericolo Condizione, oggetto o attività che può potenzialmente nuocere alla navigazione aerea o
+provocare danni a persone e mezzi.
+Piazzale (Apron) area predefinita per la sosta degli aeromobili, per l’imbarco e lo sbarco dei
+passeggeri, il carico e lo scarico della posta o delle merci, il rifornimento di combustibili, il parcheggio
+o la manutenzione.
+Piazzola per Aeromobile o Piazzola Una specifica area di un piazzale adibita al parcheggio di un
+aeromobile.
+Pista (Runway) Un‘area rettangolare definita su un aeroporto predisposta per l’atterraggio e il
+decollo degli aeromobili.
+Copia non controllata qualora stampata Pag. 9 di 62
+
+=== PAGE 10 ===
+Volume 1 - Abilitazione alla guida in Apron FCO/CIA
+paragrafo 1.4 Edizione 1 - Rev. 3
+INTRODUZIONE /
+CAPITOLO 1
+SCOPO 26/01/2026
+Rischio La possibilità che un evento possa accadere e la relativa conseguenza ovvero la possibilità
+di una perdita o danno, misurate in termine di severità e probabilità.
+Trasporto aereo commerciale Traffico effettuato per trasportare persone o cose dietro
+remunerazione. Esso comprende quindi il trasporto aereo di linea, charter e aerotaxi.
+Trasporto aereo non commerciale o di aviazione generale Traffico diverso dal trasporto aereo
+commerciale; esso comprende sostanzialmente l’attività degli aeroclub, delle scuole di volo, dei
+piccoli aerei privati ed i servizi di lavoro aereo.
+TWR torre di controllo ENAV (Ente Nazionale Assistenza al Volo).
+Via di rullaggio (Taxiway) Un percorso definito destinato al rullaggio degli aeromobili, avente lo
+scopo di collegare differenti aree dell’aeroporto.
+Veicoli tutte le macchine, di qualsiasi specie, circolanti in Airside, con conducente (automezzi e/o
+attrezzature semoventi a motore comprensivi di tutti i mezzi speciali in uso per le operazioni di
+assistenza agli aeromobili e rifornimento).
+1.4 Lay-out aeroportuale
+I
+I mezzi, che circolano in Airside, devono essere dotati di un adesivo con QR-code “Quick References
+di Aeroporti di Roma”. L’inquadramento del QR-code, tramite dispositivi mobili, permette un
+collegamento diretto alla pagina web di ADR in cui sono riportati i principali contatti utili, la cartina
+piazzali, il link alla compilazione rapida di Ground Safety Report (GSR) ed altri documenti utili a
+garanzia della safety in Apron. La consultazione della documentazione disponibile attraverso
+l’inquadramento del QR-code è vietata durante la guida. È quindi possibile consultare la
+documentazione solo in caso di mezzo fermo o in sosta, ed in posizione sicura rispetto ad altri mezzi,
+persone ed aeromobili. L’adesivo QR-code da applicare deve avere una dimensione minima di
+5cmx5cm e, qualora applicato esternamente al mezzo, deve essere resistente all’acqua. Sarà cura
+delle singole società che operano in Airside garantire l’affissione dell’adesivo sui propri mezzi ed il
+mantenimento della leggibilità dello stesso. Di seguito si riporta la grafica dell’adesivo:
+FIUMICINO: CIAMPINO:
+Soltanto per FIUMICINO:
+Qualora non sia possibile collocare l’adesivo con il QR-Code sul mezzo, lo stesso deve essere almeno
+dotato di cartina piazzali aggiornata (E-15 DDS Allegato 2 Cartina Piazzali)
+Copia non controllata qualora stampata Pag. 10 di 62
+
+=== PAGE 11 ===
+Volume 1 - Abilitazione alla guida in Apron FCO/CIA
+paragrafo 1.5 Edizione 1 - Rev. 3
+INTRODUZIONE /
+CAPITOLO 1
+SCOPO 26/01/2026
+CIAMPINO:
+L’immagine sotto riportata mostra, in grigio, il limite del piazzale aeromobili per lo scalo di Ciampino:
+1.5 Mezzi in uso presso gli scali di FCO e CIA:
+I veicoli che operano in Airside hanno caratteristiche particolari e differiscono fra loro a seconda
+della funzione cui sono asserviti.
+In Airside possono circolare:
+- Autoveicoli/mezzi di servizio
+Copia non controllata qualora stampata Pag. 11 di 62
+
+=== PAGE 12 ===
+Volume 1 - Abilitazione alla guida in Apron FCO/CIA
+paragrafo 1.5 Edizione 1 - Rev. 3
+INTRODUZIONE /
+CAPITOLO 1
+SCOPO 26/01/2026
+- Mezzi o attrezzature semoventi di rampa, mezzi caratteristici che effettuano attività specifiche
+di assistenza agli aeromobili e che richiedono, oltre al possesso della patente di guida e
+dell’ADC, una certificazione di abilitazione all’utilizzo del mezzo/attrezzatura rilasciata dal
+datore di lavoro, sulla base di quanto indicato nel Manuale di Aeroporto
+- Attrezzature trainate: attrezzature che non possiedono un motore endotermico e per il loro
+utilizzo devono essere trainati.
+Immagine Denominazione Descrizione
+Veicolo di emergenza utilizzato per lo
+spegnimento incendi in aeroporto. Obbligo di
+Automezzo antincendio collegamento radio con TWR. Ha la precedenza
+sugli altri mezzi quando in emergenza con luci
+blu accese
+Veicolo di emergenza utilizzato per il soccorso
+sanitario. Obbligo di collegamento radio con
+Autoambulanza
+TWR. Ha la precedenza sugli altri mezzi quando
+in emergenza con luci blu accese
+Veicolo utilizzato per il rifornimento di
+carburante degli aeromobili. Ha la precedenza
+Autocisterna per il
+su tutti i mezzi aeroportuali (ad eccezione dei
+rifornimento di carburante
+veicoli in emergenza) e non è dotato di
+apparato di comunicazione con TWR
+Mezzi adibiti al rifornimento di carburante sulle
+Fuel Hydrant Dispencer
+piazzole dotate di pit carburante.
+Veicolo dell’Ente Nazionale dell’Aviazione
+Civile, dotata di radio per il contatto con la
+Automezzo di servizio ENAC TWR, ha la precedenza sugli altri mezzi (esclusi
+quelli di soccorso ed emergenza) quando opera
+con i lampeggianti gialli accesi
+Copia non controllata qualora stampata Pag. 12 di 62
+
+=== PAGE 13 ===
+Volume 1 - Abilitazione alla guida in Apron FCO/CIA
+paragrafo 1.5 Edizione 1 - Rev. 3
+INTRODUZIONE /
+CAPITOLO 1
+SCOPO 26/01/2026
+Veicolo ADR, (a FCO, dotato di apparato
+Mezzo di servizio del Safety &
+radio per contatto con TWR).
+Compliance Monitoring
+Management
+Veicolo dell’ente Sicurezza Operativa ADR,
+dotata di radio per il contatto con la TWR, ha la
+precedenza sugli altri mezzi (esclusi quelli di
+Automezzo di servizio soccorso ed emergenza) quando opera con i
+Sicurezza Operativa ADR lampeggianti gialli accesi
+Caratterizzato da una colorazione ad alta
+visibilità (conspicuous color).
+Veicolo per il trasporto dei passeggeri. Ha la
+precedenza sugli altri mezzi quando pieno di
+Bus interpista passeggeri
+passeggeri. Non è dotato di apparato radio per
+la comunicazione con TWR.
+Veicolo ADR, non dotato di apparato radio
+per contatto con TWR.
+Automezzo di servizio
+Operativo ADR Se abilitato in area di manovra, è
+caratterizzato da una colorazione ad alta
+visibilità (conspicuous color).
+Mezzo utilizzato per il traino carrelli bagagli in
+Trattore
+aeroporto. Non ha contatto con TWR
+Copia non controllata qualora stampata Pag. 13 di 62
+
+=== PAGE 14 ===
+Volume 1 - Abilitazione alla guida in Apron FCO/CIA
+paragrafo 1.5 Edizione 1 - Rev. 3
+INTRODUZIONE /
+CAPITOLO 1
+SCOPO 26/01/2026
+Mezzo utilizzato per il carico/scarico bagagli
+Nastro Bagaglio dalle stive degli aeromobili. Non ha contatto
+con TWR
+Mezzo utilizzato per il traino/spinta degli
+Push back
+aeromobili. Non ha contatto con TWR
+Mezzo utilizzato per l’imbarco/sbarco dei
+Scala Passeggeri passeggeri dagli aeromobili. Non ha contatto
+con TWR
+Mezzo utilizzato per l’imbarco/sbarco dei
+Elevatore disabili/Ambulift passeggeri a ridotta mobilità dagli aeromobili.
+Non ha contatto con TWR
+Mezzo utilizzato per il carico/scarico
+Mezzo catering vettovaglie di bordo dagli aeromobili. Non ha
+contatto con TWR
+Copia non controllata qualora stampata Pag. 14 di 62
+
+=== PAGE 15 ===
+Volume 1 - Abilitazione alla guida in Apron FCO/CIA
+paragrafo 1.5 Edizione 1 - Rev. 3
+INTRODUZIONE /
+CAPITOLO 1
+SCOPO 26/01/2026
+Mezzo utilizzato per il carico/scarico unità di
+Main deck loader carico (ULD) dagli aeromobili. Non ha contatto
+con TWR
+Mezzo utilizzato per il carico/scarico unità di
+Trasnporter loader carico (ULD) dagli aeromobili. Non ha contatto
+con TWR
+Mezzo utilizzato per il carico di acqua sugli
+Lavatory Service
+aeromobili. Non ha contatto con TWR
+Mezzo utilizzato per il fornire energia elettrica
+Ground Power Unit
+agli aeromobili. Non ha contatto con TWR
+Mezzo utilizzato per effettuare operazioni di
+sghiacciamento dell’aeromobile in condizioni
+favorevoli alla formazione di ghiaccio nonché
+De-Icer
+spargimento di liquido utile alla prevenzione
+dell’accumulo di ghiaccio sulle strutture
+dell’aeromobile. Non ha contatto con TWR
+Copia non controllata qualora stampata Pag. 15 di 62
+
+=== PAGE 16 ===
+Volume 1 - Abilitazione alla guida in Apron FCO/CIA
+paragrafo 1.5 Edizione 1 - Rev. 3
+INTRODUZIONE /
+CAPITOLO 1
+SCOPO 26/01/2026
+Mezzo utilizzato per effettuare operazioni di
+sgombro neve dalle superfici pavimentate in
+Airside nonché spargimento di liquido utile alla
+Mezzi Sgombr neve
+prevenzione dell’accumulo di ghiaccio sulle
+infrastrutture stesse. Obbligo di collegamento
+radio con TWR
+Tabella 1- Tipologia dei principali veicoli/mezzi/attrezzature aeroportuali
+Copia non controllata qualora stampata Pag. 16 di 62
+
+=== PAGE 17 ===
+Volume 1 - Abilitazione alla guida in Apron FCO/CIA
+REQUISITI E paragrafo 2.1 Edizione 1 - Rev. 3
+DISPOSIZIONI CAPITOLO 2
+26/01/2026
+GENERALI
+2 REQUISITI E DISPOSIZIONI GENERALI
+2.1 Requisiti obbligatori per la guida in airside
+Chiunque debba condurre un’autovettura / mezzo operativo / attrezzatura all’interno dell’area
+Airside degli Aeroporti di Roma – Fiumicino e/o Ciampino deve essere in possesso di abilitazione alla
+guida in Airside (Airside Driving Certificate - ADC), del tipo A o del tipo M a seconda dell’area
+aeroportuale nella quale deve circolare.
+Per poter accedere e circolare in Airside con i veicoli e i rimorchi necessari allo svolgimento
+delle attività di competenza, qualunque soggetto, sia pubblico che privato, dovrà attenersi a quanto
+stabilito:
+• Regolamento di Scalo di Fiumicino: “Procedura per il rilascio dei lasciapassare per veicoli targati”
+(Allegato 6.2);
+• Manuale di Aeroporto: “Rilascio dell’Autorizzazione alla Circolazione dei mezzi in Airside (ACA)”
+(Parte E sezione 16 – E-16 ACA).
+È data facoltà agli Operatori Aeroportuali, in particolari situazioni di necessità operative ed
+espressamente autorizzati da ENAC Direzione Territoriale Lazio, di dotare i propri automezzi, adibiti
+a servizi aeroportuali e autorizzati all’accesso in Airside, di fotocopia autenticata del libretto di
+circolazione, in sostituzione di quello originale. È fatto obbligo ai medesimi Operatori Aeroportuali,
+o a chi per loro, di esibire, a richiesta dell’ufficiale o agente di polizia che procede ad accertamenti,
+il documento originale, nel tempo e luogo, di volta in volta stabiliti, o comunque sia, nel tempo
+strettamente necessario per il prelievo del documento originale
+2.2 Conseguimento dell’abilitazione alla guida in apron ADC - A
+Per il rilascio dell’ADC -A è necessario:
+il possesso di idonea patente di guida civile in corso di validità di categoria adeguata alla tipologia di
+veicolo da condurre, secondo quanto previsto dal vigente Codice della Strada o comunque
+riconducibile alle tipologie in esso riportate. Per i veicoli non riconducibili al Codice della Strada
+(trattori, loader, transporter, scale), è richiesta almeno la patente di tipo B
+• il possesso del permesso di accesso aeroportuale TIA (Tesserino Ingresso Aeroportuale) che
+autorizzi l’accesso in Airside con banda verde o rossa (soltanto per Fiumicino, anche azzurro 4
+che autorizza l’accesso nell’area Airside antistante i magazzini cargo, comprese le tettoie, per
+operazioni carico/scarico merci);
+• aver effettuato la formazione teorica (che ha una validità di TRE mesi dal momento del rilascio
+dell’Attestato) e successivamente un corso di formazione pratico e un assessment finale, previsti
+per la specifica abilitazione alla guida, a cura e responsabilità della società o ente di
+appartenenza;
+Copia non controllata qualora stampata Pag. 17 di 62
+
+=== PAGE 18 ===
+Volume 1 - Abilitazione alla guida in Apron FCO/CIA
+REQUISITI E paragrafo 2.3 Edizione 1 - Rev. 3
+DISPOSIZIONI CAPITOLO 2
+26/01/2026
+GENERALI
+• Il corso di formazione pratico e l’assessment dovranno essere svolti da un Airside Driving Expert
+(A.D.E.) del Gruppo ADR o esterni qualificati da ADR;
+• aver superato un esame teorico in presenza, presso gli uffici Tesseramento ADR
+Il titolare dell’ADC-A, quando si trova alla guida di un veicolo in airside deve portare quest’ultima
+con sé insieme alla patente di guida civile in corso di validità, ed esibirla agli organi competenti,
+qualora richiesto.
+L’abilitazione è personale, non cedibile e non sostituisce la patente di guida, che resta l’unico
+documento valido, ai fini della individuazione delle capacità tecniche/fisiche/psicologiche del
+guidatore e delle categorie di veicoli autorizzati a condurre secondo quanto previsto dal Codice della
+Strada.
+Il titolare di ADC è tenuto a notificare immediatamente al proprio datore di lavoro l’eventuale
+rinnovo, scadenza o ritiro della patente di guida.
+2.3 Formazione Iniziale ed esame
+a. FORMAZIONE TEORICA INIZIALE: La formazione teorica iniziale consiste nella partecipazione ad
+un corso dedicato, allineato alle norme contenute nel presente documento e nel Manuale di
+Aeroporto e successivo superamento di un test di fine corso.
+b. FORMAZIONE PRATICA CON ASSESSMENT FINALE L’addestramento pratico alla guida, consiste
+nella conduzione di un mezzo, nelle aree per le quali si intende conseguire l’ADC, svolta in
+affiancamento e sotto la supervisione di un soggetto che abbia la qualifica di A.D.E (Airside
+Driving Expert) di tipo A del Gruppo ADR o qualificato da ADR. I requisiti per la formazione
+(iniziale e ricorrente), sono riportati nel Manuale di Aeroporto, Parte B SEZIONE 3.
+L’addestramento pratico iniziale deve avere una durata minima di 4 ore a Fiumicino e 2 ore a
+Ciampino supervisionato da ADE A ed è seguito da un assessment strutturato per verificare
+che il candidato abbia acquisito le seguenti abilità:
+• corretto orientamento in Airside;
+• corretta osservazione e riconoscimento di obblighi e divieti;
+• consapevolezza dei principali rischi connessi alla guida in Airside.
+c. ESAME TEORICO IN PRESENZA: L’esame teorico consiste nella risoluzione di un questionario
+composto da 20 quesiti a risposta multipla, che vertono sugli argomenti trattati nella
+formazione teorica iniziale e nel presente volume. L’esame si intende superato se il candidato
+risponde esattamente ad almeno 18 quesiti, nei venticinque minuti di tempo a disposizione.
+. In caso di mancato superamento dell’esame teorico devono trascorrere almeno due settimane
+prima che il candidato possa ripetere la prova e, in caso di ulteriore esito negativo, il candidato
+dovrà ripetere tutto l’iter previsto per il primo rilascio.
+Copia non controllata qualora stampata Pag. 18 di 62
+
+=== PAGE 19 ===
+Volume 1 - Abilitazione alla guida in Apron FCO/CIA
+REQUISITI E paragrafo 2.4 Edizione 1 - Rev. 3
+DISPOSIZIONI CAPITOLO 2
+26/01/2026
+GENERALI
+In caso di superamento del test teorico, in candidato dovrà ritirare l'ADC entro un periodo massimo
+di 30 giorni dalla data del superamento dell'esame, trascorsi i quali l'abilitazione verrà revocata.
+Resta comunque vietata la conduzione dei mezzi in airside senza l'ADC al seguito.
+2.4 Validità dell’abilitazione alla guida
+L’abilitazione alla guida in Apron ha una validità di quattro anni, ma è comunque subordinata alla
+validità della patente di guida (se quest’ultima scade, la validità dell’ADC decade). È inoltre
+subordinata all’effettuazione di un recurrent training in e-learning entro 24 mesi dalla data di
+emissione dell’Attestato teorico ADC-A (il recurrent training potrà essere anticipato fino a 3 mesi,
+mantenendo invariata la scadenza della abilitazione).
+Le abilitazioni rilasciate o rinnovate entro il 30/06/2021 mantengono la validità con la quale sono
+state emesse.
+Rinnovo ADC-A entro la data di scadenza dell’abilitazione alla guida:
+Per la richiesta di rinnovo dell’ADC/A entro la data di scadenza, sarà necessario prenotare un nuovo
+esame presso l’Ufficio Tesseramento ADR, presentando i seguenti documenti:
+a) Modulo di richiesta da compilare su carta intestata della Società/Ente di appartenenza del
+dipendente (modulo 1).
+b) Attestato di recurrent Training, in corso di validità, erogato esclusivamente tramite
+piattaforma e-learning. Non saranno accettati gli attestati di formazione teorica iniziale.
+c) Attestato del Corso di Safety Aeroportuale modulo 2, Airside Safety in corso di validità (non
+superiore a 24 mesi dalla data di rilascio).
+d) Fotocopia fronte retro della tessera aeroportuale, dell’ADC e della patente di guida civile in
+corso di validità del candidato
+e) Fotocopia fronte retro di un documento di identità in corso di validità del Responsabile della
+Società/Ente (firmatario della modulistica).
+f) Quietanza di pagamento “Rinnovo”:
+Nel caso ADC scaduta la Società/Ente deve ripresentare la documentazione come per il primo
+rilascio
+Refresher Training ADC-A: Nel caso di interruzione della guida in apron per un periodo continuativo
+compreso tra i 3 ed i 12 mesi, è responsabilità del Datore di lavoro garantire il refresher training
+(della durata di 2 ore su Fiumicino e 1 ora su Ciampino, sotto la supervisione di un A.D.E.) con le
+medesime modalità previste per l’addestramento pratico iniziale.
+Nel caso di interruzione della guida in apron per un periodo superiore a 12 mesi, la validità
+del’ADC-A decade e dovrà essere ripetuto il normale iter per il rilascio di una nuova abilitazione
+alla guida, incluso l’esame.
+Copia non controllata qualora stampata Pag. 19 di 62
+
+=== PAGE 20 ===
+Volume 1 - Abilitazione alla guida in Apron FCO/CIA
+REQUISITI E paragrafo 2.5 Edizione 1 - Rev. 3
+DISPOSIZIONI CAPITOLO 2
+26/01/2026
+GENERALI
+È responsabilità del Datore di Lavoro monitorare ed intercettare l’eventuale assenza superiore a
+12 mesi, provvedendo alla riconsegna della patente presso gli uffici del Tesseramento-ADR.
+E’ responsabilità del Datore di lavoro della Società/Ente che ha richiesto l’abilitazione alla guida in
+Airside verificare la durata dell’interruzione dell’attività di guida in airside e, se necessario,
+provvedere ad eventuali refresher training o alla ripetizione del normale iter, come per il primo
+rilascio.
+La Società/Ente che non abbia personale (A.D.E.) per effettuare l’addestramento pratico o il
+refresher training, potrà rivolgersi ad ADR che li effettuerà a titolo oneroso
+2.5 Recurrent training ADC-A e Proficiency check:
+Per il mantenimento della validità dell’ADC-A, è necessaria l’effettuazione, ogni 24 mesi dalla data
+di emissione dell’Attestato Teorico ADC-A di un corso teorico di recurrent training erogato in
+modalità e-learning. Il corso può essere acquistato da Aziende/Enti/Amministrazioni sul sito
+www.Adr.it, le quali dovranno poi provvedere all’iscrizione del proprio personale, inviando la
+richiesta a: Aviation.training@adr.itAlla fine del corso è previsto un test finale di apprendimento.
+In caso di mancato superamento del test, il candidato può ripetere la prova dopo 3 gg. ed entro 14
+gg. dall’effettuazione del primo tentativo. In caso di due insuccessi o di mancata effettuazione del
+corso, l’abilitazione viene revocata ed è necessario richiedere una nuova abilitazione con le stesse
+modalità del primo rilascio.
+Per l’accesso al corso di recurrent training, l’Azienda/Ente/Amministrazione, nell’assegnare il corso
+al candidato, dichiarerà, tramite la piattaforma e-learning:
+1) di garantire l’identità del partecipante
+2) di garantire che il partecipante sia stato formato alla conduzione dei mezzi che è autorizzato a
+utilizzare
+3) di garantire che il partecipante abbia guidato senza evidenziare carenze di formazione
+4) di garantire che in caso di interruzione della guida compresa tra i 3 ed i 12 mesi continuativi, il
+partecipante sia stato sottoposto a refresher training secondo le modalità indicate nella presente
+DDS (2.5.10).
+Inibizione alla guida in Airside:
+Qualora un operatore in possesso di ADC-A valida:
+• non abbia eseguito il recurrent training obbligatorio entro la scadenza prevista o comunicata da
+ADR, o
+• non abbia eseguito il refresher training nei casi previsti, o
+• abbia la patente di guida scaduta
+sarà responsabilità del Datore di lavoro inibire l’operatore alla guida dei mezzi
+fino al superamento del recurrent o refresher training o rinnovo patente di
+guida.
+Copia non controllata qualora stampata Pag. 20 di 62
+
+=== PAGE 21 ===
+Volume 1 - Abilitazione alla guida in Apron FCO/CIA
+REQUISITI E paragrafo 2.6 Edizione 1 - Rev. 3
+DISPOSIZIONI CAPITOLO 2
+26/01/2026
+GENERALI
+La formazione teorica, l’addestramento e l’assessment pratico devono essere registrati in
+documenti nei quali siano riportati: nome e cognome del formatore, nome e cognome del personale
+formato/addestrato, data di esecuzione e completamento dell’addestramento, nome dell’ADE-A
+(ADC-A). Copia degli attestati (teorico e pratico) deve essere custodita
+dall’Azienda/Ente/Amministrazione di appartenenza. Copia dell’Assessment pratico deve essere
+custodita dall’ADE che ha effettuato la formazione pratica.
+Poiché gli aspetti di tutela della safety aeroportuale costituiscono parte integrante delle
+conoscenze necessarie per condurre mezzi in Airside, l’operatore che voglia conseguire l’ADC dovrà
+obbligatoriamente avere un attestato in corso di validità (non superiore a 24 mesi dalla data di
+rilascio) per il corso di Safety Aeroportuale, Modulo 2 - Airside Safety
+2.5.1 REMEDIAL TRAINING
+Il Safety & Compliance Monitoring Manager può identificare interventi correttivi di formazione del
+personale operativo in base alle risultanze del sistema di Gestione della sicurezza, alle evidenze
+oggettive registrate nelle nell’ambito delle attività ispettive, audit e/o rapporti di investigazione.
+Le esigenze formative individuate e/o necessità contingenti di remedial training ADC-A ed M
+verranno erogate direttamente da istruttori qualificati ADR. Il remedial training deve prevedere
+il seguente syllabus:
+ATTENZIONE: follow up a tre mesi,
+Dalla identificazione della necessità di Remedial training fino alla erogazione e al superamento del
+corso, il conducente interessato NON potrà guidare in Airside.
+2.6 Estensione ADC ad altro scalo
+A partire dal 01/07/2021, disponendo già di una ADC/A emessa su uno dei due aeroporti (prima
+emissione o rinnovata), per ottenere l’ADC/A presso l’altro aeroporto (FCO o CIA) è sufficiente
+effettuare l’addestramento pratico, secondo le modalità previste nello scalo di richiesta e
+presentare la relativa documentazione presso l’Ufficio Tesseramento di competenza.
+Al fine di allineare le scadenze di entrambe le patenti aeroportuali, la nuova ADC/A, avrà la
+medesima scadenza della prima ADC/A rilasciata presso il primo aeroporto.
+Copia non controllata qualora stampata Pag. 21 di 62
+
+=== PAGE 22 ===
+Volume 1 - Abilitazione alla guida in Apron FCO/CIA
+REQUISITI E paragrafo 2.7 Edizione 1 - Rev. 3
+DISPOSIZIONI CAPITOLO 2
+26/01/2026
+GENERALI
+Per il personale in possesso di ADC-A su entrambi gli scali, al rinnovo di una ADC è possibile rinnovare
+anche l’altra con la medesima scadenza, previa presentazione della documentazione prevista
+Cambio Azienda:
+In caso di cambio azienda di operatori in possesso di una ADC-A in corso di validità, la Società
+ricevente dovrà acquisire l’attestato di formazione teorica (in corso di validità – 24 mesi) e accertarsi
+del rispetto del requisito di continuità alla guida (rif. DDS vol.1 1.11.3 FCO; DDS VOL.2 2.5.61 CIA).
+In caso di indisponibilità dell’attestazione del corso teorico in corso di validità, la formazione teorica
+andrà ripetuta.
+In caso di assenza di esercizio della guida in Airside andranno applicate le azioni previste dal
+REFRESHER Training (punto 2.4)
+2.7 Formatori ADC/A.D.E.
+Vedi Manuale di Aeroporto Fiumicino/Ciampino:
+- DISPOSIZIONI DI SAFETY VOLUME 2 – Circolazione in Airside
+Vedi Manuale di Aeroporto Fiumicino/Ciampino:
+- PARTE B sezione 3 Qualificazione Formatori Esterni
+2.8 Accesso senza ADC, visitatori e personale in caso di emergenza
+SCORTA DI UN MEZZO SENZA PERMESSO E/O CONDOTTO DA PERSONALE SENZA ADC:
+Coloro i quali abbiano la necessità di condurre:
+• in Apron un mezzo non dotato di permesso alla circolazione in Apron e/o guidare un mezzo con
+personale non in possesso di ADC-A,
+• in Area di manovra un mezzo non dotato di permesso alla circolazione in area di manovra e/o
+guidare un mezzo con personale non in possesso di ADC-M,
+dovranno richiedere la scorta della Sicurezza Operativa ADR- per procedere alla guida
+esclusivamente al seguito del mezzo ADR scortante. I mezzi saranno scortati da ADR- esclusivamente
+verso le aree preventivamente autorizzate di lavoro.
+Nota: preliminarmente alla richiesta ad ADR- dovranno essere eseguite, ove applicabile, le richieste
+di permesso temporaneo accesso mezzi (permesso temporaneo mezzi) e personale in Airside
+(richiesta tessera visitatore) come previsto da Regolamento di Scalo .
+In caso la scorta sia richiesta per un veicolo o due veicoli di dimensione ridotta, sarà necessario un
+solo mezzo scortante ADR-. Negli altri casi sarà necessario o un mezzo scortante ADR per ogni mezzo,
+o un mezzo ADR- all’apertura e uno a chiusura del corteo; la idonea configurazione sarà decisa dal
+personale ADR- in funzione della tipologia dei mezzi
+VERIFICHE SCORTA IN CASO DI NON POSSESSO ADC:
+È responsabilità del richiedente la scorta verificare in coordinamento con il conducente:
+Copia non controllata qualora stampata Pag. 22 di 62
+
+=== PAGE 23 ===
+Volume 1 - Abilitazione alla guida in Apron FCO/CIA
+REQUISITI E paragrafo 2.8 Edizione 1 - Rev. 3
+DISPOSIZIONI CAPITOLO 2
+26/01/2026
+GENERALI
+• che lo scortato sia in possesso di idonea patente di guida CIVILE in corso di validità e di categoria
+adeguata alla tipologia di veicolo che deve condurre secondo quanto previsto dal vigente Codice
+della Strada o comunque riconducibile alle tipologie in esso riportate;
+• che lo scortato abbia formazione/addestramento specifici per la tipologia di veicolo che deve
+condurre.
+VERIFICHE SCORTA IN CASO DI MEZZO SENZA AUTORIZZAZIONE ALLA CIRCOLAZIONE:
+È responsabilità del richiedente la scorta in coordinamento con il conducente, eseguire una
+ispezione del mezzo preliminarmente alla scorta, in modo da garantire i controlli previsti
+BRIEFING E VERIFICHE PRELIMINARI ALL’AVVIO DELLA SCORTA
+Il personale della Sicurezza Operativa dovrà eseguire un briefing al conducente affinché sia
+informato sulle precauzioni necessarie nel condurre il veicolo conformemente alle istruzioni fornite
+(contatto visivo continuo, contatto telefonico di backup o altro mezzo di comunicazione efficiente).
+Le verifiche preliminari eseguite dal conducente/richiedente scorta e l’avvenuto briefing saranno
+registrate dal personale ADR sul form “Scorta Mezzi” che rappresenterà l’autorizzazione dalla
+scorta.
+ESECUZIONE SCORTA
+Il conducente del veicolo che segue la scorta dovrà mantenersi in contatto visivo con il conducente
+scortante e garantire la possibilità di contattarlo telefonicamente o con altro mezzo di
+comunicazione efficiente. In caso di perdita del contatto visivo:
+• Lo scortante dovrà moderare la velocità fino a fermarsi in una zona sicura; intercettare
+visivamente lo scortato ed in caso positivo raggiungerlo per ristabilite il contatto visivo; in caso
+negativo contattarlo telefonicamente per capire l’ubicazione, raggiungerlo e ristabilire il contatto
+visivo;
+• Lo scortato dovrà moderare la velocità fino a fermarsi in una zona sicura e attendere il
+ripristino del contatto visivo da parte dello scortante, pronto all’eventuale contatto telefonico da
+parte dello scortante
+LIMITAZIONI SCORTA
+Le scorte a veicoli, mezzi e attrezzature non impegnati nella gestione di un’emergenza sono sospese
+nel caso di attivazione delle "Procedure in bassa visibilità" (LVP – Low Visibility Procedures).
+Non è richiesto il possesso dell’abilitazione alla guida in Airside per il personale esterno di supporto
+che dovrà accedere nell’area operativa in caso di attivazione di un qualsivoglia stato di emergenza;
+detto personale, per accedere nell’area piazzali aeromobili o per l’accesso in Area di Manovra,
+dovrà comunque essere sempre scortato dal personale della Sicurezza Operativa ADR.
+Per personale esterno di supporto si intendono veicoli di soccorso, Forze dell’Ordine e coloro che
+sono direttamente coinvolti nella gestione della condizione di emergenza.
+ll conducente che debba accedere in Area di Manovra ma non sia munito dell’ADC di tipo “M” o non
+abbia le dotazioni richieste per il veicolo, è obbligato a richiedere alla Sicurezza Operativa ADR
+Copia non controllata qualora stampata Pag. 23 di 62
+
+=== PAGE 24 ===
+Volume 1 - Abilitazione alla guida in Apron FCO/CIA
+REQUISITI E paragrafo 2.9 Edizione 1 - Rev. 3
+DISPOSIZIONI CAPITOLO 2
+26/01/2026
+GENERALI
+l’accompagnamento/scorta del suo veicolo, al fine di mantenere il costante contatto con la Torre di
+Controllo.
+In Area di Manovra, il mezzo scortato dovrà essere dotato di luce anticollisione, identificativo
+societario e bandiera a scacchi. Dovrà inoltre mantenersi in contatto visivo con il conducente del
+mezzo scortante e garantire la possibilità di essere contattato telefonicamente.
+2.9 Enti pubblici e di Stato
+In conformità a quanto prescritto dalla regolamentazione in materia di mantenimento dei requisiti
+di Safety sullo Scalo, ai soggetti pubblici si applicano le stesse regole esposte nella presente sezione.
+In deroga a quanto sancito negli articoli precedenti, il rilascio ed il rinnovo dell’ADC, sono a titolo
+non oneroso e gestiti tramite la competente struttura di ADR.
+Copia non controllata qualora stampata Pag. 24 di 62
+
+=== PAGE 25 ===
+Volume 1 - Abilitazione alla guida in Apron FCO/CIA
+DOTAZIONE ED paragrafo 3.1 Edizione 1 - Rev. 3
+EQUIPAGGIAMENTI CAPITOLO 3
+26/01/2026
+DEI VEICOLI
+3 DOTAZIONE ED EQUIPAGGIAMENTI DEI VEICOLI
+Affinché un veicolo possa circolare in Airside è necessaria la presenza di alcuni dispositivi di Safety,
+previsti dalle D.D..S di FCO e CIA. (Disposizioni di Safety, Volume 2 – Circolazione in Airside).
+I mezzi e le attrezzature privi delle dotazioni previste non possono accedere o circolare nell’area
+airside, a meno che non siano scortati e preceduti da un mezzo conforme alle prescrizioni di seguito
+riportate.
+3.1 Lasciapassare Permessi Mezzi (LPM)
+per i mezzi targati, da esporre stabilmente sui mezzi stessi;
+FIUMICINO:
+CIAMPINO:
+Copia non controllata qualora stampata Pag. 25 di 62
+
+=== PAGE 26 ===
+Volume 1 - Abilitazione alla guida in Apron FCO/CIA
+DOTAZIONE ED paragrafo 3.2 Edizione 1 - Rev. 3
+EQUIPAGGIAMENTI CAPITOLO 3
+26/01/2026
+DEI VEICOLI
+3.2 Autorizzazione alla Circolazione dei mezzi in Airside (ACA)
+FIUMICINO:
+CIAMPINO
+Ogni mezzo e attrezzatura circolante dovrà essere dotato di una autorizzazione alla circolazione in
+Airside (ACA) che deve essere esposta e visibile sul parabrezza o in altri punti idonei dei
+mezzi/attrezzature, ad eccezione dei carrelli per i quali le ACA saranno custodite ed esibite a seguito
+di verifiche da parte del Gestore e, ove previsto, l’LPM (Lasciapassare Permessi Mezzi in Airside)
+dovrà essere sempre esposto e visibile sul parabrezza o in altri punti idonei dei mezzi. Sarà possibile
+esporre una copia leggibile dell’ACA, assicurando l’idonea conservazione, gestione e reperibilità
+dell’originale, e strutturando un processo di stampa e aggiornamento che garantisca la continua
+validità dell’ACA, o copia di essa, esposta. L’originale dell’ACA dovrà essere conservata
+obbligatoriamente all’interno dei mezzi che transitano al varco doganale in ingresso ed in uscita per
+i controlli previsti. In caso di indisponibilità dell’originale al controllo non sarà consentito l’accesso
+del mezzo in Airside.
+3.3 Immatricolazione stradale
+I mezzi di cantiere possono essere esentati dalla richiesta del permesso di accesso (ACA e/o LPM) se
+rispettano i seguenti requisiti:
+- accesso in airside tramite bisarca/carrellone o similari; - circolazione ESCLUSIVAMENTE nell’area
+circoscritta dei lavori (area di cantiere);
+- entrata/uscita dall’area di cantiere esclusivamente su bisarca/carrellone o similari.
+I veicoli/rimorchi privi delle dotazioni previste non sono autorizzati ad accedere e circolare in
+Airside, a meno che non richiedano la scorta eseguita esclusivamente dalla Sicurezza Operativa ADR
+Copia non controllata qualora stampata Pag. 26 di 62
+
+=== PAGE 27 ===
+Volume 1 - Abilitazione alla guida in Apron FCO/CIA
+DOTAZIONE ED paragrafo 3.4 Edizione 1 - Rev. 3
+EQUIPAGGIAMENTI CAPITOLO 3
+26/01/2026
+DEI VEICOLI
+3.4 Polizza assicurativa RCT
+Veicoli autorizzati all’ingresso e alla circolazione in Airside devono essere dotati di opportuna polizza
+assicurativa, in corso di validità, che copra i danni alle persone, agli aeromobili, ai mezzi ed alle
+infrastrutture aeroportuali, come riportato nella “Procedura rilascio lasciapassare mezzi” allegata
+al Regolamento di Scalo
+3.5 Dispositivo OBU (On Board Unit) esclusivamente per FCO
+I veicoli azionati da un motore devono essere dotati di un dispositivo di localizzazione satellitare
+OBU -On Board Unit.
+3.6 Dispositivi di arresto fiamma
+I veicoli con motore a scoppio devono essere dotati di un dispositivo parafiamma posto sul terminale
+dell’impianto di scarico dei gas combusti, ovvero di un dispositivo interno di arresto fiamma. Sono
+esentati i veicoli dotati di marmitta catalitica, ovvero di dispositivo equivalente (FAP).
+3.7 Estintore
+I veicoli operanti all’interno dell’ASA (Aircraft Safety Area), devono essere dotati di almeno n. 1
+estintore a bordo del mezzo.
+3.8 Logo aziendale, numero sociale, targhetta identificativa con logo CE, Costruttore
+Marca, modello e numero di serie
+I veicoli individuati nelle D.d.S. (Disposizioni di Safety) devono essere dotati di:
+- logo della Società, dell’Ente o dell’Amministrazione di appartenenza;
+- numero sociale attribuito al mezzo
+il logo ed il numero societario devono essere posti sulle fiancate del mezzo e devono essere
+realizzati in materiale adesivo o magnetico perfettamente aderente alle superfici del mezzo.
+- Solo per i non targati e i carrelli: targhetta identificativa con logo CE;
+- Solo per i carrelli: targhetta con nome del costruttore, marca/modello e numero di serie;
+3.9 Pannelli con bandiera a scacchi
+I veicoli individuati nelle D.D.S. devono essere dotati di pannelli raffiguranti una bandiera a scacchi
+di colore rosso e bianco posta sulle fiancate. I pannelli devono essere realizzati con materiale
+catarifrangente, normalmente di dimensioni 45x45 (le dimensioni potranno essere ridotte fino ad
+un minimo di 15x15)
+Copia non controllata qualora stampata Pag. 27 di 62
+
+=== PAGE 28 ===
+Volume 1 - Abilitazione alla guida in Apron FCO/CIA
+DOTAZIONE ED paragrafo 3.10 Edizione 1 - Rev. 3
+EQUIPAGGIAMENTI CAPITOLO 3
+26/01/2026
+DEI VEICOLI
+3.10 Elementi catarifrangenti
+I veicoli individuati nelle D.D..S. devono essere dotati di dispositivi catarifrangenti posti su entrambi
+i lati della carrozzeria, in posizione sempre visibile dagli altri mezzi e dagli aeromobili. Gli elementi
+catarifrangenti devono essere di colore rosso, giallo o bianco.
+3.11 Luci ostacolo
+Veicoli laddove richiesto, devono essere dotati di una o più luci ostacolo, di colore rosso, fisse che
+devono sviluppare una intensità luminosa non inferiore a 10 candele (cd) e deve avere una
+copertura azimutale di 360° (gradi). Tali luci devono essere accese in orario notturno ed in caso di
+attivazione delle condizioni di bassa visibilità (LVP).
+3.12 Lampeggiante UNECE
+I veicoli individuati nelle D.D..S. devono essere dotati di lampeggiante conforme alle norme UNECE,
+in applicazione all’articolo 177 del Codice della Strada.
+3.13 Sirena
+I veicoli individuati nelle D.D..S. devono essere dotati di sirena in applicazione all’articolo 177 del
+Codice della Strada.
+3.14 Sigla numerica
+I veicoli muniti del permesso per accedere in Area di Manovra devono essere dotati di iscrizione
+riportante il codice numerico assegnato da ADR/ISE per Fiumicino e da CMO-SOC per Ciampino. Il
+codice numerico deve essere apposto almeno sulle fiancate ed i caratteri dell’iscrizione devono
+avere un’altezza minima di 30 cm. L’iscrizione deve essere realizzata in materiale adesivo o
+magnetico perfettamente aderente alle superfici del veicolo.
+3.15 Colore della carrozzeria (conspicuous color)
+I mezzi che accedono in area di manovra, a partire dal 1° gennaio 2021, devono essere caratterizzati
+da livree ad alta visibilità (conspicuous color). Si veda sezione 1.4 per esempi relativi ai mezzi della
+sicurezza operativa e manutenzione e mezzi di soccorso..
+3.16 Luce ostacolo EASA type C
+I veicoli individuati nelle D.d.S. devono essere dotati di n. 1 luce ostacolo EASA Type C. La luce deve
+essere posta sulla sommità del mezzo, nella parte più visibile e deve rimanere sempre accesa
+durante la circolazione in area di manovra.
+Copia non controllata qualora stampata Pag. 28 di 62
+
+=== PAGE 29 ===
+Volume 1 - Abilitazione alla guida in Apron FCO/CIA
+DOTAZIONE ED paragrafo 3.17 Edizione 1 - Rev. 3
+EQUIPAGGIAMENTI CAPITOLO 3
+26/01/2026
+DEI VEICOLI
+3.17 Barra luminosa EASA type D
+I veicoli individuati nelle D.d.S. devono essere dotati di una barra luminosa EASA Type D. La barra
+deve essere posta sulla sommità del mezzo, nella parte più visibile e deve rimanere sempre accesa
+durante la circolazione in area di manovra.
+3.18 Trasponder A-SMGCS
+I veicoli individuati nelle D.d.S. devono essere dotati di n. 1 transponder veicolare con protocollo
+ADS-B System e frequenza di funzionamento di 1090 MHz.
+3.19 Radio frequenza Torre UHF
+I veicoli individuati nelle D.d.S. devono essere dotati di n. 1 radio sintonizzabile sulla frequenza Torre
+UHF 445.775 MHz per Fiumicino e UHF 418.4 MHz per Ciampino. La radio deve essere funzionante.
+in Area di Manovra.La radio portatile dovrà essere portata al seguito anche nel caso in cui si intenda
+operare a piedi.
+3.20 Radio portatile frequenza ‘ground’
+I veicoli individuati nelle D.d.S. devono essere dotati di n. 1 radio portatile sintonizzabile sulla
+frequenza GROUND di Torre. La radio deve essere funzionante.
+3.21 Telefono cellulare
+I veicoli individuati nelle D.d.S. devono essere dotati di n. 1 telefono cellulare da utilizzare in caso di
+avaria degli apparati radio.
+3.22 Cartina Piazzali (soltanto per FIUMICINO)
+I veicoli individuati nelle D.d.S. devono essere dotati di n. 1 Cartina Piazzali E-15 DDS Allegato 2. La
+cartina, nella versione in vigore, deve essere disponibile all’interno del mezzo in formato cartaceo
+o, in alternativa, deve essere prontamente consultabile in formato digitale su supporto elettronico.
+3.23 Grid Map aeroportuale
+I veicoli individuati nelle D.d.S. devono essere dotati di n. 1 Grid Map aeroportuale in formato A3
+realizzata con materiale plastificato resistente all’acqua. La planimetria da utilizzare è allegata alla
+parte C del Manuale dell’Aeroporto (C-4 APRO 10 - Grid map)
+3.24 Low Visibility Procedure Map
+I veicoli, individuati nelle D.d.S. devono essere dotati di n. 1 Low Visibility Procedure Map in formato
+A3, pubblicata in AIP
+La mappa deve essere realizzata con materiale plastificato resistente all’acqua.
+Copia non controllata qualora stampata Pag. 29 di 62
+
+=== PAGE 30 ===
+Volume 1 - Abilitazione alla guida in Apron FCO/CIA
+paragrafo 3.24 Edizione 1 - Rev. 3
+OBBLIGHI DEL
+CAPITOLO 4
+CONDUCENTE 26/01/2026
+4 OBBLIGHI DEL CONDUCENTE
+Laddove non diversamente specificato, in l’Airside valgono i requisiti del Codice della Strada. Si
+ricorda, pertanto, che la responsabilità della condotta del veicolo è in capo al conducente.
+In Airside è vietata la circolazione con ciclomotori, motocicli, e biciclette.
+La circolazione in Airside è autorizzata per i soli fini di servizio/operativi. È, pertanto, vietato lo
+spostamento dei veicoli per ragioni che non siano strettamente collegati alla propria mansione
+È vietato circolare con le portiere aperte.
+Vige il divieto di accesso alle aree di smistamento bagagli a tutti i mezzi a motore e ai veicoli non
+autorizzati; gli unici mezzi autorizzati ad accedere sono i trattori e i carrelli bagagli dagli stessi
+trainati.
+I conducenti alla guida e i passeggeri del veicolo, in accordo a quanto previsto dal Codice della
+Strada, hanno l’obbligo di utilizzare le cinture di sicurezza in qualsiasi situazione di marcia, fatto
+salvo i casi in cui il mezzo non ne sia dotato per le funzioni di omologazione. È responsabilità del
+conducente assicurarsi che tutti i passeggeri del veicolo indossino correttamente le cinture di
+sicurezza.
+DISTURBI E DISTRAZIONI ALLA GUIDA: i conducenti durante la guida non devono essere impegnati
+in attività differenti da quelle essenziali previste dall’attività operativa che stanno e seguendo, in
+modo da evitare una diminuzione di attenzione, capacità di giudizio e situational awareness.
+In particolare, durante la guida, i conducenti:
+Non sono autorizzati all’utilizzo del cellulare, eccetto sincronizzazione attiva Bluetooth con sistemi
+installati sul mezzo/auricolari, o auricolari connessi via filo;
+• Non sono autorizzati alla scrittura su cellulari o su qualsiasi altro strumento;
+• Non sono autorizzati ad ascoltare musica o vedere video
+• Non sono autorizzati, in caso di veicoli radio-e equipaggiati, ad eseguire attività che
+richiedano di abbassare il volume della radio
+• Non sono autorizzati ad eseguire conversazioni non essenziali (non inerenti all’attività
+operativa in esecuzione) con i passeggeri a bordo
+• Non sono autorizzati, in caso di veicoli radio-equipaggiati, ad eseguire conversazioni non
+essenziali (non inerenti all’attività operativa in esecuzione) alla radio.
+le cabine dei mezzi non devono contenere oggetti o elementi che possano distrarre il conducente
+dalla guida
+È vietato transitare tra una vettura del follow-me e il trattore adibito alla manovra di push/traino
+dell’aeromobile.
+Copia non controllata qualora stampata Pag. 30 di 62
+
+=== PAGE 31 ===
+Volume 1 - Abilitazione alla guida in Apron FCO/CIA
+paragrafo 4.1 Edizione 1 - Rev. 3
+OBBLIGHI DEL
+CAPITOLO 4
+CONDUCENTE 26/01/2026
+È vietato procedere alla guida con gli abbaglianti accesi fatta esclusione delle operazioni che lo
+rendano necessario come ispezione sulle piste di volo e sulle aree a verde, in condizioni di scarsa
+illuminazione, sempre che non possano essere causa di abbagliamento per altri veicoli/aeromobili.
+È fatto obbligo ai veicoli circolanti nelle aree di movimento di tenere le luci accese durante le ore
+notturne e durante il giorno, in condizioni di scarsa visibilità: nebbia, neve, pioggia forte, crepuscolo,
+ecc.
+I conducenti devono utilizzare i veicoli in maniera tale da non porre intralcio alla circolazione ed
+all’operatività aeroportuale nel suo complesso, e nel pieno rispetto di tutte le procedure, emanate
+da ADR, dalla Direzione Aeroportuale Lazio e da ogni altra competente Autorità.
+È vietato mettersi alla guida di un veicolo in stato di ebrezza, sotto l’effetto di stupefacenti o in
+cattive condizioni fisiche.
+I conducenti abilitati in Airside hanno titolo di utilizzare e condurre i soli mezzi e materiale rotabile
+di proprietà delle società di appartenenza, intestataria dell’ACA e secondo le disposizioni e
+procedure impartite dalla società stessa, fatti salvi eventuali accordi tra società, esclusivamente a
+carattere temporaneo, che devono però essere formalizzati e comunicati preventivamente ad ENAC
+Direzione Territoriale Lazio e, agli Enti di Stato e ad ADR. È pertanto vietato l’uso promiscuo del
+materiale rotabile.
+I veicoli, per circolare in Airside, devono essere muniti di ACA e di LPM, ove previsto, entrambi
+sempre esposti sul veicolo
+I Passeggeri possono essere trasportati solo con veicoli adibiti a tale scopo, salvo ipotesi eccezionali
+di trasporto effettuato dal personale delle società di assistenza passeggeri, con autovetture allo
+stesso assegnate nei casi di:
+- imbarco ultimo passeggero;
+- trasporto minore non accompagnato;
+- trasporto di membro dell’equipaggio necessario per l’inizio delle operazioni di partenza.
+È consentito il trasporto del passeggero alla postazione di controllo del bagaglio da stiva, ai fini
+esclusivi dell’effettuazione dell’apertura del relativo bagaglio sottoposto a controllo, al solo
+personale di ADR Security, ovvero al personale di società cui quest’ultima abbia appaltato il
+medesimo servizio.
+A CIAMPINO: Nel caso di aviazione generale i passeggeri possono essere trasportati sia con
+autovetture che con veicoli adibiti a tale scopo quali van o minibus.
+È obbligo del conducente non lasciare i veicoli in zone di divieto di sosta. I veicoli devono essere
+lasciati nelle zone contraddistinte da apposita segnaletica orizzontale, I veicoli lasciati in zone di
+divieto di sosta, saranno rimossi secondo le procedure previste nel presente documento nel capitolo
+specifico.
+4.1 Strada perimetrale
+La Strada Perimetrale è la strada situata in Airside e adiacente la recinzione esterna, destinata alla
+circolazione dei mezzi il cui conducente è dotato di abilitazione alla guida in Apron (ADC di tipo A).
+Copia non controllata qualora stampata Pag. 31 di 62
+
+=== PAGE 32 ===
+Volume 1 - Abilitazione alla guida in Apron FCO/CIA
+paragrafo 4.1 Edizione 1 - Rev. 3
+OBBLIGHI DEL
+CAPITOLO 4
+CONDUCENTE 26/01/2026
+La strada perimetrale permette di accostare le piste di volo senza interferire con l’Area di Manovra
+e la circolazione sulla strada è consentita solo per motivi di servizio. Ai fini di security, ADR-Security
+effettua un pattugliamento continuo della viabilità perimetrale. A Fiumicino è presente un
+sottopasso che collega la zona nord a quello sud dell’aeroporto, passando sotto la pista di volo
+(07/25) Viene utilizzato solo per motivi di servizio e previa autorizzazione della Polizia di Stato,di
+ADR Security e della Sicurezza Operativa (SAR). Nello scalo di Ciampino sono assenti pontili di
+imbarco e infrastrutture che creano sottopassi; pertanto, lungo tutta la viabilità veicolare non ci
+sono limitazioni all’altezza dei veicoli circolanti
+Fiumicino, strada perimetrale e sottopasso
+Ciampino, strada perimetrale
+Copia non controllata qualora stampata Pag. 32 di 62
+
+=== PAGE 33 ===
+Volume 1 - Abilitazione alla guida in Apron FCO/CIA
+paragrafo 4.2 Edizione 1 - Rev. 3
+OBBLIGHI DEL
+CAPITOLO 4
+CONDUCENTE 26/01/2026
+4.2 Distanze di sicurezza
+Così come previsto dal Codice della Strada, anche in Airside, è obbligatorio rispettare le distanze di
+sicurezza tra i veicoli.
+IMPORTANTE:
+A seguito del passaggio di un aeromobile (dietro A/M) è possibile attraversare una taxiway/taxilanes
+mantenendosi ad una distanza di sicurezza dall’aeromobile pari ad almeno 150 metri o al doppio
+della lunghezza dell’aeromobile, quale delle due è maggiore.
+Con un aeromobile in avvicinamento (davanti A/M) è possibile attraversare una taxiway/taxilane
+mantenendo una distanza dall’aeromobile superiore a 100 metri.
+4.3 Veicoli alti o elevabili
+È vietato circolare con veicoli in posizione elevata (nastro bagagli, scala passeggeri, elevatore
+disabili, cargo loader, ecc.). Il veicolo va alzato all’interno della piazzola per la sola manovra di
+avvicinamento all’aeromobile e va abbassato alla fine delle operazioni di assistenza.
+Laddove presenti, è vietato il passaggio sotto ai pontili di imbarco e ai sottopassi con veicoli di
+altezza superiore a quella indicata da apposita segnaletica. Qualora la segnaletica non sia presente
+in quanto divelta, e/o in caso di dubbio, fermarsi e non passare al di sotto del pontile/sottopasso.
+Il conducente ha l’obbligo di osservare la segnaletica stradale realizzata su scelta del Gestore
+Aeroportuale conformemente ai modelli previsti nel Codice della Strada, nonché quella
+specificamente destinata a disciplinare la circolazione veicolare in funzione di quella degli
+aeromobili, prescritta dalla l normativa europea (Regolamento UE 139/2014), quella nazionale
+(circolare ENAC APT 24) .qualora non in contrasto con quanto previsto dalla normativa europea
+In caso di divieti di transito per altezza massima superiore è necessario percorrere una viabilità
+alternativa. I soli mezzi di altezza superiore a quella dei pontili/sottopassi sono autorizzati ad
+accedere alle piazzole dal punto più prossimo alle medesime senza seguire la viabilità.
+4.4 Verifica del mezzo
+Come stabilito dal Codice della Strada, si ricorda che la responsabilità della condotta del veicolo è
+del conducente.
+Il conducente prima di mettersi alla guida del veicolo ha la responsabilità di verificare che sia
+Copia non controllata qualora stampata Pag. 33 di 62
+
+=== PAGE 34 ===
+Volume 1 - Abilitazione alla guida in Apron FCO/CIA
+paragrafo 4.5 Edizione 1 - Rev. 3
+OBBLIGHI DEL
+CAPITOLO 4
+CONDUCENTE 26/01/2026
+qualificato per l’utilizzo del mezzo, ne conosca quindi il corretto funzionamento, e che il veicolo
+stesso sia idoneo alle operazioni che si andranno ad effettuare.
+Se si trasportano carichi (bagagli, ULD, pallet, ecc..), accertarsi del corretto posizionamento e
+fissaggio degli stessi.
+Il conducente, prima di mettersi alla guida di un veicolo, ha l’obbligo di verificare l’efficienza del
+veicolo e del suo rimorchio, a livello generale e quindi dovrà controllare:
+- I freni e gli altri sistemi di arresto;
+- le ruote/pneumatici;
+- luci anteriori, posteriori e d’ingombro;
+- il parabrezza, i finestrini e il/i tergicristallo/i;
+- gli specchietti retrovisori;
+- la presenza di carburante sufficiente;
+- l’eventuale presenza di perdite di liquidi sotto il veicolo;
+- l’efficienza dei dispositivi di bloccaggio dei carichi ove presenti;
+- la presenza e la validità dei permessi di accesso in Airside.
+Tutti i mezzi circolanti in airside devono essere sottoposti a regolare manutenzione a cura delle
+Società/enti di appartenenza. Il programma di manutenzione di mezzi/equipaggiamenti deve essere
+elaborato in conformità al manuale di manutenzione del costruttore relativamente alle scadenze
+ispettive e manutentive previste. I task ispettivi/manutentivi devono essere eseguiti entro le
+scadenze fissate, mantenendo evidenze oggettive di tutti gli interventi.
+(Disposizioni di Safety, Volume 2 – Circolazione in Airside).
+4.5 Segnalazione perdite di idrocarburi
+Il conducente ha l’obbligo di accertarsi che il proprio veicolo non generi FOD (parti e/o Materiali che
+rilasciati su veicolari/taxiway, potrebbero danneggiare altri mezzi/Aeromobili) e che non presenti
+perdite di idrocarburi. È obbligatorio segnalare immediatamente ogni perdita di idrocarburi dal
+proprio mezzo, anche se di piccole entità, al CEA ADR, al numero 06 6595 3022 (FCO) oppure 9370
+(CIA).
+4.6 Veicolo in avaria o indecisione sulla propria posizione
+In Apron, qualunque avaria al mezzo va prontamente segnalata dal conducente alla Società di
+appartenenza, al fine di attivare il processo di riparazione. In caso di malfunzionamento che ne
+impedisca il movimento, è obbligatorio segnalare l’accaduto al proprio Responsabile ed attivarsi per
+una rimozione in sicurezza. Di seguito le azioni da mettere in atto in caso di avaria a un mezzo in
+posizione tale da poter ostacolare le operazioni degli aeromobili:
+- accendere tutti i dispositivi luminosi per essere identificati da ENAV-TWR o dagli aeromobili;
+- comunicare la posizione e la tipologia di inconveniente a:
+CEA-ADR(FCO: 06 6595-3022 CIA: 06 6595-9370)
+Sicurezza Operativa ADR (FCO: 06 6595-3432 CIA: 06 6595-9393)
+Copia non controllata qualora stampata Pag. 34 di 62
+
+=== PAGE 35 ===
+Volume 1 - Abilitazione alla guida in Apron FCO/CIA
+paragrafo 4.7 Edizione 1 - Rev. 3
+OBBLIGHI DEL
+CAPITOLO 4
+CONDUCENTE 26/01/2026
+-e attivarsi prontamente per la rimozione in sicurezza
+IMPORTANTE: in caso di collisione tra veicoli dovrà essere sempre generato un Ground Safety
+Report (GSR).
+In Apron in caso di incertezza sulla propria posizione, il conducente ha l’obbligo di:
+- Accendere tutti i dispositivi luminosi per essere identificati da ENAV-TRW, dagli aeromobili
+o da altri veicoli;
+- Riportare immediatamente l’ultima posizione conosciuta a :
+CEA-ADR (FCO: 06 6595-3022 CIA: 06 6595-9370)
+Sicurezza Operativa ADR (FCO: 06 6595-3432 CIA: 06 6595-9393);
+- Attendere il Follow-me ADR che fornirà la guida necessaria.
+4.7 Segnaletica orizzontale e verticale
+Tutti i veicoli devono trasferirsi da un punto all’altro dei piazzali seguendo esclusivamente la viabilità
+veicolare a tale scopo predisposta e munita dell’apposita segnaletica orizzontale e, ove presente, di
+quella verticale. È vietato, pertanto, attraversare i piazzali aeromobili alla guida del proprio veicolo.
+Il mancato rispetto delle indicazioni della segnaletica orizzontale e verticale è una grave violazione
+delle regole di circolazione in Airside che può causare danni ingenti e provocare vittime.
+Il conducente è tenuto, pertanto, ad osservare i comportamenti indicati dalla segnaletica stradale o
+nelle relative norme del presente documento e/o del Codice della Strada.
+È severamente vietato percorrere le vie di rullaggio al pari di un aeromobile fatta eccezione per:
+-i veicoli della Sicurezza Operativa ADR;
+-i veicoli della manutenzione di ADR;
+- i veicoli Technosky;
+- i veicoli dei Vigili del Fuoco;
+che sono in condizioni di intervento.
+Prima di attraversare una via di rullaggio sull’Apron all’intersezione con la viabilità veicolare è
+obbligatorio fermarsi sempre allo stop aeronautico segnalato con apposite indicazioni verticali e/o
+orizzontali e accertarsi, guardando a destra e a sinistra, che la stessa via di accesso alle piazzole non
+sia impegnata da alcun aeromobile in rullaggio, da veicoli, o da altri ostacoli.
+4.8 Precedenze
+Il conducente deve dare la precedenza secondo la priorità indicata dalla tabella che segue:
+PRIORITÀ LE PRECEDENZE
+- Aeromobili in fase di atterraggio o decollo, in rullaggio o in procinto di
+1
+rullare (luci anticollisione accese).
+- Follow-me con aeromobile al seguito.
+Copia non controllata qualora stampata Pag. 35 di 62
+
+=== PAGE 36 ===
+Volume 1 - Abilitazione alla guida in Apron FCO/CIA
+paragrafo 4.9 Edizione 1 - Rev. 3
+OBBLIGHI DEL
+CAPITOLO 4
+CONDUCENTE 26/01/2026
+- Aeromobili in pushback o trainati ( i veicoli che effettuano operazioni di
+pushback e/o towing dovranno dare la precedenza al follow-me con
+aeromobile al seguito, a meno che diversamente coordinato con lo stesso
+e/o con ENAV-TWR).
+2 - Veicoli di emergenza (con luce lampeggiante blu e sirena accesa).
+3 - Automezzo ADR (con luce lampeggiante gialla accesa).
+4 - Mezzi neve durante le attività di sgombero neve/sghiacciamento
+infrastrutture)
+In Area di Manovra devono essere obbligatoriamente rispettate le istruzioni comunicate da ENAV-TWR.
+Un aeromobile con le luci anticollisione accese è sempre da considerare in manovra, anche
+quando è fermo sulla piazzola di sosta assegnata.
+Tra tutti i mezzi operativi di soccorso, aventi una luce lampeggiante blu e/o gialla in funzione, sono
+compresi i mezzi di soccorso sanitario, quelli antincendio, le vetture della Polizia e i mezzi operativi.
+Qualora fosse assente la segnaletica del Codice della strada il conducente, ove possibile, deve dare
+la precedenza secondo la priorità ai mezzi indicati dalla tabella che segue:
+TIPO DI MEZZO
+A. Mezzi di rifornimento aeromobili
+B. Autobus e ambulift con passeggeri a bordo
+C. Attrezzatture per la movimentazione dei bagagli, posta e merci
+A. Mezzo pesante per traporto carburante, ampi spazi di frenata (sicurezza della circolazione).
+B. Presenza di passeggeri a bordo (qualità del servizio e sicurezza dei passeggeri).
+C. Puntualità nella consegna di bagagli (qualità del servizio e incolumità bagagli)
+Il conducente che uscendo dalle piazzole di sosta si immette sulla viabilità veicolare deve dare la
+precedenza ai veicoli circolanti su quest’ultima.
+I conducenti di altri mezzi legittimati ad intervenire per necessità derivanti da stati di emergenza o
+di incidente aereo, secondo quanto stabilito dal Piano di Emergenza Aeroportuale (PEA), potranno
+derogare all’osservanza delle norme indicate relativamente al rispetto del limite di velocità e della
+segnaletica, ma mai all’obbligo di dare precedenza agli aeromobili.
+4.9 Limiti di velocità
+In Airside valgono i seguenti limiti di velocità:
+Area Limite di velocità
+All’interno delle aree smistamento bagagli 5 Km/h
+All’interno delle aree stoccaggio ULD 5 Km/h
+Viabilità veicolare 30 km/h o inferiore, ove previsto.
+Strada perimetrale 30 Km/h
+Copia non controllata qualora stampata Pag. 36 di 62
+
+=== PAGE 37 ===
+Volume 1 - Abilitazione alla guida in Apron FCO/CIA
+paragrafo 4.10 Edizione 1 - Rev. 3
+OBBLIGHI DEL
+CAPITOLO 4
+CONDUCENTE 26/01/2026
+Piazzale/Apron 30 km/h, in apron, al di fuori degli stand. A passo
+d’uomo, all’interno dell’ERA/ASA
+Aree di cantiere in Airside 10 km/h in prossimità dei cantieri
+Tabella 2- Airside e limiti di velocità
+l percorsi tra i varchi e le piazzole di parcheggio aeromobili e viceversa, devono essere sempre i più
+brevi, nel rispetto dei limiti di velocità sopra indicati ed i movimenti intorno agli aeromobili
+parcheggiati devono avvenire con la necessaria cautela, nel rispetto dei limiti di velocità prescritti.
+La velocità, fermi restando i limiti, non dovrà mai essere superiore a quanto ritenuto ragionevole e
+prudente, in rapporto alle condizioni di traffico e meteorologiche esistenti in quel momento.
+Nessuna esigenza di carattere operativo può legittimare il superamento dei limiti di velocità indicati.
+Velocità inferiori, da mantenere su particolari percorsi, possono essere prescritte tramite apposita
+segnaletica.
+4.10 Divieti generali
+• È vietato guidare in stato di ebbrezza, sotto l’effetto di stupefacenti o in cattive condizioni fisiche.
+• È vietato transitare con carichi sporgenti che non siano appositamente ancorati al mezzo e ivi
+segnalati. I bagagli e le merci sui carrelli devono essere, pertanto, caricati in modo da non
+rappresentare pericolo per il traffico veicolare. Prima di muoversi, l’operatore deve quindi
+accertarsi che il carico sia solidamente sistemato sui carrelli e che questi siano saldamente
+collegati tra di loro e le reti/teli abbassati; divieto di usare mezzi per i quali non si è stati abilitati
+all’uso.
+• È vietato l’utilizzo della plastica e di nastri adesivi, per bloccare il carico a bordo dei carrelli
+bagagli/merci.
+• È vietato superare la portata massima di carico stabilita dal mezzo che si guida. Circa la portata
+massima è obbligatorio attenersi a quanto previsto da manuale IATA.
+• A Fiumicino è vietato trainare più di
+- n°5 carrelli portabagagli, carico sfuso;
+- n°5 carrelli per ULD;
+- n°3 dolly per pallet.
+In condizioni di carico, è consentito il traino in configurazione mista di carrelli portabagagli e carrelli
+per ULD, a condizione che i carrelli per ULD siano posizionati più vicino alla motrice. Non è consentito
+il traino in configurazione mista di dolly per pallet in condizioni di carico. Senza carico, è possibile
+trainare fino a 5 unità, anche in configurazione mista, fermo restando il numero massimo di 3 dolly
+Copia non controllata qualora stampata Pag. 37 di 62
+
+=== PAGE 38 ===
+Volume 1 - Abilitazione alla guida in Apron FCO/CIA
+paragrafo 4.11 Edizione 1 - Rev. 3
+OBBLIGHI DEL
+CAPITOLO 4
+CONDUCENTE 26/01/2026
+per pallet. Le unità di maggiori dimensioni devono essere posizionate più vicino alla motrice, ovvero,
+nell’ordine: dolly per pallet, carrelli per ULD, carrelli portabagagli.
+• A Ciampino è vietato trainare più di:
+- n.5 carrelli standard;
+- n.4 carrelli dolly/ULD;
+- n.3 carrelli dolly/pallet.
+In caso di carrelli vuoti è possibile trainare fino ad un massimo di 5 carrelli.
+• È vietato trainare più di n.3 carrelli all’interno delle infrastrutture per la gestione dei bagagli
+(BHS).
+• È vietato l’accesso alle aree di smistamento bagagli a tutti i mezzi a motore e ai veicoli non
+autorizzati; gli unici mezzi autorizzati ad accedere sono i trattori e i carrelli bagagli dagli stessi
+trainati.
+• È vietato lasciare il proprio mezzo incustodito presso una piazzola aeromobile (La sosta dei veicoli
+nell’ESA, è autorizzata solo per i 20 minuti antecedenti il blocco dell’aeromobile e durante le
+operazioni di assistenza.)
+• È vietato fumare, anche a bordo dei propri mezzi, in tutta l’area di movimento, ad eccezione nelle
+aree appositamente individuate e segnalate. (es. smoking Point in airside)
+• È vietato sporcare. Se si fa cadere qualcosa occorre raccoglierla al fine di evitare FOD (Foreign
+Object Damage o Debris- Danno da oggetto estraneo)
+• È vietato procedere alla guida con gli abbaglianti accesi, fatta esclusione delle operazioni che lo
+rendano necessario, come: ispezione sulle piste di volo e sulle aree a verde, in condizioni di scarsa
+illuminazione, sempre che non possano essere causa di abbagliamento per altri veicoli.
+• È vietato utilizzare mezzi per i quali non si è stati abilitati all’uso.
+4.11 Obblighi generali
+• È obbligatorio utilizzare le cinture di sicurezza su tutti i mezzi che ne sono dotati.
+• È obbligatorio rispettare le distanze di sicurezza tra i veicoli.
+• È obbligatorio utilizzo del cellulare esclusivamente via Bluetooth o auricolare, durante la guida.
+• È obbligatorio indossare i DPI previsti ed in particolare il giubbino ad alta visibilità.
+• È obbligatorio prestare la massima attenzione agli oggetti/rifiuti abbandonati che possano
+costituire pericolo o generare FOD e segnalarli immediatamente al responsabile o direttamente
+al CEA ADR. Ricordare che le ordinanze vigenti prescrivono che i rifiuti di bordo debbono essere
+contenuti in scacchi trasparenti che consentano l’individuazione dell’Handler e non possono
+essere abbandonati in piazzola per nessun motivo. Essi devono invece essere caricati sugli
+appositi mezzi per la raccolta e trasportati nelle aree di stoccaggio/smaltimento.
+• È obbligatorio per i veicoli circolanti nelle aree di movimento, di tenere le luci accese durante le
+ore notturne e durante il giorno, in condizioni di scarsa visibilità come nebbia, neve, pioggia
+forte, crepuscolo, ecc.
+Copia non controllata qualora stampata Pag. 38 di 62
+
+=== PAGE 39 ===
+Volume 1 - Abilitazione alla guida in Apron FCO/CIA
+paragrafo 4.12 Edizione 1 - Rev. 3
+OBBLIGHI DEL
+CAPITOLO 4
+CONDUCENTE 26/01/2026
+• È obbligatorio per gli automezzi che spingono o trainano un aeromobile, di avere le luci
+anabbaglianti e le luci lampeggianti gialle accese.
+• È obbligatorio di osservare la segnaletica stradale realizzata conformemente ai modelli previsti
+nel Nuovo Codice della Strada, nonché quella specificamente destinata a disciplinare la
+circolazione veicolare in funzione di quella degli aeromobili, come mostrato nei paragrafi
+successivi.
+• Per uscire dalla veicolare bisogna compiere un angolo retto, perché in tal modo la visuale a
+disposizione dell’autista è massima rispetto agli ostacoli presenti.
+• Nessun veicolo può sostare a meno di 30 m davanti e 100 m dietro un aeromobile fermo e con
+i motori in moto.
+4.12 Sosta e fermata
+È vietato parcheggiare i mezzi, i veicoli e le attrezzature al di fuori degli appositi spazi riservati al loro
+posteggio e contraddistinti da apposita segnaletica orizzontale (stalli di sosta).
+Il parcheggio dei mezzi è consentito solo nelle aree contraddistinte da apposita segnaletica (stalli).
+In particolare, è vietato sostare e fermarsi
+• sulla viabilità veicolare (esclusi i mezzi adibiti al traino aeromobili);
+• sulle aircraft stand taxilane e apron taxiway;
+• sui piazzali di servizio di pertinenza dei mezzi di soccorso/emergenza (piazzale Vigili del
+Fuoco,ecc.);
+• ostacolando uscite di sicurezza e vie di esodo, presidi antincendio ed estintori, locali tecnici;
+• laddove esista un divieto di sosta evidenziato da specifica segnaletica verticale e/o
+orizzontale;
+• laddove si possa creare ostacolo ad aeromobili, altri veicoli, pedoni, accessi a strutture ed
+edifici.
+• su eventuali sversamenti di olio e/o carburante sulla superficie, anche se di modeste
+quantità.
+Particolare attenzione deve essere posta a non parcheggiare veicoli laddove possano creare
+ostacolo ad aeromobili, altri veicoli, pedoni, accessi a strutture ed edifici.
+Il veicolo non deve inoltre costituire ostacolo ad eventuali operazioni di soccorso dei mezzi
+antincendio, che necessitano di un rapido accesso/uscita.
+Il mezzo non potrà comunque essere lasciato incustodito per un tempo superiore ai 10 minuti,
+fatta esclusione per le necessità di effettuare operazioni sottobordo.
+La fermata sottobordo del veicolo/attrezzatura è consentita per il solo personale adibito alle
+operazioni di assistenza aeromobile facendo attenzione a:
+• spegnere il motore;
+• inserire la marcia e il freno di parcheggio;
+Copia non controllata qualora stampata Pag. 39 di 62
+
+=== PAGE 40 ===
+Volume 1 - Abilitazione alla guida in Apron FCO/CIA
+paragrafo 4.12 Edizione 1 - Rev. 3
+OBBLIGHI DEL
+CAPITOLO 4
+CONDUCENTE 26/01/2026
+• lasciare la chiave di accensione inserita;
+• chiudere le portiere, ma non a chiave.
+Nelle attività sottobordo è inoltre vietato parcheggiare:
+• In posizione tale da ostacolare l’imbarco/sbarco dei passeggeri o le cisterne di
+rifornimento carburante o le vie di fuga dell’aeromobile durante le operazioni di
+rifornimento;
+• sotto le ali dei velivoli, nelle vicinanze dei motori sia a turbina sia ad elica;
+• sotto i pontili di imbarco.
+Qualora venga rilevata dalla Sicurezza Operativa la presenza di veicoli o rimorchi o equipaggiamenti
+nell’area Airside che costituiscano un pericolo per la sicurezza delle persone e/o degli aeromobili,
+ovvero un potenziale intralcio per la movimentazione degli aeromobili, ovvero una possibile fonte
+di generazione FOD e che non rispettino i requisiti previsti dal presente documento, in base ad una
+valutazione della pericolosità e/o considerazioni tecniche del mezzo, sarà richiesto alla Società
+proprietaria e/o utilizzatrice del mezzo l’immediata rimozione. Qualora quest’ultima non ottemperi
+in tempi congrui con la situazione, si provvederà alla loro rimozione o immobilizzazione.
+Copia non controllata qualora stampata Pag. 40 di 62
+
+=== PAGE 41 ===
+Volume 1 - Abilitazione alla guida in Apron FCO/CIA
+paragrafo 5.1 Edizione 1 - Rev. 3
+VIABILITA’
+CAPITOLO 5
+VEICOLARE 26/01/2026
+5 VIABILITA’ VEICOLARE
+5.1 Segnaletica orizzontale
+Il lato aria (Airside) è quell’area del sedime aeroportuale caratterizzata dalla presenza di tutto ciò
+che è asservito al movimento degli aeromobili.
+L’Airside comprende le attrezzature ed i servizi impiegati per la movimentazione degli aeromobili e
+comprende piste di atterraggio (runway), vie di rullaggio (taxiway), piazzali di sosta aeromobili
+(Apron), le aree di sicurezza, le aree dove sono presenti i sistemi di controllo del traffico aereo e
+tutte le infrastrutture necessarie per i servizi di assistenza agli aeromobili comprese all’interno della
+recinzione doganale.
+In Airside è obbligatorio rispettare la segnaletica orizzontale e seguire i percorsi evidenziati dalla
+viabilità vicolare.
+Per viabilità veicolare si intendono le strade che servono ad accedere con il proprio
+veicolo/mezzo/attrezzatura alle piazzole di sosta degli aeromobili e, più in generale, a spostarsi da
+un punto all’altro dell’Airside.
+Nello scalo di Ciampino la viabilità veicolare presenta diversi tratti a senso unico di marcia
+opportunamente indicati attraverso la segnaletica orizzontale.
+La segnaletica orizzontale viene di norma tracciata sulle pavimentazioni dell’area di movimento, allo
+scopo di fornire:
+- informazioni prospettiche;
+- una guida per l’allineamento e per la posizione dell’aeromobile.
+La viabilità veicolare è normalmente delimitata da una linea continua bianca al pari delle strade
+che siamo comunemente abituati a percorrere in città.
+L’immagine che segue riporta la segnaletica tipica di una strada facente parte della viabilità veicolare
+in Airside:
+Figura 1 - Segnaletica viabilità veicolare
+Copia non controllata qualora stampata Pag. 41 di 62
+
+=== PAGE 42 ===
+Volume 1 - Abilitazione alla guida in Apron FCO/CIA
+paragrafo 5.1 Edizione 1 - Rev. 3
+VIABILITA’
+CAPITOLO 5
+VEICOLARE 26/01/2026
+L’immagine che segue, riporta la vista di una intersezione della viabilità veicolare con una Taxiway,
+presso lo scalo di FIUMICINO:
+Figura 2-Immagine viabilità veicolare dello scalo di Fiumicino
+ATTENZIONE:
+A CIAMPINO quando alla linea continua bianca continua si sostituisce una linea tratteggiata come
+quella mostrata nella figura che segue significa che stiamo entrando in un’area caratterizzata da
+movimenti di aeromobili:
+Figura 4 -viabilità che attraversa una via di rullaggio
+Copia non controllata qualora stampata Pag. 42 di 62
+
+=== PAGE 43 ===
+Volume 1 - Abilitazione alla guida in Apron FCO/CIA
+paragrafo 5.1 Edizione 1 - Rev. 3
+VIABILITA’
+CAPITOLO 5
+VEICOLARE 26/01/2026
+Figura 5 - Segnaletica viabilità nelle aree caratterizzate dal movimento di aeromobili
+MARKING BORDO PIAZZALE AEROMOBILI
+DELIMITA LA SUPERFICIE DEL PIAZZALE PER
+DISTINGUERNE CON CHIAREZZA IL CONFINE
+LA SEGNALETICA DI BORDO PIAZZALE È UNA
+DOPPIA LINEA GIALLA CONTINUA DI LARGHEZZA
+15 CM.
+PER FORNIRE MAGGIORE EVIDENZA AL
+MARKING, NEL CASO IN CUI LA SUPERFICIE
+DELLA PAVIMENTAZIONE NON FORNISCA
+SUFFICIENTE CONTRASTO, LA SEGNALETICA
+PUÒ ESSERE BORDATA CON STRISCE DI COLORE
+NERO.
+Copia non controllata qualora stampata Pag. 43 di 62
+
+=== PAGE 44 ===
+Volume 1 - Abilitazione alla guida in Apron FCO/CIA
+paragrafo 5.1 Edizione 1 - Rev. 3
+VIABILITA’
+CAPITOLO 5
+VEICOLARE 26/01/2026
+SEGNALETICA PIAZZOLA AEROMOBILE (STAND)
+ERL (EQUIPMENT RESTRICTION LINE)
+ASA (AIRCRAFT SAFETY AREA)
+ERA (EQUIPMENT RESTRICTED AREA)
+ESA (EQUIPMENT SERVICE AREA)
+Copia non controllata qualora stampata Pag. 44 di 62
+
+=== PAGE 45 ===
+Volume 1 - Abilitazione alla guida in Apron FCO/CIA
+paragrafo 5.1 Edizione 1 - Rev. 3
+VIABILITA’
+CAPITOLO 5
+VEICOLARE 26/01/2026
+ERL: LINEA ROSSA CONTINUA CHE
+DELIMITA L’AREA ALL’INTERNO
+DELLA QUALE SI FERMA
+L’AEROMOBILE PER LA SOSTA
+(STAND)
+ERA/ASA: AREA IN CUI
+L’AEROMOBILE È PARCHEGGIATO
+IN SICUREZZA DURANTE
+LE OPERAZIONI DI “HANDLING."
+ESA: AREA DI ATTESA PER IL
+SERVIZIO DEI MEZZI DI RAMPA,
+POSTA TRA 2 STAND
+NPA (NO PARKING AREA) DELIMITATE DAL MARKING NPL (NO PARKING LINE)
+SEGNALATO DA UNA STRISCIA DI COLORE ROSSO, CON LA SUPERFICIE
+INTERNA EVIDENZIATA DA STRISCE ROSSE INCLINATE A 45°.
+DELIMITA AL SUO INTERNO UN’AREA TOTALMENTE VIETATA AL
+PARCHEGGIO.
+Copia non controllata qualora stampata Pag. 45 di 62
+
+=== PAGE 46 ===
+Volume 1 - Abilitazione alla guida in Apron FCO/CIA
+paragrafo 5.2 Edizione 1 - Rev. 3
+VIABILITA’
+CAPITOLO 5
+VEICOLARE 26/01/2026
+5.2 SEGNALETICA ORIZZONTALE APRON
+5.3 Apron e vie di rullaggio
+Le vie di rullaggio sono interessate dal movimento degli aeromobili al suolo. Occorre prestare la
+massima attenzione nell’attraversarle avendo cura di seguire la segnaletica stradale rispettando gli
+stop aeronautici e gli altri segnali di pericolo.
+Le vie di rullaggio sono caratterizzate da un asse (centerline) di colore giallo con riga continua ed
+eventualmente delimitate da un bordo di colore giallo con doppia riga continua.
+5.3.1 Via di rullaggio sul piazzale (apron taxiway)
+L’Area Apron dell’aeroporto è caratterizzata dalla presenza di Apron Taxiway (via di rullaggio sul
+piazzale che sono parte di un sistema di vie di rullaggio situato su un piazzale ed avente la funzione
+di permettere il rullaggio degli aeromobili attraverso il piazzale stesso).
+5.3.2 Via di accesso alle piazzole (aircraft stand taxilane)
+L’Area Apron dell’Aeroporto è inoltre caratterizzata dalle presenza di Aircraft stand Taxilanes (di
+seguito denominate taxilanes) che sono parte del piazzale destinata a via di rullaggio. Esse hanno la
+funzione di fornire accesso unicamente alle piazzole di sosta aeromobili.
+Copia non controllata qualora stampata Pag. 46 di 62
+
+=== PAGE 47 ===
+Volume 1 - Abilitazione alla guida in Apron FCO/CIA
+paragrafo 5.3 Edizione 1 - Rev. 3
+VIABILITA’
+CAPITOLO 5
+VEICOLARE 26/01/2026
+Planimetria scalo di FIUMICINO:
+Figura 6 - Taxilane Apron dell'Aeroporto di Fiumicino
+Copia non controllata qualora stampata Pag. 47 di 62
+
+=== PAGE 48 ===
+Volume 1 - Abilitazione alla guida in Apron FCO/CIA
+paragrafo 5.3 Edizione 1 - Rev. 3
+VIABILITA’
+CAPITOLO 5
+VEICOLARE 26/01/2026
+Planimetria dello scalo di CIAMPINO:
+Figura 7 - Taxilane Apron dell'Aeroporto di Ciampino
+LEAD IN / LEAD OUT
+LINEA CONTINUA GIALLA CHE IL COMANDANTE SEGUE CON IL CARRELLO
+ANTERIORE IN INGRESSO/USCITA DALLO STAND AL FINE DI EVITARE DI
+USCIRE AL DI FUORI DELLA ERL.
+PRESSO LO SCALO DI FIUMICINO, PER LE PIAZZOLE NOSE-IN, IL MARKING
+LEAD-IN COINCIDE CON IL LEAD-OUT, OVVERO CON IL MARKING CHE
+GUIDA IL PILOTA DALLA PIAZZOLA DI SOSTA FINO ALLA LINEA D’ASSE
+DELLA ADIACENTE VIA DI RULLAGGIO.
+SE LA PIAZZOLA PERMETTE LA SOSTA DI DIVERSI TIPI DI AEROMOBILI, IL
+TRATTO CON LINEA CONTINUA INDICHERÀ IL PERCORSO DA SEGUIRE PER
+IL TIPO DI AEROMOBILE CHE PIÙ DI FREQUENTE VI STAZIONA O PER QUELLI
+DI MAGGIORE APERTURA ALARE, SE LA FREQUENZA È SIMILE.
+BARRA DI ALLINEAMENTO
+POSIZIONATA IN ASSE CON LA LEAD-IN, È DI COLORE GIALLO.
+È NECESSARIA AD ASSICURARE IL CORRETTO ALLINEAMENTO
+DELL’AEROMOBILE CON L’ASSE DELLA PIAZZOLA DI SOSTA.
+LA BARRA D’ALLINEAMENTO DEVE ESSERE UBICATA IN MODO DA
+COINCIDERE CON IL PROLUNGAMENTO DELL’ASSE DELL’AEROMOBILE IN
+QUELLA PARTICOLARE POSIZIONE DI PARCHEGGIO, RISULTANDO VISIBILE
+AL PILOTA NELLA FASE FINALE DELLA MANOVRA DI PARCHEGGIO.
+BARRA DI ARRESTO
+Copia non controllata qualora stampata Pag. 48 di 62
+
+=== PAGE 49 ===
+Volume 1 - Abilitazione alla guida in Apron FCO/CIA
+paragrafo 5.3 Edizione 1 - Rev. 3
+VIABILITA’
+CAPITOLO 5
+VEICOLARE 26/01/2026
+LA STOP LINE DEVE ESSERE ORTOGONALE ALLA BARRA D’ALLINEAMENTO
+ED UBICATA SUL FIANCO SINISTRO DELL’AEROMOBILE, IN
+CORRISPONDENZA DELLA POSIZIONE DESTINATA ALL’ARRESTO DEL
+VELIVOLO.
+FORNISCE AL PILOTA UN RIFERIMENTO PRECISO CIRCA LA POSIZIONE IN
+CUI L’AEROMOBILE DEVE FERMARSI.
+NEL CASO DI PIÙ BARRE D’ARRESTO PER PIAZZOLE SIGNIFICA CHE LA
+PIAZZOLA È USATA DA DIVERSI TIPI DI AEROMOBILE E ALLA BARRA
+D’ARRESTO PUÒ ESSERE ASSOCIATO UN MARKING DI DESIGNAZIONE
+DELLA RELATIVA POSIZIONE, CON L’ISCRIZIONE “STOP 1”, “STOP 2”, ECC.
+A CARATTERI NERI SU FONDO GIALLO.
+MARKING DI IDENTIFICAZIONE DELLA PIAZZOLA DI SOSTA
+COSTITUITO DA DUE NUMERI GIALLI SU FONDO NERO CHE
+FORNISCE AL PILOTA UNA CONFERMA DELLA DESIGNAZIONE
+DELLO STAND ASSEGNATO.
+START UP POINT
+POSIZIONE INTERMEDIA D’ATTESA, DA CUI L’AEROMOBILE
+INTRAPRENDE L’INIZIO DELLA MANOVRA DI RULLAGGIO
+VERSO LA PISTA.
+TALE POSIZIONE È SEGNALATA DA UN CERCHIO DI COLORE
+GIALLO CON UN NUMERO IDENTIFICATIVO
+MARKING DI IDENTIFICAZIONE DELLA PIAZZOLA DI SOSTA IN INGRESSO
+Copia non controllata qualora stampata Pag. 49 di 62
+
+=== PAGE 50 ===
+Volume 1 - Abilitazione alla guida in Apron FCO/CIA
+paragrafo 5.3 Edizione 1 - Rev. 3
+VIABILITA’
+CAPITOLO 5
+VEICOLARE 26/01/2026
+LA DESIGNAZIONE DELLA PIAZZOLA DEVE SOVRAPPORSI
+ALLA LINEA LEAD–IN SUBITO DOPO IL SUO INIZIO, AD UNA
+DISTANZA DI 3 M DALLA TCL. L’ALTEZZA DEI CARATTERI
+DEVE ESSERE TALE DA POTER CONSENTIRE UNA LORO
+FACILE LETTURA DALLA CABINA DI PILOTAGGIO.
+TALE MARKING INDICA, SULLA LINEA DI INGRESSO ALLA
+PIAZZOLA DI SOSTA, LA DESIGNAZIONE DELLA PIAZZOLA
+ALLA QUALE SI ACCEDE.
+LINEA DI VIRATA (TURNING LINE)
+GUIDA IL PILOTA NELLE MANOVRE DI VIRATA IN INGRESSO
+O IN USCITA DALLE PIAZZOLE DI SOSTA, IN PROSECUZIONE
+DELLE LINEE LEAD-IN.
+IL SUO TRACCIATO GARANTISCE ADEGUATI MARGINI DI
+SEPARAZIONE RISPETTO AGLI ALTRI AEROMOBILI
+PARCHEGGIATI, AI VEICOLI ED ALLE ATTREZZATURE DI
+RAMPA.
+LA LINEA DI VIRATA TERMINA PRESSO LA POSIZIONE DI
+SOSTA CON UN PROLUNGAMENTO RETTILINEO DI ALMENO
+3 M, ALLO SCOPO DI RIDURRE LA SOLLECITAZIONE DEL
+CARRELLO ANTERIORE E PNEUMATICI.
+MARKING DI BARRA DI VIRATA (TURN BAR)
+INDICA AL PILOTA IL PUNTO DI INIZIO DELLA VIRATA, È
+POSTO ALLA SINISTRA DEL SENSO DI MARCIA E IN MODO
+ORTOGONALE ALLA LINEA DI INGRESSO)
+MAX SPAN
+INDICA LA MASSIMA APERTURA ALARE AMMISSIBILE PER
+GLI AEROMOBILI DESTINATI A CIRCOLARE IN QUELL’AREA.
+L’INDICAZIONE DELLA MASSIMA APERTURA ALARE
+AMMISSIBILE DEVE ESSERE POSTA NEL VERSO DI
+PERCORRENZA SULLA LINEA DI AIRCRAFT STAND TAXI
+LANE (TCL), CON UN’ISCRIZIONE A CARATTERI NERI SU
+FONDO GIALLO.
+Tabella 3 - Segnaletica in Apron
+Copia non controllata qualora stampata Pag. 50 di 62
+
+=== PAGE 51 ===
+Volume 1 - Abilitazione alla guida in Apron FCO/CIA
+paragrafo 5.4 Edizione 1 - Rev. 3
+VIABILITA’
+CAPITOLO 5
+VEICOLARE 26/01/2026
+5.4 Segnaletica orizzontale di pericolo
+La tabella che segue riporta i segnali di pericolo caratteristici di un aeroporto che si possono
+incontrare sulla viabilità degli scali di Fiumicino e Ciampino e le relative regole/comportamenti, da
+seguire scrupolosamente:
+Denominazione e immagine Comportamento da osservare
+Indica l'obbligo di fermarsi a causa del possibile incrocio con
+aeromobili. È a tutti gli effetti un segnale di STOP e occorre,
+pertanto, fermarsi , guardare a destra e a sinistra,
+accertarsi che non ci siano aeromobili e solo allora
+attraversare la via di rullaggio.
+SI RICORDA L’OBBLIGO DI DARE SEMPRE LA PRECEDENZA
+AGLI AEROMOBILI (AEROPLANI ED ELICOTTERI) ANCHE SE
+TRAINATI.
+STOP AERONAUTICO
+È posizionata nei punti specifici sulla viabilità veicolare ove
+sussiste il pericolo di essere colpiti dal getto dei motori a
+reazione degli aeromobili, getto la cui intensità può
+ribaltare mezzi/veicoli/attrezzature e persone.
+Esso è un segnale di pericolo, pertanto occorre rallentare e
+accertarsi che non ci siano aeromobili con le luci
+anticollisione accese pronti a spingere o aeromobili in
+ingresso/uscita dalle piazzole, per non rischiare di essere
+investiti dal flusso dei motori.
+PERICOLO DI JET BLAST
+Tabella 4 - Segnali di pericolo
+La restante segnaletica è quella comunemente prevista dal codice della strada.
+IMPORTANTE:
+In procinto di un attraversamento di una via di rullaggio, la segnaletica orizzontale normalmente
+presente sarà:
+STOP del Codice della strada, STOP aeronautico, segnale di pericolo JET BLAST
+Figura 3 - Segnaletica orizzontale di pericolo sulla viabilità
+Copia non controllata qualora stampata Pag. 51 di 62
+
+=== PAGE 52 ===
+Volume 1 - Abilitazione alla guida in Apron FCO/CIA
+paragrafo 5.5 Edizione 1 - Rev. 3
+VIABILITA’
+CAPITOLO 5
+VEICOLARE 26/01/2026
+Mentre è presente soltanto il segnale di pericolo jet blast, quando si attraversa l’area retrostante
+una piazzola di sosta aeromobili, poiché ci potrebbe essere un aeromobile in ingresso/uscita
+nella/dalla piazzola. Se l’aeromobile ha le luci anticollisione accese, attendere sul segnale di JET Blast
+Figura 8 - Segnaletica orizzontale jet blast sulla viabilità
+IL MANCATO RISPETTO DELLA SEGNALETICA E’ UNA GRAVE VIOLAZIONE DELLE REGOLE DI
+CIRCOLAZIONE CHE PUÒ CAUSARE DANNI INGENTI E PROVOCARE VITTIME.
+5.5 Segnaletica provvisoria cantieri
+Qualora vi sia la presenza di cantieri, la viabilità veicolare
+può essere deviata con indicazioni provvisorie che il
+conducente deve seguire al fine di rimanere separato da
+altro traffico. La nuova viabilità può essere tracciata con
+l’ausilio di jersey che delimitano i nuovi percorsi, segnaletica
+verticale con frecce che indicano dove svoltare e/o
+segnaletica orizzontale di colore giallo. La recinzione di
+cantiere è sovente segnalata con luci ostacolo rosse che
+richiamano l’attenzione del conducente sulla presenza di
+ostacoli (vedi figura 9 ).
+Figura 9 -Segnaletica provvisoria di cantiere
+5.6 Apron border line
+Per salvaguardare reciprocamente i movimenti sul piazzale degli aeromobili e dei mezzi di rampa o
+di servizio / attrezzature, occorre, garantire un’adeguata separazione tra i due tipi di traffico
+mediante un’idonea striscia denominata ABL – apron border line.
+Copia non controllata qualora stampata Pag. 52 di 62
+
+=== PAGE 53 ===
+Volume 1 - Abilitazione alla guida in Apron FCO/CIA
+paragrafo 5.6 Edizione 1 - Rev. 3
+VIABILITA’
+CAPITOLO 5
+VEICOLARE 26/01/2026
+Figura 10 – Apron Boarder Line
+Il marking ABL è costituito da una striscia continua di colore rosso. Per fornire maggiore evidenza al
+marking,ABL, nel caso in cui la superficie della pavimentazione non fornisca sufficiente contrasto, la
+segnaletica può essere bordata con due strisce di colore bianco.
+Figura 11 - Segnaletica di ABL
+Figura 12 – Esempio di ABL
+Per essere sufficientemente separati dal traffico aereo
+NON SI DEVE MAI OLTREPASSARE LA LINEA ROSSA.
+Copia non controllata qualora stampata Pag. 53 di 62
+
+=== PAGE 54 ===
+Volume 1 - Abilitazione alla guida in Apron FCO/CIA
+paragrafo 5.6 Edizione 1 - Rev. 3
+VIABILITA’
+CAPITOLO 5
+VEICOLARE 26/01/2026
+La linea rossa diventa tratteggiata in prossimità degli incroci
+Figura 13 – Segnaletica agli incroci
+Figura 14 – Segnaletica agli incroci (particolare dello scalo di Ciampino)
+Copia non controllata qualora stampata Pag. 54 di 62
+
+=== PAGE 55 ===
+Volume 1 - Abilitazione alla guida in Apron FCO/CIA
+paragrafo 5.7 Edizione 1 - Rev. 3
+VIABILITA’
+CAPITOLO 5
+VEICOLARE 26/01/2026
+5.7 La segnaletica verticale
+(scalo di Fiumicino) In prossimità delle intersezioni con le vie di rullaggio, laddove attuabile, si trova
+anche apposita segnaletica di stop da codice della strada:
+Figura 45 – Segnaletica verticale di stop
+L’immagine che segue rappresenta la segnaletica verticale che indica il punto, attraversato il quale,
+si accede alle piste di volo:
+Figura 16- Segnaletica di ingresso in pista delle strade sulla perimetrale di Fiumicino
+Copia non controllata qualora stampata Pag. 55 di 62
+
+=== PAGE 56 ===
+Volume 1 - Abilitazione alla guida in Apron FCO/CIA
+paragrafo 5.8 Edizione 1 - Rev. 3
+VIABILITA’
+CAPITOLO 5
+VEICOLARE 26/01/2026
+Figura 17- Segnaletica di ingresso in pista delle strade sulla perimetrale di Ciampino
+5.8 Regole di attraversamento delle vie di rullaggio sui piazzali
+1. Il centro della via di rullaggio aeromobili è identificato da una linea continua gialla.
+2. L’attraversamento delle vie di rullaggio sui piazzali può avvenire solo in corrispondenza delle
+relative intersezioni con la strada di servizio.
+3. L’accesso a tutte le piazzole di sosta adiacenti alle vie di rullaggio deve obbligatoriamente
+avvenire dalla viabilità veicolare, senza impegnare per alcun motivo le stesse, anche in assenza
+di aeromobili in manovra.
+4. Gli aeromobili in rullaggio hanno sempre la precedenza, anche se trainati, su tutti i mezzi e
+persone, in qualsiasi circostanza.
+5. Un aeromobile con le luci anticollisione accese è sempre da considerare in manovra, anche
+quando è fermo sulla piazzola di sosta assegnata. Un aereo è considerato “a terra” solo quando
+è fermo al parcheggio con le luci anticollisione spente e i tacchi posizionati; fino ad allora è da
+considerarsi come “in volo”.
+6. E’ obbligatorio segnalare tempestivamente alla Sicurezza Operativa ADR la presenza di ostacoli
+di qualsiasi natura, presenti sulle vie di accesso alle piazzole e provvedere immediatamente, o
+far provvedere, alla loro rimozione. Se ritenuto indispensabile, la Sicurezza Operativa ADR
+informerà la TWR per le opportune azioni.
+7. Prima di attraversare una via di rullaggio sull’Apron all’intersezione con la viabilità veicolare è
+obbligatorio fermarsi sempre allo stop aeronautico segnalato con apposite indicazioni verticali
+e/o orizzontali e accertarsi accuratamente, guardando a destra e a sinistra, che la stessa via di
+Copia non controllata qualora stampata Pag. 56 di 62
+
+=== PAGE 57 ===
+Volume 1 - Abilitazione alla guida in Apron FCO/CIA
+paragrafo 5.9 Edizione 1 - Rev. 3
+VIABILITA’
+CAPITOLO 5
+VEICOLARE 26/01/2026
+accesso alle piazzole non sia impegnata da alcun aeromobile in rullaggio, da veicoli, o da altri
+ostacoli.
+8. Per attraversare la via di rullaggio:
+• mantenere una separazione dietro l’aeromobile maggiore di 150 metri o al doppio della
+lunghezza dell’aeromobile che sta sopraggiungendo, quale delle due è maggiore).
+• mantenere una separazione davanti l’aeromobile maggiore di 100 metri.
+5.9 Circolazione in bassa visibilità ed in condizioni meteorologiche avverse
+5.9.1 Procedure per la bassa visibilità
+Presso lo scalo di Fiumicino, in prossimità dei varchi di accesso in Airside, sono stati installati dei
+display denominati AID (Airside Information Display) per la diffusione di informazioni agli operatori
+aeroportuali quali ad esempio, condizioni meteorologiche avverse. Sulle pensiline dei varchi di
+accesso sono inoltre posizionate due tabelle di colore rosso, con luci lampeggianti accese in caso di
+“possibili fulmini sul sedime aeroportuale”, oppure in caso di “presenza di nebbia sul sedime
+aeroportuale”
+Figura 18- Varco di accesso FCO
+Copia non controllata qualora stampata Pag. 57 di 62
+
+=== PAGE 58 ===
+Volume 1 - Abilitazione alla guida in Apron FCO/CIA
+paragrafo 5.9 Edizione 1 - Rev. 3
+VIABILITA’
+CAPITOLO 5
+VEICOLARE 26/01/2026
+In caso di predisposizione e attivazione delle “Procedure per la bassa visibilità”:
+- Sono autorizzati alla circolazione in area Airside i soli mezzi strettamente necessari
+all’operatività aeroportuale e, a tutti gli altri veicoli è vietato ogni spostamento;
+- le operazioni di rifornimento carburante aeromobili con passeggeri a bordo sono sospese.
+- tutti i veicoli e le maestranze coinvolti nei lavori di costruzione, manutenzione ed in altre
+attività non essenziali, dovranno sospendere la movimentazione dei propri mezzi che
+dovranno essere riportati entro i limiti di cantiere in zona di sicurezza, preventivamente
+assegnata, senza procurare ostacolo all’operatività aeroportuale. Laddove per i mezzi non
+siano previste aree di sosta apposite seguire disposizioni impartite dalla Sicurezza Operativa
+ADR;
+- tutti i mezzi in servizio che operano in Airside dovranno tenere accesi i fari e procedere con
+la massima cautela e a velocità ridotta.
+Il conducente, durante gli attraversamenti delle vie di rullaggio degli aeromobili, dovrà attendere
+allo stop, in caso di dubbio o in caso di mancanza della visibilità sufficiente al riconoscimento del
+follow-me.
+5.9.2 Forte vento e/o raffiche
+In caso di vento ci si deve assicurare che ogni mezzo sia parcheggiato con il freno di
+stazionamento attivato; particolare attenzione va posta ai contenitori e ai carrelli, che avendo
+un’ampia superficie esposta, possono essere spostati dalla forza del vento.
+Vettori e Operatori aeroportuali hanno l’obbligo di assicurare l’ancoraggio di aeromobili, mezzi,
+veicoli e materiali di competenza.
+Vettori, Prestatori e Ditte di manutenzione dei velivoli devono assicurare l’apposizione dei tacchi
+agli aeromobili, in adempimento a quanto previsto dall’IGOM (IATA GROUND OPERATIONS
+MANUAL) del Vettore stesso
+Gli operatori hanno l’obbligo di rimuovere tempestivamente eventuale FOD rilevato o contattare
+ADR-CEA segnalando il rinvenimento e permettendone la rimozione.
+Vige l’obbligo di utilizzare i mezzi elevabili/alti, secondo le specifiche del costruttore e nei limiti ivi
+riportati relativamente alla massima intensità di vento cui l’equipaggiamento è utilizzabile in
+sicurezza
+5.9.3 Piogge intense
+Il conducente dovrà ridurre la velocità al di sotto dei limiti consentiti al fine di permettere una
+frenata del veicolo tale da riuscire a fermarlo nel tratto che lo separa dal veicolo che lo precede,
+e che gli permette di arrestare il veicolo in prossimità della segnaletica di stop/dare la
+precedenza.
+Copia non controllata qualora stampata Pag. 58 di 62
+
+=== PAGE 59 ===
+Volume 1 - Abilitazione alla guida in Apron FCO/CIA
+paragrafo 5.10 Edizione 1 - Rev. 3
+VIABILITA’
+CAPITOLO 5
+VEICOLARE 26/01/2026
+In particolare, durante le ore serali e notturne, la visualizzazione della segnaletica orizzontale è
+resa difficoltosa dalla rifrazione delle luci del piazzale sulla pellicola d’acqua; è necessario perciò
+procedere con prudenza portando la massima attenzione al rispetto degli stop aeronautici.
+5.9.4 Neve, ghiaccio e grandine
+La neve può rendere poco visibili i riferimenti della segnaletica orizzontale abitualmente
+utilizzata. In tali condizioni si deve ridurre la velocità e aumentare le distanze di sicurezza, usando
+particolare attenzione alle traiettorie dei mezzi sgombero neve ed agli accumuli lasciati dagli
+stessi.
+Il conducente dovrà ridurre la velocità al di sotto dei limiti consentiti al fine di permettere una
+frenata del veicolo tale da riuscire a fermarlo nel tratto che lo separa dal veicolo che lo precede,
+e che gli permette di arrestare il veicolo in prossimità della segnaletica di stop/dare la
+precedenza.
+In caso di accumulo di neve e/o ghiaccio al suolo, gli operatori dovranno assicurare la disponibilità
+di mezzi con le dotazioni utili a garantire la tenuta di strada dei propri veicoli.
+5.10 Principali regole da osservare in piazzola
+• Durante l’assistenza agli aeromobili nessun veicolo estraneo alle operazioni può accedere in
+piazzola;
+• L'area di “limitazione per i mezzi di rampa/ sicurezza degli aeromobili” (ERA/ASA), deve essere
+libera dai veicoli durante la manovra di ingresso e di uscita dell'aeromobile dalla piazzola.
+• L'area di attesa per il servizio dei mezzi di rampa, (Equipment Service Area - ESA), è una zona
+posta ad una distanza sicura dall'aeromobile parcheggiato, presso cui i mezzi di rampa
+attendono in sicurezza che l'aeromobile concluda la manovra di ingresso o di uscita nella/dalla
+piazzola di sosta.
+• I veicoli, il personale addetto all’handling e le attrezzature non devono entrare nell'ERA/ASA,
+fino a che l'aeromobile non si sia arrestato, abbia spento i motori, abbia spento le luci
+anticollisione, e siano stati posizionati i tacchi, a meno che non vi siano specifiche procedure
+tra vettore ed handler che prevedano particolari deroghe sulla base di procedure alternative.
+• Le operazioni di assistenza ad un aeromobile si realizzano all’interno della propria area ERA/ASA
+e nell’area ESA associata a tale parcheggio. Si dovrà, quindi, evitare tassativamente
+l’occupazione di NPA, così come delle aircraft stand taxilane adiacenti ai parcheggi.
+• Quando l’operatore deve effettuare la manovra di retromarcia deve servirsi di un uomo di
+sicurezza.
+• Quando l’operatore non possiede sufficiente visibilità per accertare quale sia la distanza
+dall’aeromobile deve servirsi di un uomo di sicurezza che, a terra, gli segnali la separazione
+dall’aeromobile stesso, ad eccezione dei mezzi dotati di telecamera o di strumenti per la
+misurazione della distanza.
+• Non bisogna mai ostacolare con altri mezzi la circolazione dei mezzi di rampa che hanno esigenza
+di avvicinarsi/allontanarsi al/dall’aeromobile per le operazioni di assistenza.
+Copia non controllata qualora stampata Pag. 59 di 62
+
+=== PAGE 60 ===
+Volume 1 - Abilitazione alla guida in Apron FCO/CIA
+paragrafo 5.11 Edizione 1 - Rev. 3
+VIABILITA’
+CAPITOLO 5
+VEICOLARE 26/01/2026
+• Nell’ambito delle piazzole di parcheggio aeromobili, i veicoli devono comunque procedere a
+passo d’uomo. facendo attenzione al personale che opera sottobordo e non attraversando il
+percorso dei passeggeri.
+• Quando l’aeromobile ha le luci anticollisione accese rimanere al di fuori del perimetro di
+sicurezza (ERL) e non circolare dietro all’aeromobile.
+• Non transitare né sostare con veicoli/mezzi e carrelli sotto le ali dei velivoli, né nelle vicinanze
+dei motori sia a turbina sia ad elica. Gli unici veicoli autorizzati a sostare e transitare sotto l’ala
+degli aeromobili sono quelli per il rifornimento di carburante, solo se la loro presenza è
+indispensabile per tale operazione. La parte dell’autocisterna contenente l’apparato motore
+non può sostare sotto l’ala.
+• È vietato parcheggiare mezzi e depositare materiali in corrispondenza delle attrezzature
+antincendio in modo da occultarle o limitarne l’accessibilità. I mezzi scala e nastri sono
+autorizzati a predisporsi per l'approccio all'a/m, (quindi alzare le piattaforme), sia nell'ESA dello
+stand di riferimento, mentre l'a/m si sta avvicinando al parcheggio, oppure, una volta che l'a/m
+è fermo allo stand, anche all'interno della stessa ERA e a circolare in posizione elevata fino
+all’aeromobile. I mezzi che non necessitano di accostarsi all’aeromobile per operazioni di
+carico/scarico, rifornimento o manutenzione dovranno mantenersi ad una sufficiente distanza
+dall’aeromobile arrestandosi con il muso in direzione dello stesso. Dopo aver utilizzato un
+mezzo operativo elevabile, prima di abbassarlo verificare che ci sia una distanza di sicurezza con
+l’aeromobile.
+IMPORTANTE: in caso di danneggiamento aeromobile e/o collisione tra veicolo e aeromobile,
+bisogna segnalare immediatamente l’evento al personale dell’Operatore Aereo per le azioni di
+competenza e dovrà essere sempre generato un Ground Safety Report (GSR).
+5.11 Sicurezza durante le operazioni di rifornimento carburante
+Attenzione: Durante le operazioni di rifornimento carburante aumenta il rischio di incendio
+dell’aeromobile. Maggior pericolo si ha in caso di sversamenti accidentali di idrocarburi.
+Durante le operazioni di rifornimento nessun motore di spinta dell'aeromobile deve essere in
+funzione.
+Inoltre, durante le operazioni di rifornimento:
+Copia non controllata qualora stampata Pag. 60 di 62
+
+=== PAGE 61 ===
+Volume 1 - Abilitazione alla guida in Apron FCO/CIA
+paragrafo 5.12 Edizione 1 - Rev. 3
+VIABILITA’
+CAPITOLO 5
+VEICOLARE 26/01/2026
+• I veicoli e le attrezzature devono essere posti in modo tale da consentire:
+- il libero accesso all'aeromobile da parte dei servizi di soccorso e lotta antincendio;
+- la rapida evacuazione, attraverso le uscite in uso, delle persone a bordo
+dell'aeromobile;
+- il rapido allontanamento dei mezzi rifornitori.
+• I veicoli non devono transitare o sostare sotto l'ala degli aeromobili, salvo quelli del
+rifornimento e solo se la loro presenza è indispensabile per le operazioni di rifornimento
+di carburante, di oli lubrificanti ed idraulici.
+• l'attrezzatura utilizzata per il servizio di manutenzione deve essere collocata ad una
+distanza superiore a 3 metri dalle aperture di sfiato dell'impianto di combustibile degli
+aeromobili
+Nessun estraneo alle operazioni di rifornimento, assistenza e controllo, deve trovarsi, all'interno
+della zona di sicurezza.
+Figura 5 - Area di sicurezza durante le operazioni di rifornimento di carburante
+5.12 Merci Pericolose (Dangerous Goods)
+• È fatto divieto l’immagazzinamento di merci pericolose in Airside.
+• Tutte le merci pericolose devono essere stoccate in aree conformi ai requisiti definiti nelle
+normative specifiche applicabili e nel rispetto delle disposizioni definite dal Gestore.
+• Qualora un’emergenza derivante da operazioni di trasporto di merci pericolose coinvolga un
+aeromobile in movimento, verranno applicate le azioni definite in relazione all’emergenza
+aeromobile (rif. PEA – Piano Emergenza Aeroportuale). Chiunque venga a conoscenza di tale
+Copia non controllata qualora stampata Pag. 61 di 62
+
+=== PAGE 62 ===
+Volume 1 - Abilitazione alla guida in Apron FCO/CIA
+paragrafo 5.12 Edizione 1 - Rev. 3
+VIABILITA’
+CAPITOLO 5
+VEICOLARE 26/01/2026
+tipologia di eventi dovrà darne informazione alla Torre di Controllo o al CEA per l’attivazione del
+Piano di Emergenza Aeroportuale.
+• Qualora un’emergenza derivante da operazioni di trasporto di merci pericolose avvenga
+all’interno del sedime aeroportuale di dette merci senza il coinvolgimento di aeromobili,
+verranno applicate le azioni definite in relazione all’emergenza infrastrutture. Chiunque venga
+a conoscenza di tale tipologia di eventi dovrà darne informazione ai Vigili del Fuoco per
+l’attivazione del Piano di Emergenza Aeroportuale.
+Copia non controllata qualora stampata Pag. 62 di 62
