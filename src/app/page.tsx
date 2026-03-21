@@ -27,7 +27,7 @@ import {
 
 type View =
   | "dashboard"
-  | "traguardi"
+  | "debug"
   | "topic_detail"
   | "quiz"
   | "result"
@@ -150,132 +150,6 @@ function formatNextReview(card: CardState): string {
   return `tra ${Math.round(diff / 30)} mesi`;
 }
 
-function getXpProgress(xp: number): { level: number; current: number; needed: number } {
-  let level = 1;
-  let remaining = xp;
-  let needed = 120;
-  while (remaining >= needed) {
-    remaining -= needed;
-    level += 1;
-    needed += 40;
-  }
-  return { level, current: remaining, needed };
-}
-
-function getExamReadiness({
-  cards,
-  hidden,
-  stats,
-}: {
-  cards: CardState[];
-  hidden: Set<string>;
-  stats: GamificationStats;
-}): { score: number; label: string } {
-  const activeCards = cards.filter((card) => !hidden.has(card.questionId));
-  const masteryRatio =
-    activeCards.length === 0 ? 0 : activeCards.filter((card) => card.repetitions >= 3).length / activeCards.length;
-  const answeredCards = activeCards.filter((card) => card.totalReviews > 0);
-  const accuracyRatio =
-    answeredCards.length === 0
-      ? 0
-      : answeredCards.reduce(
-          (sum, card) => sum + (card.totalReviews === 0 ? 0 : card.correctReviews / card.totalReviews),
-          0
-        ) / answeredCards.length;
-  const examRatio = stats.bestExamScore / 20;
-  const score = Math.round((masteryRatio * 0.45 + accuracyRatio * 0.35 + examRatio * 0.2) * 100);
-  const label = score >= 80 ? "Alta" : score >= 60 ? "In crescita" : score >= 40 ? "Intermedia" : "Da costruire";
-  return { score, label };
-}
-
-function getBadgeMilestones(cards: CardState[], hidden: Set<string>, stats: GamificationStats) {
-  const activeCards = cards.filter((card) => !hidden.has(card.questionId));
-  const masteredCount = activeCards.filter((card) => card.repetitions >= 3).length;
-  const totalReviews = activeCards.reduce((sum, card) => sum + card.totalReviews, 0);
-  const dueCount = getDueCards(cards, hidden).length;
-  const newCount = activeCards.filter((card) => card.totalReviews === 0).length;
-  const badges = [
-    {
-      id: "streak-3",
-      label: "3 giorni di fila",
-      achieved: stats.bestStreak >= 3,
-      tone: "bg-amber-900/40 text-amber-200 border-amber-700/60",
-    },
-    {
-      id: "streak-7",
-      label: "Settimana piena",
-      achieved: stats.bestStreak >= 7,
-      tone: "bg-orange-900/40 text-orange-200 border-orange-700/60",
-    },
-    {
-      id: "master-25",
-      label: "25 apprese",
-      achieved: masteredCount >= 25,
-      tone: "bg-emerald-900/40 text-emerald-200 border-emerald-700/60",
-    },
-    {
-      id: "master-75",
-      label: "75 apprese",
-      achieved: masteredCount >= 75,
-      tone: "bg-emerald-950/50 text-emerald-100 border-emerald-700/60",
-    },
-    {
-      id: "reviews-100",
-      label: "100 ripassi",
-      achieved: totalReviews >= 100,
-      tone: "bg-blue-900/40 text-blue-200 border-blue-700/60",
-    },
-    {
-      id: "reviews-300",
-      label: "300 ripassi",
-      achieved: totalReviews >= 300,
-      tone: "bg-blue-950/50 text-blue-100 border-blue-700/60",
-    },
-    {
-      id: "fresh-start",
-      label: "Primo ripasso",
-      achieved: totalReviews >= 1,
-      tone: "bg-slate-700/70 text-slate-100 border-slate-600",
-    },
-    {
-      id: "queue-clear",
-      label: "Ripassi del giorno chiusi",
-      achieved: dueCount === 0 && totalReviews > 0,
-      tone: "bg-cyan-900/40 text-cyan-200 border-cyan-700/60",
-    },
-    {
-      id: "new-cards-done",
-      label: "Nessuna nuova in attesa",
-      achieved: newCount === 0 && activeCards.length > 0,
-      tone: "bg-teal-900/40 text-teal-200 border-teal-700/60",
-    },
-    {
-      id: "exam-pass",
-      label: "Prima idoneita",
-      achieved: stats.examPasses >= 1,
-      tone: "bg-violet-900/40 text-violet-200 border-violet-700/60",
-    },
-    {
-      id: "exam-perfect",
-      label: "20/20 simulazione",
-      achieved: stats.bestExamScore >= 20,
-      tone: "bg-fuchsia-900/40 text-fuchsia-200 border-fuchsia-700/60",
-    },
-    {
-      id: "exam-three",
-      label: "3 simulazioni concluse",
-      achieved: stats.examAttempts >= 3,
-      tone: "bg-purple-900/40 text-purple-200 border-purple-700/60",
-    },
-    {
-      id: "exam-streak",
-      label: "2 idoneita",
-      achieved: stats.examPasses >= 2,
-      tone: "bg-violet-950/50 text-violet-100 border-violet-700/60",
-    },
-  ];
-  return badges;
-}
 
 function escapeRegExp(value: string): string {
   return value.replace(/[.*+?^${}()|[\]\\]/g, "\\$&");
@@ -295,15 +169,20 @@ const GLOSSARY_ALIASES: Record<string, string[]> = {
   "gl-ade": ["A.D.E."],
   "gl-airside": ["air side"],
   "gl-apron": ["Apron", "piazzale", "piazzali"],
+  "gl-aca": ["ACA mezzi", "Autorizzazione alla Circolazione"],
   "gl-beacon": ["luce anticollisione"],
+  "gl-cea": ["CEA ADR"],
   "gl-centerline": ["center-line"],
   "gl-chocks": ["wheel chocks", "tacchi", "chocks"],
   "gl-conspicuous": ["conspicuous color"],
+  "gl-enav": ["ENAV/TWR", "TWR ENAV"],
   "gl-passo-duomo": ["passo d'uomo"],
   "gl-qr-adr": ["QR code ADR", "Quick References"],
   "gl-rwy-strip": ["RWY STRIP NO ENTRY"],
   "gl-stand": ["Aircraft Stand", "Piazzola", "piazzola aeromobile", "piazzole"],
   "gl-stop-aeronautico": ["stop aeronautico"],
+  "gl-uld": ["carrelli ULD"],
+  "gl-viabilita": ["veicolare", "veicolari", "via di scorrimento", "vie di scorrimento"],
   "gl-zebratura-rossa": ["zebratura rossa"],
 };
 
@@ -345,6 +224,15 @@ const ACRONYM_ENTRIES = GLOSSARY.filter(
 
 function getGlossaryEntry(value: string): GlossaryEntry | undefined {
   return GLOSSARY_LOOKUP.get(normalizeGlossaryKey(value));
+}
+
+function isV2Question(question: Question): boolean {
+  return question.question.includes("(v2)");
+}
+
+function getQuestionDisplayText(raw: string): string {
+  const withoutV2 = raw.replace(/\s*\(v2\)\s*$/i, "").trim();
+  return withoutV2.replace(/\s+\(([A-Z0-9./-]{2,})\)/g, "").trim();
 }
 
 function InlineGlossaryTerm({ entry, text }: { entry: GlossaryEntry; text: string }) {
@@ -599,22 +487,20 @@ function ConfirmRow({
 function Dashboard({
   cards,
   hidden,
-  gamification,
   onStartQuiz,
   onStartExamSimulation,
   onOpenTopic,
   onOpenGlossary,
-  onOpenTraguardi,
+  onOpenDebug,
   onReset,
 }: {
   cards: CardState[];
   hidden: Set<string>;
-  gamification: GamificationStats;
   onStartQuiz: () => void;
   onStartExamSimulation: () => void;
   onOpenTopic: (topic: string) => void;
   onOpenGlossary: () => void;
-  onOpenTraguardi: () => void;
+  onOpenDebug: () => void;
   onReset: () => void;
 }) {
   const activeCards = cards.filter((card) => !hidden.has(card.questionId));
@@ -625,8 +511,6 @@ function Dashboard({
   const correctReviews = activeCards.reduce((sum, card) => sum + card.correctReviews, 0);
   const accuracy = totalReviews === 0 ? 0 : Math.round((correctReviews / totalReviews) * 100);
   const hasStartedStudying = totalReviews > 0;
-  const levelProgress = getXpProgress(gamification.xp);
-  const readiness = getExamReadiness({ cards, hidden, stats: gamification });
   const topicMap: Record<string, { total: number; mastered: number; due: number; reviews: number; accuracySum: number }> = {};
   for (const question of QUESTIONS) {
     if (hidden.has(question.id)) continue;
@@ -664,42 +548,6 @@ function Dashboard({
       <div className="space-y-1 text-center">
         <div className="text-2xl font-bold text-white">Patente Airside</div>
         <div className="text-sm text-slate-400">ADC-A · Fiumicino / Ciampino</div>
-      </div>
-
-      <div className="rounded-2xl border border-slate-700 bg-gradient-to-br from-slate-800 via-slate-800 to-slate-900 p-5">
-        <div className="flex items-start justify-between gap-4">
-          <div>
-            <div className="text-xs font-semibold uppercase tracking-[0.18em] text-slate-500">Percorso</div>
-            <div className="mt-2 flex items-end gap-3">
-              <div className="text-3xl font-bold text-white">Livello {levelProgress.level}</div>
-              <div className="rounded-full bg-amber-900/30 px-3 py-1 text-sm font-semibold text-amber-200">
-                {gamification.currentStreak} giorni di fila
-              </div>
-            </div>
-            <div className="mt-2 text-sm text-slate-400">
-              {gamification.xp} punti studio · record streak {gamification.bestStreak} giorni
-            </div>
-          </div>
-          <div className="rounded-2xl border border-emerald-800/60 bg-emerald-950/30 px-4 py-3 text-right">
-            <div className="text-[11px] font-semibold uppercase tracking-wide text-emerald-400">Prontezza esame</div>
-            <div className="mt-1 text-2xl font-bold text-emerald-200">{readiness.score}%</div>
-            <div className="text-xs text-emerald-300/80">{readiness.label}</div>
-          </div>
-        </div>
-        <div className="mt-4">
-          <div className="mb-2 flex justify-between text-xs text-slate-500">
-            <span>Avanzamento livello</span>
-            <span>
-              {levelProgress.current}/{levelProgress.needed} punti
-            </span>
-          </div>
-          <div className="h-2.5 w-full rounded-full bg-slate-700">
-            <div
-              className="h-2.5 rounded-full bg-gradient-to-r from-blue-500 to-emerald-500 transition-all duration-500"
-              style={{ width: `${(levelProgress.current / levelProgress.needed) * 100}%` }}
-            />
-          </div>
-        </div>
       </div>
 
       <div className="grid grid-cols-2 gap-3 sm:grid-cols-4">
@@ -832,10 +680,10 @@ function Dashboard({
 
       <div className="text-center">
         <button
-          onClick={onOpenTraguardi}
-          className="mb-4 text-sm font-semibold text-slate-400 transition-colors hover:text-slate-200"
+          onClick={onOpenDebug}
+          className="mb-4 text-xs text-slate-600 transition-colors hover:text-slate-400"
         >
-          Apri traguardi
+          Modalita debug
         </button>
       </div>
 
@@ -853,19 +701,11 @@ function Dashboard({
   );
 }
 
-function TraguardiView({
-  cards,
-  hidden,
-  gamification,
-  onBack,
-}: {
-  cards: CardState[];
-  hidden: Set<string>;
-  gamification: GamificationStats;
-  onBack: () => void;
-}) {
-  const badges = getBadgeMilestones(cards, hidden, gamification);
-  const achieved = badges.filter((badge) => badge.achieved).length;
+function DebugView({ hidden, onBack }: { hidden: Set<string>; onBack: () => void }) {
+  const hiddenQuestions = QUESTIONS.filter((question) => hidden.has(question.id));
+  const plainText = hiddenQuestions
+    .map((question) => `${question.id}\n${getQuestionDisplayText(question.question)}`)
+    .join("\n\n");
 
   return (
     <div className="mx-auto max-w-3xl space-y-4 px-4 py-6">
@@ -874,50 +714,20 @@ function TraguardiView({
           <IconBack />
         </button>
         <div className="flex-1">
-          <div className="text-xl font-bold text-white">Traguardi</div>
-          <div className="text-sm text-slate-400">
-            {achieved} completati su {badges.length}. Indicatori di continuita, consolidamento e preparazione.
-          </div>
+          <div className="text-xl font-bold text-white">Debug</div>
+          <div className="text-sm text-slate-400">Elenco domande nascoste in testo semplice, facilmente copiabile.</div>
         </div>
       </div>
 
-      <div className="rounded-2xl border border-slate-700 bg-slate-800 p-4">
-        <div className="mb-2 flex justify-between text-sm text-slate-300">
-          <span>Avanzamento complessivo</span>
-          <span className="text-slate-400">
-            {achieved}/{badges.length}
-          </span>
+      <div className="rounded-xl border border-slate-700 bg-slate-800 p-4">
+        <div className="mb-2 text-sm font-semibold text-slate-200">
+          Domande nascoste: {hiddenQuestions.length}
         </div>
-        <div className="h-2.5 w-full rounded-full bg-slate-700">
-          <div
-            className="h-2.5 rounded-full bg-gradient-to-r from-emerald-500 to-blue-500 transition-all duration-500"
-            style={{ width: `${(achieved / badges.length) * 100}%` }}
-          />
-        </div>
-      </div>
-
-      <div className="grid gap-3 sm:grid-cols-2">
-        {badges.map((badge) => (
-          <div
-            key={badge.id}
-            className={`rounded-xl border p-4 ${
-              badge.achieved
-                ? `${badge.tone}`
-                : "border-slate-700 bg-slate-800 text-slate-400"
-            }`}
-          >
-            <div className="flex items-center justify-between gap-3">
-              <div className="text-sm font-semibold">{badge.label}</div>
-              <span
-                className={`rounded-full px-2 py-0.5 text-[11px] font-semibold ${
-                  badge.achieved ? "bg-black/20 text-current" : "bg-slate-900/60 text-slate-500"
-                }`}
-              >
-                {badge.achieved ? "Raggiunto" : "In corso"}
-              </span>
-            </div>
-          </div>
-        ))}
+        <textarea
+          readOnly
+          value={plainText}
+          className="min-h-[24rem] w-full rounded-lg border border-slate-700 bg-slate-900 p-3 font-mono text-xs leading-relaxed text-slate-300 outline-none"
+        />
       </div>
     </div>
   );
@@ -1210,7 +1020,7 @@ function TopicDetail({
                 </span>
                 <div className="min-w-0 flex-1">
                   <p className="text-sm leading-snug text-slate-200">
-                    <GlossaryText text={question.question} />
+                    <GlossaryText text={getQuestionDisplayText(question.question)} />
                   </p>
                   <p className="mt-1 text-xs text-slate-500">
                     {card ? formatNextReview(card) : "nuova"}
@@ -1298,9 +1108,16 @@ function QuizCard({
         </span>
       </div>
 
-      <span className={`rounded-full px-2 py-0.5 text-xs font-medium ${topicColor(question.topic)}`}>
-        {question.topic}
-      </span>
+      <div className="flex flex-wrap items-center gap-2">
+        <span className={`rounded-full px-2 py-0.5 text-xs font-medium ${topicColor(question.topic)}`}>
+          {question.topic}
+        </span>
+        {isV2Question(question) && (
+          <span className="rounded-full bg-slate-700 px-2 py-0.5 text-xs font-medium text-slate-200">
+            v2
+          </span>
+        )}
+      </div>
 
       {question.imageUrl && (
         <div className="overflow-hidden rounded-xl border border-slate-700 bg-slate-800">
@@ -1314,7 +1131,7 @@ function QuizCard({
       )}
 
       <div className="text-lg font-medium leading-snug text-white">
-        <GlossaryText text={question.question} interactive={revealed} />
+        <GlossaryText text={getQuestionDisplayText(question.question)} interactive={revealed} />
       </div>
 
       <div className="space-y-2">
@@ -1358,7 +1175,8 @@ function QuizCard({
       )}
 
       {revealed && (
-        <div className="space-y-2">
+        <div className="sticky bottom-0 z-20 -mx-4 border-t border-slate-700 bg-slate-950/95 px-4 pb-4 pt-3 backdrop-blur">
+          <div className="space-y-2">
           <div className="text-center text-xs text-slate-500">Come ti è sembrata questa domanda?</div>
           <div className="grid grid-cols-4 gap-2">
             {[RATING_AGAIN, RATING_HARD, RATING_GOOD, RATING_EASY].map((rating) => (
@@ -1374,6 +1192,7 @@ function QuizCard({
               </button>
             ))}
           </div>
+        </div>
         </div>
       )}
 
@@ -1633,9 +1452,7 @@ function ExamQuizCard({
       </div>
 
       <div className="flex items-center justify-between gap-3">
-        <span className="rounded-full bg-emerald-900/40 px-3 py-1 text-xs font-semibold text-emerald-300">
-          Simulazione Esame ADC
-        </span>
+        <span />
         <span className="rounded-full bg-slate-800 px-3 py-1 text-sm font-semibold tabular-nums text-white">
           {formatExamTime(secondsRemaining)}
         </span>
@@ -1652,7 +1469,18 @@ function ExamQuizCard({
         </div>
       )}
 
-      <div className="text-lg font-medium leading-snug text-white">{question.question}</div>
+      <div className="flex flex-wrap items-center gap-2">
+        <span className="rounded-full bg-emerald-900/40 px-3 py-1 text-xs font-semibold text-emerald-300">
+          Simulazione Esame ADC
+        </span>
+        {isV2Question(question) && (
+          <span className="rounded-full bg-slate-700 px-2 py-0.5 text-xs font-medium text-slate-200">
+            v2
+          </span>
+        )}
+      </div>
+
+      <div className="text-lg font-medium leading-snug text-white">{getQuestionDisplayText(question.question)}</div>
 
       <div className="space-y-2">
         {shuffled.map((option, optionIndex) => {
@@ -1752,7 +1580,7 @@ function ExamResultSession({
                     Domanda {index + 1}
                   </div>
                   <div className="text-sm leading-relaxed text-slate-100">
-                    <GlossaryText text={item.question.question} />
+                    <GlossaryText text={getQuestionDisplayText(item.question.question)} />
                   </div>
                 </div>
                 <span
@@ -1878,6 +1706,13 @@ export default function Home() {
     setHidden(loadHidden());
     setGamification(loadGamificationStats());
   }, []);
+
+  useEffect(() => {
+    if (typeof window === "undefined") return;
+    if (view === "quiz" || view === "exam_quiz" || view === "acronym_quiz") {
+      window.scrollTo({ top: 0, behavior: "smooth" });
+    }
+  }, [view, queueIndex, examIndex, acronymIndex]);
 
   const startQuiz = useCallback(
     (topic?: string) => {
@@ -2069,7 +1904,6 @@ export default function Home() {
         <Dashboard
           cards={cards}
           hidden={hidden}
-          gamification={gamification}
           onStartQuiz={() => {
             setSelectedTopic(null);
             startQuiz();
@@ -2080,7 +1914,7 @@ export default function Home() {
             setView("topic_detail");
           }}
           onOpenGlossary={() => setView("glossary")}
-          onOpenTraguardi={() => setView("traguardi")}
+          onOpenDebug={() => setView("debug")}
           onReset={() => {
             const fresh = resetCards();
             setCards(fresh);
@@ -2092,14 +1926,7 @@ export default function Home() {
         />
       )}
 
-      {view === "traguardi" && (
-        <TraguardiView
-          cards={cards}
-          hidden={hidden}
-          gamification={gamification}
-          onBack={() => setView("dashboard")}
-        />
-      )}
+      {view === "debug" && <DebugView hidden={hidden} onBack={() => setView("dashboard")} />}
 
       {view === "glossary" && (
         <GlossaryView onBack={() => setView("dashboard")} onStartAcronymQuiz={startAcronymQuiz} />

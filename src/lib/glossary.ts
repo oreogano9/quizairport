@@ -260,6 +260,13 @@ export const GLOSSARY: GlossaryEntry[] = [
     color: "bg-slate-600/80 text-slate-300",
   },
   {
+    id: "gl-viabilita",
+    term: "Viabilità veicolare",
+    definition: "Insieme delle veicolari o vie di scorrimento destinate al transito dei mezzi in Airside. Devono restare libere da soste, materiali e percorsi non autorizzati.",
+    category: "area",
+    color: "bg-slate-700/80 text-slate-300",
+  },
+  {
     id: "gl-area-manovra",
     term: "Area di Manovra",
     definition: "Parte dell'aeroporto adibita al decollo, atterraggio e movimento al suolo degli aeromobili. Comprende piste (RWY) e taxiway principali, ma NON i piazzali. Accesso richiede ADC-M e radio UHF.",
