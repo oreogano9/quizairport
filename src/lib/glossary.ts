@@ -188,6 +188,30 @@ export const GLOSSARY: GlossaryEntry[] = [
     color: "bg-teal-800/60 text-teal-300",
   },
   {
+    id: "gl-uld",
+    term: "ULD",
+    fullForm: "Unit Load Device",
+    definition: "Contenitore o pallet standardizzato usato per caricare bagagli e merci sugli aeromobili. I relativi carrelli hanno limiti precisi di traino e stoccaggio in Airside.",
+    category: "acronym",
+    color: "bg-amber-900/60 text-amber-300",
+  },
+  {
+    id: "gl-obu",
+    term: "OBU",
+    fullForm: "On Board Unit",
+    definition: "Dispositivo di localizzazione/sistema di bordo richiesto a Fiumicino per i mezzi azionati da motore secondo le D.d.S. aeroportuali.",
+    category: "acronym",
+    color: "bg-blue-900/60 text-blue-300",
+  },
+  {
+    id: "gl-asmgcs",
+    term: "A-SMGCS",
+    fullForm: "Advanced Surface Movement Guidance and Control System",
+    definition: "Sistema avanzato di guida e controllo del traffico di superficie aeroportuale. Alcuni mezzi devono essere equipaggiati con transponder dedicato per essere identificati dal sistema.",
+    category: "acronym",
+    color: "bg-cyan-900/60 text-cyan-300",
+  },
+  {
     id: "gl-rwy",
     term: "RWY",
     fullForm: "Runway (pista di volo)",
@@ -335,6 +359,20 @@ export const GLOSSARY: GlossaryEntry[] = [
     category: "concept",
     color: "bg-blue-900/60 text-blue-300",
   },
+  {
+    id: "gl-grid-map",
+    term: "Grid Map",
+    definition: "Cartografia aeroportuale di bordo richiesta su alcuni mezzi. Deve essere disponibile nel formato previsto dalle disposizioni operative per consentire il rapido orientamento in area di manovra.",
+    category: "concept",
+    color: "bg-sky-900/60 text-sky-300",
+  },
+  {
+    id: "gl-easa-type-c",
+    term: "EASA Type C",
+    definition: "Tipologia di luce ostacolo rossa installata sui mezzi aeroportuali. Va posizionata sulla sommità del mezzo, nella parte più visibile, con intensità minima prevista dalle disposizioni.",
+    category: "concept",
+    color: "bg-red-900/60 text-red-300",
+  },
 
   // ── PROCEDURE ─────────────────────────────────────────────────────────────
   {
@@ -350,6 +388,13 @@ export const GLOSSARY: GlossaryEntry[] = [
     definition: "Ripasso pratico obbligatorio (2 ore FCO, 1 ora CIA) richiesto dopo un'interruzione della guida in Airside compresa tra 3 e 12 mesi consecutivi. Supervisione da ADE.",
     category: "procedure",
     color: "bg-violet-800/60 text-violet-300",
+  },
+  {
+    id: "gl-remedial",
+    term: "Remedial Training",
+    definition: "Percorso correttivo disposto dal Safety Manager quando viene rilevata una criticità operativa o comportamentale. Prevede un follow-up obbligatorio dopo tre mesi.",
+    category: "procedure",
+    color: "bg-rose-900/60 text-rose-300",
   },
   {
     id: "gl-passo-duomo",

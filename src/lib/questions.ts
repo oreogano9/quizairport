@@ -340,11 +340,11 @@ export const QUESTIONS: Question[] = [
   {
     id: "adc-16",
     question:
-      "Per la mancata esposizione dell'abilitazione alla guida (tesserino ADC), quanti punti vengono decurtati?",
+      "Per la mancata esibizione dell'abilitazione alla guida (ADC) agli Enti competenti, quanti punti vengono decurtati?",
     options: ["3 punti", "2 punti", "1 punto"],
     correctIndex: 2,
     explanation:
-      "La mancata esposizione del tesserino ADC comporta la decurtazione di 1 punto. Perché? L'esposizione immediata dell'abilitazione consente ai controlli di verificare sul posto che il conducente sia autorizzato a operare: senza tesserino visibile si rallentano i controlli e si indebolisce la disciplina operativa. 💡 Ricorda: tesserino ADC non esposto = infrazione minore, ma il punto lo perdi comunque.",
+      "La mancata esibizione dell'ADC agli Enti competenti comporta la decurtazione di 1 punto. Perché? Il conducente deve portare con sé l'abilitazione e mostrarla quando richiesta dagli organi competenti: non poterla esibire rende impossibile verificare subito che sia autorizzato a guidare in Airside. 💡 Ricorda: ADC con te, sempre — se non lo esibisci quando te lo chiedono, perdi 1 punto.",
     topic: "ADC",
   },
 
@@ -369,11 +369,11 @@ export const QUESTIONS: Question[] = [
   },
   {
     id: "san-03",
-    question: "Quanti punti vengono decurtati per mancata esposizione del tesserino (TIA)?",
+    question: "Quanti punti vengono decurtati per mancata esibizione dell'abilitazione alla guida (ADC) agli Enti competenti?",
     options: ["1 punto", "2 punti", "3 punti"],
     correctIndex: 0,
     explanation:
-      "Mancata esposizione del TIA = 1 punto decurtato. Perché? Il tesserino visibile permette a chiunque di identificare rapidamente chi ha accesso autorizzato: senza di esso, non è possibile rilevare intrusi o persone che operano oltre i limiti della propria autorizzazione. 💡 Ricorda: 1 punto solo, ma il TIA va esposto sempre — è la tua «carta d'identità» in Airside.",
+      "Mancata esibizione dell'ADC agli Enti competenti = 1 punto decurtato. Perché? In Airside il conducente deve avere con sé l'abilitazione e mostrarla su richiesta: se non può esibirla, i controlli non possono verificare immediatamente il titolo alla guida. 💡 Ricorda: 1 punto per l'ADC non esibito — tienilo sempre con te quando guidi.",
     topic: "Sanzioni",
   },
   {
@@ -1465,7 +1465,7 @@ export const QUESTIONS: Question[] = [
     correctIndex: 2,
     explanation:
       "Il datore di lavoro deve inibire il conducente se: patente civile scaduta, recurrent training non effettuato, o refresher training mancante. Perché? L'ADC è valida solo se supportata da un sistema di qualifiche aggiornate: permettere la guida con documenti scaduti viola la normativa e mette a rischio la sicurezza. 💡 Ricorda: il datore di lavoro è responsabile — se non controlla le scadenze, è colpa sua.",
-    topic: "Inibizione",
+    topic: "ADC",
   },
 
   // ── DISTANZE DI SICUREZZA ─────────────────────────────────────────────────────
@@ -1480,7 +1480,323 @@ export const QUESTIONS: Question[] = [
     correctIndex: 2,
     explanation:
       "La distanza di sicurezza tra veicoli è obbligatoria sempre, in qualsiasi area di Airside. Perché? Fermate improvvise sono frequenti in Airside (precedenza agli aeromobili, stop aeronautico, emergenze): senza distanza di sicurezza, il tamponamento è quasi inevitabile. 💡 Ricorda: in Airside si frena spesso e improvvisamente — mantieni sempre la distanza.",
-    topic: "Distanze di sicurezza",
+    topic: "Viabilità",
+  },
+
+  // ── APPROFONDIMENTI OPERATIVI ───────────────────────────────────────────────
+  {
+    id: "op-01",
+    question:
+      "Qual è la validità temporale dell'attestato di formazione teorica per poter procedere al rilascio dell'ADC-A?",
+    options: ["6 mesi", "3 mesi", "12 mesi"],
+    correctIndex: 1,
+    explanation:
+      "L'attestato di formazione teorica resta valido per 3 mesi ai fini del rilascio dell'ADC-A. Perché? Il percorso di abilitazione deve basarsi su una preparazione recente: più tempo passa, maggiore è il rischio che le conoscenze non siano più aggiornate o ben consolidate. 💡 Ricorda: teoria fresca, patente valida — dopo 3 mesi non è più considerata sufficiente.",
+    topic: "ADC",
+  },
+  {
+    id: "op-02",
+    question:
+      "A Fiumicino, qual è il numero massimo di carrelli per ULD che è consentito trainare in configurazione standard?",
+    options: ["3 unità", "5 unità", "6 unità"],
+    correctIndex: 1,
+    explanation:
+      "A Fiumicino, in configurazione standard, si possono trainare al massimo 5 carrelli per ULD. Perché? Superare questo limite rende il convoglio meno stabile, più difficile da frenare e più ingombrante nelle curve e nelle aree operative trafficate. 💡 Ricorda: ULD a FCO = massimo 5 in standard.",
+    topic: "Taxiway e piazzole",
+  },
+  {
+    id: "op-03",
+    question:
+      "In caso di guida con ADC scaduta da oltre 60 giorni, dopo quanto tempo è possibile riconseguirla?",
+    options: [
+      "Immediatamente dopo il pagamento di una sanzione",
+      "Non prima che siano trascorsi 120 giorni dalla riconsegna dell'abilitazione scaduta",
+      "Solo dopo 365 giorni",
+    ],
+    correctIndex: 1,
+    explanation:
+      "Se si guida con ADC scaduta da oltre 60 giorni, non è possibile riconseguirla prima che siano trascorsi 120 giorni dalla riconsegna dell'abilitazione scaduta. Perché? La violazione dimostra un uso irregolare del titolo abilitativo e comporta un periodo di stop prima di poter riprendere l'iter. 💡 Ricorda: scaduta oltre 60 giorni = 120 giorni di attesa dalla riconsegna.",
+    topic: "Sanzioni",
+  },
+  {
+    id: "op-04",
+    question:
+      "Qual è l'altezza minima dei caratteri della sigla numerica per i mezzi che operano in Area di Manovra?",
+    options: ["15 cm", "30 cm", "50 cm"],
+    correctIndex: 1,
+    explanation:
+      "La sigla numerica dei mezzi che operano in Area di Manovra deve avere caratteri alti almeno 30 cm. Perché? La Torre e gli altri operatori devono poter identificare il mezzo rapidamente e a distanza, anche in condizioni meteo non ideali. 💡 Ricorda: in Area di Manovra il numero deve essere grande e leggibile: minimo 30 cm.",
+    topic: "Dotazione veicoli",
+  },
+  {
+    id: "op-05",
+    question:
+      "Nello scalo di Ciampino, qual è il limite massimo di carrelli dolly/pallet trainabili in condizioni di carico?",
+    options: ["5 unità", "3 unità", "4 unità"],
+    correctIndex: 1,
+    explanation:
+      "A Ciampino, in condizioni di carico, si possono trainare al massimo 3 carrelli dolly/pallet. Perché? Un convoglio troppo lungo o pesante aumenta lo spazio di frenata e rende meno controllabili le manovre in un piazzale più compatto come quello di CIA. 💡 Ricorda: CIA carico = massimo 3 dolly/pallet.",
+    topic: "Taxiway e piazzole",
+  },
+  {
+    id: "op-06",
+    question:
+      "A quale frequenza deve operare il transponder A-SMGCS obbligatorio per i mezzi individuati dalle D.d.S.?",
+    options: ["445.775 MHz", "1090 MHz", "900 MHz"],
+    correctIndex: 1,
+    explanation:
+      "Il transponder A-SMGCS dei mezzi individuati dalle D.d.S. deve operare a 1090 MHz. Perché? Questa frequenza consente ai sistemi di sorveglianza aeroportuale di localizzare correttamente i mezzi nell'area di movimento, migliorando la prevenzione dei conflitti a terra. 💡 Ricorda: A-SMGCS = 1090 MHz.",
+    topic: "Area di Manovra",
+  },
+  {
+    id: "op-07",
+    question:
+      "Qual è il limite di velocità prescritto all'interno delle aree di stoccaggio ULD?",
+    options: ["10 km/h", "5 km/h", "Passo d'uomo (3 km/h)"],
+    correctIndex: 1,
+    explanation:
+      "Nelle aree di stoccaggio ULD il limite è 5 km/h. Perché? In queste aree ci sono spazi stretti, personale a piedi e attrezzature movimentate continuamente: una velocità minima è indispensabile per fermarsi subito in caso di ostacolo improvviso. 💡 Ricorda: dove si stoccano ULD si va quasi camminando: 5 km/h.",
+    topic: "Velocità",
+  },
+  {
+    id: "op-08",
+    question:
+      "Durante piogge intense, specialmente di notte, quale fattore rende la segnaletica orizzontale meno visibile?",
+    options: [
+      "L'appannamento dei vetri dei mezzi",
+      "La rifrazione delle luci del piazzale sulla pellicola d'acqua",
+      "Il riflesso dei fari abbaglianti degli aerei",
+    ],
+    correctIndex: 1,
+    explanation:
+      "Con pioggia intensa, soprattutto di notte, la segnaletica orizzontale può risultare meno visibile per la rifrazione delle luci del piazzale sulla pellicola d'acqua. Perché? L'acqua altera il contrasto visivo delle linee e può far perdere riferimenti fondamentali proprio dove servono di più. 💡 Ricorda: asfalto bagnato + luci = segnaletica che si confonde, quindi rallenta e guarda meglio.",
+    topic: "Bassa visibilità",
+  },
+  {
+    id: "op-09",
+    question:
+      "Quale dispositivo di localizzazione satellitare è obbligatorio esclusivamente per i mezzi azionati da motore a Fiumicino (FCO)?",
+    options: ["Radio UHF portatile", "Dispositivo OBU - On Board Unit", "Trasponder ADS-B"],
+    correctIndex: 1,
+    explanation:
+      "A Fiumicino, per i mezzi azionati da motore per cui è previsto l'obbligo, il dispositivo richiesto è l'OBU (On Board Unit). Perché? L'OBU consente il tracciamento del mezzo e migliora il controllo operativo nelle aree aeroportuali più complesse e trafficate. 💡 Ricorda: FCO e tracciamento veicoli = OBU.",
+    topic: "Dotazione veicoli",
+  },
+  {
+    id: "op-10",
+    question:
+      "Qual è la patente civile minima richiesta per condurre mezzi non riconducibili al Codice della Strada (es. loader, transporter)?",
+    options: ["Patente di categoria A", "Patente di categoria B", "Patente di categoria C o superiore"],
+    correctIndex: 1,
+    explanation:
+      "Per condurre mezzi non riconducibili al Codice della Strada, come loader o transporter, è richiesta almeno la patente civile di categoria B. Perché? L'accesso alla guida di questi mezzi parte comunque dal possesso di una base minima di idoneità alla conduzione di veicoli. 💡 Ricorda: anche per i mezzi speciali di rampa la base minima resta la patente B.",
+    topic: "ADC",
+  },
+  {
+    id: "op-11",
+    question:
+      "Un aeromobile con le luci anticollisione accese, anche se fermo in piazzola, deve essere considerato:",
+    options: [
+      "In sosta sicura per l'approccio dei mezzi",
+      "Sempre in manovra",
+      "Pronto per l'inizio dell'imbarco passeggeri",
+    ],
+    correctIndex: 1,
+    explanation:
+      "Un aeromobile con luci anticollisione accese va considerato sempre in manovra, anche se fermo in piazzola. Perché? Quelle luci segnalano che l'aeromobile non è ancora in condizioni di sicurezza per l'avvicinamento dei mezzi o del personale. 💡 Ricorda: anticollisione accesa = non ti avvicini, l'aereo è ancora da considerare attivo.",
+    topic: "Taxiway e piazzole",
+  },
+  {
+    id: "op-12",
+    question:
+      "In caso di avaria degli apparati radio in Area di Manovra, quale mezzo di comunicazione deve essere usato come backup?",
+    options: ["Segnali luminosi dalla Torre", "Telefono cellulare", "Bandiere a scacchi laterali"],
+    correctIndex: 1,
+    explanation:
+      "In caso di avaria degli apparati radio in Area di Manovra, il mezzo di backup da usare è il telefono cellulare. Perché? In Area di Manovra la continuità delle comunicazioni è essenziale: se si perde il collegamento radio, serve un canale immediato alternativo per ricevere istruzioni ed evitare incursioni. 💡 Ricorda: se la radio cade, il backup operativo è il cellulare.",
+    topic: "Area di Manovra",
+  },
+  {
+    id: "op-13",
+    question:
+      "A che distanza minima dalle aperture di sfiato dell'impianto combustibile dell'aereo deve stare l'attrezzatura di manutenzione?",
+    options: ["Superiore a 1 metro", "Superiore a 3 metri", "Almeno 5 metri"],
+    correctIndex: 1,
+    explanation:
+      "L'attrezzatura di manutenzione deve stare a più di 3 metri dalle aperture di sfiato dell'impianto combustibile. Perché? Le zone di sfiato possono liberare vapori infiammabili: tenere lontane attrezzature e possibili fonti di innesco riduce il rischio di incendio o esplosione. 💡 Ricorda: sfiato carburante = area sensibile, tieni almeno oltre 3 metri.",
+    topic: "Rifornimento",
+  },
+  {
+    id: "op-14",
+    question:
+      "Qual è l'intensità luminosa minima richiesta per le luci ostacolo di colore rosso installate sui veicoli?",
+    options: ["5 candele (cd)", "10 candele (cd)", "50 candele (cd)"],
+    correctIndex: 1,
+    explanation:
+      "Le luci ostacolo rosse installate sui veicoli devono avere un'intensità minima di 10 candele. Perché? Una luce troppo debole renderebbe il mezzo poco percepibile nelle ore notturne o in condizioni di visibilità ridotta. 💡 Ricorda: luce ostacolo rossa = minimo 10 cd.",
+    topic: "Dotazione veicoli",
+  },
+  {
+    id: "op-15",
+    question:
+      "Qual è il tempo massimo consentito per lasciare un mezzo incustodito in apron, salvo operazioni sottobordo?",
+    options: ["5 minuti", "10 minuti", "Non è mai consentito lasciare il mezzo incustodito"],
+    correctIndex: 1,
+    explanation:
+      "Salvo le operazioni sottobordo, un mezzo può essere lasciato incustodito in apron per un massimo di 10 minuti. Perché? Un mezzo lasciato troppo a lungo senza controllo può diventare un ostacolo operativo, intralciare la viabilità o non essere spostato in caso di emergenza. 💡 Ricorda: mezzo incustodito in apron = massimo 10 minuti.",
+    topic: "Obblighi conducente",
+  },
+  {
+    id: "op-16",
+    question:
+      "Quanti punti vengono decurtati dall'abilitazione per il mancato utilizzo delle cinture di sicurezza?",
+    options: ["1 punto", "3 punti", "5 punti (revoca)"],
+    correctIndex: 1,
+    explanation:
+      "Il mancato utilizzo delle cinture di sicurezza comporta la decurtazione di 3 punti. Perché? Anche in Airside un urto o una frenata brusca possono provocare conseguenze gravi per il conducente; la cintura è un obbligo di sicurezza, non una scelta. 💡 Ricorda: niente cintura = 3 punti in meno.",
+    topic: "Sanzioni",
+  },
+  {
+    id: "op-17",
+    question:
+      "A Fiumicino, nel traino misto di carrelli bagagli e ULD carichi, come devono essere posizionate le unità?",
+    options: [
+      "I carrelli bagagli più vicini alla motrice",
+      "I carrelli per ULD posizionati più vicino alla motrice",
+      "Non è consentito il traino misto in condizioni di carico",
+    ],
+    correctIndex: 1,
+    explanation:
+      "Nel traino misto a Fiumicino, i carrelli per ULD carichi devono essere posizionati più vicino alla motrice. Perché? L'ordine del convoglio incide sulla stabilità, sulla capacità di traino e sul controllo in frenata, specialmente con masse diverse. 💡 Ricorda: nel misto, ULD più pesanti davanti, vicini alla motrice.",
+    topic: "Taxiway e piazzole",
+  },
+  {
+    id: "op-18",
+    question:
+      "In caso di Remedial Training identificato dal Safety Manager, dopo quanto tempo è previsto il follow-up obbligatorio?",
+    options: ["1 mese", "3 mesi", "6 mesi"],
+    correctIndex: 1,
+    explanation:
+      "Dopo un Remedial Training identificato dal Safety Manager è previsto un follow-up obbligatorio dopo 3 mesi. Perché? Il follow-up serve a verificare che le correzioni richieste siano state realmente assimilate e applicate nell'operatività quotidiana. 💡 Ricorda: Remedial Training = controllo di verifica dopo 3 mesi.",
+    topic: "ADC",
+  },
+  {
+    id: "op-19",
+    question:
+      "Qual è la frequenza radio UHF della Torre per lo scalo di Ciampino?",
+    options: ["445.775 MHz", "418.4 MHz", "118.1 MHz"],
+    correctIndex: 1,
+    explanation:
+      "La frequenza radio UHF della Torre per lo scalo di Ciampino è 418.4 MHz. Perché? Conoscere la frequenza corretta è essenziale per i mezzi abilitati che devono mantenere il contatto radio con la Torre nelle aree previste. 💡 Ricorda: Torre CIA = 418.4 MHz.",
+    topic: "Area di Manovra",
+  },
+  {
+    id: "op-20",
+    question:
+      "Qual è la sanzione per l'accesso senza scorta in Area di Manovra se privi di abilitazione e/o con mezzo non abilitato?",
+    options: [
+      "Decurtazione di 3 punti",
+      "Decurtazione di 5 punti",
+      "Sospensione della patente civile per 30 giorni",
+    ],
+    correctIndex: 1,
+    explanation:
+      "L'accesso senza scorta in Area di Manovra se privi di abilitazione e/o con mezzo non abilitato comporta la decurtazione di 5 punti. Perché? È una delle violazioni più gravi: introduce un mezzo non autorizzato in una delle aree a più alto rischio dell'aeroporto. 💡 Ricorda: ingresso abusivo in Area di Manovra = 5 punti.",
+    topic: "Sanzioni",
+  },
+  {
+    id: "op-21",
+    question:
+      "Durante le operazioni di rifornimento carburante con passeggeri a bordo, come devono essere i motori dell'aereo?",
+    options: [
+      "In funzione al minimo",
+      "Spenti",
+      "Può restare acceso solo il motore numero 2",
+    ],
+    correctIndex: 1,
+    explanation:
+      "Durante il rifornimento carburante con passeggeri a bordo, i motori dell'aereo devono essere spenti. Perché? La presenza contemporanea di carburante, passeggeri e motori in funzione aumenterebbe il rischio operativo e le conseguenze di un'eventuale emergenza. 💡 Ricorda: rifornimento con passeggeri = motori spenti.",
+    topic: "Rifornimento",
+  },
+  {
+    id: "op-22",
+    question:
+      "La segnaletica di bordo piazzale (confine piazzale) è costituita da:",
+    options: [
+      "Una linea rossa singola",
+      "Una doppia linea gialla continua di larghezza 15 cm",
+      "Una striscia bianca tratteggiata",
+    ],
+    correctIndex: 1,
+    explanation:
+      "Il bordo piazzale è identificato da una doppia linea gialla continua di larghezza 15 cm. Perché? Questa segnaletica separa chiaramente le aree e aiuta il conducente a riconoscere i limiti operativi del piazzale rispetto alle zone adiacenti. 💡 Ricorda: confine piazzale = doppia gialla continua da 15 cm.",
+    topic: "Segnaletica",
+  },
+  {
+    id: "op-23",
+    question:
+      "Con un aeromobile in avvicinamento davanti, a che distanza è possibile attraversare una taxiway?",
+    options: [
+      "Almeno 50 metri",
+      "Distanza superiore a 100 metri",
+      "Solo dopo che l'aereo ha completato la virata",
+    ],
+    correctIndex: 1,
+    explanation:
+      "Con un aeromobile in avvicinamento davanti, l'attraversamento della taxiway è possibile solo a distanza superiore a 100 metri. Perché? Un aeromobile in avvicinamento riduce rapidamente lo spazio disponibile: attraversare troppo presto espone al rischio di interferire con la sua traiettoria. 💡 Ricorda: se l'aereo arriva verso di te, servono oltre 100 metri di margine.",
+    topic: "Taxiway e piazzole",
+  },
+  {
+    id: "op-24",
+    question:
+      "Qual è il formato richiesto per la Grid Map aeroportuale che deve essere presente a bordo dei mezzi individuati?",
+    options: [
+      "Formato A4",
+      "Formato A3 in materiale plastificato",
+      "Esclusivamente formato digitale su tablet",
+    ],
+    correctIndex: 1,
+    explanation:
+      "La Grid Map aeroportuale richiesta a bordo dei mezzi individuati deve essere in formato A3 e plastificata. Perché? In caso di pioggia, uso intensivo o consultazione rapida in esterno, una mappa piccola o non protetta perderebbe leggibilità e resistenza. 💡 Ricorda: Grid Map di bordo = A3 plastificata.",
+    topic: "Dotazione veicoli",
+  },
+  {
+    id: "op-25",
+    question:
+      "Secondo la priorità dei mezzi legata alla qualità del servizio, quale veicolo ha la precedenza tra i seguenti?",
+    options: ["Trattore bagagli vuoto", "Autocisterna o mezzo di rifornimento aeromobili", "Mezzo catering"],
+    correctIndex: 1,
+    explanation:
+      "Tra questi mezzi, ha la precedenza l'autocisterna o il mezzo di rifornimento aeromobili. Perché? Il rifornimento è un'attività critica e fortemente vincolata nei tempi e nelle condizioni operative: ritardarlo può bloccare l'intera assistenza al volo. 💡 Ricorda: tra i mezzi di servizio, il rifornimento viene prima.",
+    topic: "Precedenze",
+  },
+  {
+    id: "op-26",
+    question:
+      "Quale caratteristica cromatica devono avere i mezzi che accedono in Area di Manovra?",
+    options: [
+      "Colore bianco standard con logo CE",
+      "Livree ad alta visibilità (conspicuous color)",
+      "Colore giallo ADR uniforme",
+    ],
+    correctIndex: 1,
+    explanation:
+      "I mezzi che accedono in Area di Manovra devono avere livree ad alta visibilità, cioè conspicuous color. Perché? In un'area dove i piloti devono individuare i mezzi anche da lontano e con visuali limitate, la visibilità del veicolo è un requisito di sicurezza essenziale. 💡 Ricorda: in Area di Manovra il mezzo deve farsi notare subito.",
+    topic: "Dotazione veicoli",
+  },
+  {
+    id: "op-27",
+    question:
+      "Dove deve essere posizionata la luce ostacolo EASA Type C sui veicoli?",
+    options: [
+      "Sul paraurti anteriore",
+      "Sulla sommità del mezzo, nella parte più visibile",
+      "Sotto lo specchietto retrovisore sinistro",
+    ],
+    correctIndex: 1,
+    explanation:
+      "La luce ostacolo EASA Type C va posizionata sulla sommità del mezzo, nella parte più visibile. Perché? La funzione della luce è rendere il mezzo individuabile da ogni direzione possibile; se montata troppo in basso o in posizione schermata perderebbe efficacia. 💡 Ricorda: luce ostacolo = il più in alto e visibile possibile.",
+    topic: "Dotazione veicoli",
   },
 
   // ── DOMANDE CON IMMAGINE ──────────────────────────────────────────────────────

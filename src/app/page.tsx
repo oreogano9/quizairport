@@ -1,6 +1,6 @@
 "use client";
 
-import { useCallback, useEffect, useState } from "react";
+import { useCallback, useEffect, useLayoutEffect, useRef, useState } from "react";
 import { Question, QUESTIONS } from "@/lib/questions";
 import { CATEGORY_LABELS, GLOSSARY, GlossaryEntry } from "@/lib/glossary";
 import {
@@ -13,13 +13,7 @@ import {
   RATING_GOOD,
   RATING_HARD,
 } from "@/lib/sm2";
-import {
-  hideQuestion,
-  loadCards,
-  loadHidden,
-  resetCards,
-  saveCards,
-} from "@/lib/storage";
+import { hideQuestion, loadCards, loadHidden, resetCards, saveCards, saveHidden } from "@/lib/storage";
 
 type View =
   | "dashboard"
@@ -36,7 +30,7 @@ interface ShuffledOption {
 }
 
 interface AcronymQuizItem {
-  entry: GlossaryEntry;
+  entry: GlossaryEntry & { fullForm: string };
   options: string[];
 }
 
@@ -136,6 +130,15 @@ function escapeRegExp(value: string): string {
   return value.replace(/[.*+?^${}()|[\]\\]/g, "\\$&");
 }
 
+function normalizeGlossaryKey(value: string): string {
+  return value.toLowerCase().replace(/\./g, "").replace(/\s+/g, " ").trim();
+}
+
+function getAcronymDottedVariant(value: string): string | null {
+  if (!/^[A-Z]{2,}$/.test(value)) return null;
+  return `${value.split("").join(".")}.`;
+}
+
 const GLOSSARY_ALIASES: Record<string, string[]> = {
   "gl-adc": ["A.D.C."],
   "gl-ade": ["A.D.E."],
@@ -158,16 +161,17 @@ const GLOSSARY_MATCHERS = Array.from(
     GLOSSARY.flatMap((entry) => {
       const needles = [
         entry.term,
+        ...(getAcronymDottedVariant(entry.term) ? [getAcronymDottedVariant(entry.term)!] : []),
         ...(entry.fullForm ? [entry.fullForm] : []),
         ...(GLOSSARY_ALIASES[entry.id] ?? []),
       ];
-      return needles.map((needle) => [needle.toLowerCase(), { needle, entry }] as const);
+      return needles.map((needle) => [normalizeGlossaryKey(needle), { needle, entry }] as const);
     })
   ).values()
 ).sort((a, b) => b.needle.length - a.needle.length);
 
 const GLOSSARY_LOOKUP = new Map(
-  GLOSSARY_MATCHERS.map(({ needle, entry }) => [needle.toLowerCase(), entry])
+  GLOSSARY_MATCHERS.map(({ needle, entry }) => [normalizeGlossaryKey(needle), entry])
 );
 
 const GLOSSARY_REGEX = new RegExp(
@@ -189,21 +193,59 @@ const ACRONYM_ENTRIES = GLOSSARY.filter(
 );
 
 function getGlossaryEntry(value: string): GlossaryEntry | undefined {
-  return GLOSSARY_LOOKUP.get(value.toLowerCase());
+  return GLOSSARY_LOOKUP.get(normalizeGlossaryKey(value));
 }
 
 function InlineGlossaryTerm({ entry, text }: { entry: GlossaryEntry; text: string }) {
   const [open, setOpen] = useState(false);
+  const [openDownward, setOpenDownward] = useState(false);
+  const [horizontalAlign, setHorizontalAlign] = useState<"center" | "left" | "right">("center");
+  const containerRef = useRef<HTMLSpanElement | null>(null);
+
+  useLayoutEffect(() => {
+    if (!open) return;
+
+    const rect = containerRef.current?.getBoundingClientRect();
+    if (rect) {
+      setOpenDownward(rect.top < 180);
+      const popupWidth = Math.min(288, window.innerWidth - 48);
+      const centerLeft = rect.left + rect.width / 2 - popupWidth / 2;
+      const centerRight = rect.left + rect.width / 2 + popupWidth / 2;
+      if (centerLeft < 16) setHorizontalAlign("left");
+      else if (centerRight > window.innerWidth - 16) setHorizontalAlign("right");
+      else setHorizontalAlign("center");
+    }
+
+    const close = (event: Event) => {
+      const target = event.target;
+      if (target instanceof Node && containerRef.current?.contains(target)) return;
+      setOpen(false);
+    };
+
+    const closeOnScroll = () => setOpen(false);
+
+    document.addEventListener("pointerdown", close);
+    document.addEventListener("touchstart", close, { passive: true });
+    window.addEventListener("scroll", closeOnScroll, { passive: true });
+
+    return () => {
+      document.removeEventListener("pointerdown", close);
+      document.removeEventListener("touchstart", close);
+      window.removeEventListener("scroll", closeOnScroll);
+    };
+  }, [open]);
 
   return (
-    <span className="relative inline-block align-baseline">
+    <span ref={containerRef} className="relative inline-block align-baseline">
       <span
         className="border-b border-dotted border-slate-400 cursor-help"
         onMouseEnter={(event) => {
+          if ("ontouchstart" in window) return;
           event.stopPropagation();
           setOpen(true);
         }}
         onMouseLeave={(event) => {
+          if ("ontouchstart" in window) return;
           event.stopPropagation();
           setOpen(false);
         }}
@@ -212,11 +254,26 @@ function InlineGlossaryTerm({ entry, text }: { entry: GlossaryEntry; text: strin
           event.stopPropagation();
           setOpen((current) => !current);
         }}
+        onTouchStart={(event) => {
+          event.stopPropagation();
+        }}
       >
         {text}
       </span>
       {open && (
-        <span className="absolute left-1/2 top-0 z-50 w-72 max-w-[calc(100vw-3rem)] -translate-x-1/2 -translate-y-[calc(100%+0.5rem)] rounded-xl border border-slate-600 bg-slate-900 p-3 text-left text-xs leading-relaxed text-slate-200 shadow-2xl">
+        <span
+          className={`absolute z-50 w-72 max-w-[calc(100vw-3rem)] rounded-xl border border-slate-600 bg-slate-900 p-3 text-left text-xs leading-relaxed text-slate-200 shadow-2xl ${
+            horizontalAlign === "center"
+              ? "left-1/2 -translate-x-1/2"
+              : horizontalAlign === "left"
+                ? "left-0"
+                : "right-0"
+          } ${
+            openDownward
+              ? "top-full mt-2"
+              : "top-0 -translate-y-[calc(100%+0.5rem)]"
+          }`}
+        >
           <span className={`inline-flex rounded-full px-2 py-0.5 text-[11px] font-semibold ${entry.color}`}>
             {entry.term}
           </span>
@@ -470,7 +527,7 @@ function GlossaryView({
   onStartAcronymQuiz: () => void;
 }) {
   const [expanded, setExpanded] = useState<Set<string>>(new Set());
-  const [showAll, setShowAll] = useState(false);
+  const [showAll, setShowAll] = useState(true);
   const [query, setQuery] = useState("");
   const [searchOpen, setSearchOpen] = useState(false);
 
@@ -545,18 +602,18 @@ function GlossaryView({
                     <div className="flex items-start gap-3">
                       <div className="flex flex-1 flex-col gap-3 sm:flex-row sm:items-start sm:justify-between">
                         <div className="flex shrink-0 flex-wrap items-center gap-2 sm:w-48">
-                          <span className={`rounded-full px-2.5 py-1 text-xs font-semibold ${entry.color}`}>
+                          <span className={`rounded-full px-4 py-2 text-base font-semibold ${entry.color}`}>
                             {entry.term}
                           </span>
                         </div>
                         <div className="min-w-0 flex-1 space-y-2">
                           {entry.fullForm && (
                             <div className="rounded-lg bg-slate-900/70 p-3">
-                              <div className="mb-1 text-xs font-semibold uppercase tracking-wide text-slate-500">
+                              <div className="mb-1 text-[10px] font-semibold uppercase tracking-wide text-slate-500">
                                 Forma estesa
                               </div>
                               <div
-                                className={`text-sm text-slate-200 transition-all ${
+                                className={`text-[0.7rem] text-slate-200 transition-all ${
                                   isOpen ? "" : "select-none blur-sm"
                                 }`}
                               >
@@ -565,11 +622,11 @@ function GlossaryView({
                             </div>
                           )}
                           <div className="rounded-lg bg-slate-900/70 p-3">
-                            <div className="mb-1 text-xs font-semibold uppercase tracking-wide text-slate-500">
+                            <div className="mb-1 text-[10px] font-semibold uppercase tracking-wide text-slate-500">
                               Definizione
                             </div>
                             <div
-                              className={`text-sm leading-relaxed text-slate-300 transition-all ${
+                              className={`text-[0.7rem] leading-relaxed text-slate-300 transition-all ${
                                 isOpen ? "" : "select-none blur-sm"
                               }`}
                             >
@@ -956,7 +1013,7 @@ function AcronymQuizCard({
   item: AcronymQuizItem;
   index: number;
   total: number;
-  onAnswer: (correct: boolean) => void;
+  onAnswer: (rating: number) => void;
   onBack: () => void;
 }) {
   const [revealed, setRevealed] = useState(false);
@@ -991,7 +1048,7 @@ function AcronymQuizCard({
         Cosa significa l&apos;acronimo <GlossaryText text={item.entry.term} interactive={revealed} />?
       </div>
 
-      <div className="overflow-hidden rounded-2xl border border-slate-700 bg-slate-800">
+      <div className="rounded-2xl border border-slate-700 bg-slate-800">
         {!revealed ? (
           <div className="space-y-5 p-6 text-center">
             <div className="text-xs font-semibold uppercase tracking-[0.18em] text-slate-500">Fronte</div>
@@ -1013,25 +1070,31 @@ function AcronymQuizCard({
             <div className="text-center text-xs font-semibold uppercase tracking-[0.18em] text-slate-500">Retro</div>
             <div className="rounded-xl border border-slate-700 bg-slate-900/70 p-4">
               <div className="mb-1 text-xs font-semibold uppercase tracking-wide text-slate-500">Forma estesa</div>
-              <div className="text-lg font-semibold text-slate-100">{item.entry.fullForm}</div>
+              <div className="text-lg font-semibold text-slate-100">
+                <GlossaryText text={item.entry.fullForm} />
+              </div>
             </div>
             <div className="rounded-xl border border-slate-700 bg-slate-900/70 p-4">
               <div className="mb-1 text-xs font-semibold uppercase tracking-wide text-slate-500">Definizione</div>
-              <div className="text-sm leading-relaxed text-slate-300">{item.entry.definition}</div>
+              <div className="text-sm leading-relaxed text-slate-300">
+                <GlossaryText text={item.entry.definition} />
+              </div>
             </div>
-            <div className="grid grid-cols-2 gap-3">
-              <button
-                onClick={() => onAnswer(false)}
-                className="rounded-xl bg-red-600 py-3 font-semibold text-white transition-colors hover:bg-red-500"
-              >
-                Non lo sapevo
-              </button>
-              <button
-                onClick={() => onAnswer(true)}
-                className="rounded-xl bg-green-600 py-3 font-semibold text-white transition-colors hover:bg-green-500"
-              >
-                Lo sapevo
-              </button>
+            <div className="space-y-2">
+              <div className="text-center text-xs text-slate-500">Quanto lo ricordavi?</div>
+              <div className="grid grid-cols-4 gap-2">
+                {[RATING_AGAIN, RATING_HARD, RATING_GOOD, RATING_EASY].map((rating) => (
+                  <button
+                    key={rating}
+                    onClick={() => onAnswer(rating)}
+                    className={`rounded-xl py-3 text-sm font-semibold text-white transition-all ${ratingColor(
+                      rating
+                    )}`}
+                  >
+                    <div>{ratingLabel(rating)}</div>
+                  </button>
+                ))}
+              </div>
             </div>
           </div>
         )}
@@ -1091,14 +1154,14 @@ function RisultatoSessione({
 }
 
 function AcronymResultSession({
-  results,
+  ratings,
   onDone,
 }: {
-  results: boolean[];
+  ratings: number[];
   onDone: () => void;
 }) {
-  const total = results.length;
-  const correct = results.filter(Boolean).length;
+  const total = ratings.length;
+  const correct = ratings.filter((rating) => rating >= RATING_HARD).length;
   const pct = total === 0 ? 0 : Math.round((correct / total) * 100);
 
   return (
@@ -1114,14 +1177,17 @@ function AcronymResultSession({
         </div>
       </div>
       <div className="grid grid-cols-2 gap-3">
-        <div className="rounded-xl bg-slate-800 p-3">
-          <div className="text-2xl font-bold text-green-400">{correct}</div>
-          <div className="text-xs text-slate-400">Corrette</div>
-        </div>
-        <div className="rounded-xl bg-slate-800 p-3">
-          <div className="text-2xl font-bold text-red-400">{total - correct}</div>
-          <div className="text-xs text-slate-400">Errate</div>
-        </div>
+        {[
+          { label: "Di nuovo", count: ratings.filter((rating) => rating === RATING_AGAIN).length, color: "text-red-400" },
+          { label: "Difficile", count: ratings.filter((rating) => rating === RATING_HARD).length, color: "text-orange-400" },
+          { label: "Bene", count: ratings.filter((rating) => rating === RATING_GOOD).length, color: "text-blue-400" },
+          { label: "Facile", count: ratings.filter((rating) => rating === RATING_EASY).length, color: "text-green-400" },
+        ].map(({ label, count, color }) => (
+          <div key={label} className="rounded-xl bg-slate-800 p-3">
+            <div className={`text-2xl font-bold ${color}`}>{count}</div>
+            <div className="text-xs text-slate-400">{label}</div>
+          </div>
+        ))}
       </div>
       <button
         onClick={onDone}
@@ -1144,7 +1210,7 @@ export default function Home() {
   const [sessionCards, setSessionCards] = useState<CardState[]>([]);
   const [acronymQueue, setAcronymQueue] = useState<AcronymQuizItem[]>([]);
   const [acronymIndex, setAcronymIndex] = useState(0);
-  const [acronymResults, setAcronymResults] = useState<boolean[]>([]);
+  const [acronymRatings, setAcronymRatings] = useState<number[]>([]);
 
   useEffect(() => {
     setCards(loadCards());
@@ -1185,7 +1251,7 @@ export default function Home() {
 
     setAcronymQueue(items);
     setAcronymIndex(0);
-    setAcronymResults([]);
+    setAcronymRatings([]);
     setView("acronym_quiz");
   }, []);
 
@@ -1213,6 +1279,7 @@ export default function Home() {
     const nextHidden = new Set(hidden);
     nextHidden.add(id);
     setHidden(nextHidden);
+    saveHidden(nextHidden);
     if (queueIndex + 1 >= queue.length) {
       if (sessionCards.length === 0) setView("dashboard");
       else setView("result");
@@ -1232,8 +1299,8 @@ export default function Home() {
   }, [cards, queue, queueIndex]);
 
   const handleAcronymAnswer = useCallback(
-    (correct: boolean) => {
-      setAcronymResults((current) => [...current, correct]);
+    (rating: number) => {
+      setAcronymRatings((current) => [...current, rating]);
       if (acronymIndex + 1 >= acronymQueue.length) setView("acronym_result");
       else setAcronymIndex((current) => current + 1);
     },
@@ -1323,7 +1390,7 @@ export default function Home() {
       )}
 
       {view === "acronym_result" && (
-        <AcronymResultSession results={acronymResults} onDone={() => setView("glossary")} />
+        <AcronymResultSession ratings={acronymRatings} onDone={() => setView("glossary")} />
       )}
     </main>
   );
