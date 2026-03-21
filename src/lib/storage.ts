@@ -3,6 +3,7 @@ import { QUESTIONS } from "./questions";
 
 const STORAGE_KEY = "patente_quiz_cards";
 const HIDDEN_KEY  = "patente_quiz_hidden";
+const HIDDEN_GLOSSARY_KEY = "patente_quiz_hidden_glossary";
 const GAMIFICATION_KEY = "patente_quiz_gamification";
 
 export interface GamificationStats {
@@ -124,6 +125,7 @@ export function resetCards(): CardState[] {
   if (typeof window !== "undefined") {
     localStorage.setItem(STORAGE_KEY, JSON.stringify(fresh));
     localStorage.removeItem(HIDDEN_KEY);
+    localStorage.removeItem(HIDDEN_GLOSSARY_KEY);
     localStorage.removeItem(GAMIFICATION_KEY);
   }
   return fresh;
@@ -159,6 +161,29 @@ export function unhideQuestion(id: string): void {
 export function saveHidden(hidden: Iterable<string>): void {
   if (typeof window === "undefined") return;
   localStorage.setItem(HIDDEN_KEY, JSON.stringify([...hidden]));
+}
+
+export function loadHiddenGlossary(): Set<string> {
+  if (typeof window === "undefined") return new Set();
+  try {
+    const raw = localStorage.getItem(HIDDEN_GLOSSARY_KEY);
+    if (!raw) return new Set();
+    return new Set(JSON.parse(raw) as string[]);
+  } catch {
+    return new Set();
+  }
+}
+
+export function hideGlossaryEntry(id: string): void {
+  if (typeof window === "undefined") return;
+  const hidden = loadHiddenGlossary();
+  hidden.add(id);
+  saveHiddenGlossary(hidden);
+}
+
+export function saveHiddenGlossary(hidden: Iterable<string>): void {
+  if (typeof window === "undefined") return;
+  localStorage.setItem(HIDDEN_GLOSSARY_KEY, JSON.stringify([...hidden]));
 }
 
 export function createInitialCards(): CardState[] {

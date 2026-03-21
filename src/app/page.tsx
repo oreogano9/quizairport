@@ -15,14 +15,17 @@ import {
 } from "@/lib/sm2";
 import {
   GamificationStats,
+  hideGlossaryEntry,
   hideQuestion,
   loadCards,
   loadGamificationStats,
   loadHidden,
+  loadHiddenGlossary,
   recordStudyActivity,
   resetCards,
   saveCards,
   saveHidden,
+  saveHiddenGlossary,
 } from "@/lib/storage";
 
 type View =
@@ -706,6 +709,7 @@ function DebugView({ hidden, onBack }: { hidden: Set<string>; onBack: () => void
   const plainText = hiddenQuestions
     .map((question) => `${question.id}\n${getQuestionDisplayText(question.question)}`)
     .join("\n\n");
+  const [copied, setCopied] = useState(false);
 
   return (
     <div className="mx-auto max-w-3xl space-y-4 px-4 py-6">
@@ -720,8 +724,20 @@ function DebugView({ hidden, onBack }: { hidden: Set<string>; onBack: () => void
       </div>
 
       <div className="rounded-xl border border-slate-700 bg-slate-800 p-4">
-        <div className="mb-2 text-sm font-semibold text-slate-200">
-          Domande nascoste: {hiddenQuestions.length}
+        <div className="mb-2 flex items-center justify-between gap-3">
+          <div className="text-sm font-semibold text-slate-200">
+            Domande nascoste: {hiddenQuestions.length}
+          </div>
+          <button
+            onClick={async () => {
+              await navigator.clipboard.writeText(plainText);
+              setCopied(true);
+              window.setTimeout(() => setCopied(false), 1500);
+            }}
+            className="rounded-lg border border-slate-600 bg-slate-900 px-3 py-1.5 text-xs font-semibold text-slate-200 transition-colors hover:bg-slate-700"
+          >
+            {copied ? "Copiato" : "Copia tutto"}
+          </button>
         </div>
         <textarea
           readOnly
@@ -1260,15 +1276,18 @@ function AcronymQuizCard({
   index,
   total,
   onAnswer,
+  onHide,
   onBack,
 }: {
   item: AcronymQuizItem;
   index: number;
   total: number;
   onAnswer: (rating: number) => void;
+  onHide: () => void;
   onBack: () => void;
 }) {
   const [revealed, setRevealed] = useState(false);
+  const [confirmHide, setConfirmHide] = useState(false);
 
   return (
     <div className="mx-auto max-w-2xl space-y-4 px-4 py-4">
@@ -1347,6 +1366,28 @@ function AcronymQuizCard({
                   </button>
                 ))}
               </div>
+            </div>
+
+            <div className="border-t border-slate-700 pt-4">
+              {confirmHide ? (
+                <ConfirmRow
+                  message="Nascondere questa voce del glossario?"
+                  confirmLabel="Sì, nascondi"
+                  confirmColor="text-red-400 hover:text-red-300"
+                  onConfirm={() => {
+                    onHide();
+                    setConfirmHide(false);
+                  }}
+                  onCancel={() => setConfirmHide(false)}
+                />
+              ) : (
+                <button
+                  onClick={() => setConfirmHide(true)}
+                  className="w-full py-1 text-center text-xs text-slate-500 transition-colors hover:text-red-400"
+                >
+                  Nascondi questa voce
+                </button>
+              )}
             </div>
           </div>
         )}
@@ -1693,6 +1734,7 @@ export default function Home() {
   const [acronymQueue, setAcronymQueue] = useState<AcronymQuizItem[]>([]);
   const [acronymIndex, setAcronymIndex] = useState(0);
   const [acronymRatings, setAcronymRatings] = useState<number[]>([]);
+  const [hiddenGlossary, setHiddenGlossary] = useState<Set<string>>(new Set());
   const [gamification, setGamification] = useState<GamificationStats>(loadGamificationStats());
   const [examQueue, setExamQueue] = useState<ExamQuestionState[]>([]);
   const [examIndex, setExamIndex] = useState(0);
@@ -1704,6 +1746,7 @@ export default function Home() {
   useEffect(() => {
     setCards(loadCards());
     setHidden(loadHidden());
+    setHiddenGlossary(loadHiddenGlossary());
     setGamification(loadGamificationStats());
   }, []);
 
@@ -1733,9 +1776,9 @@ export default function Home() {
   );
 
   const startAcronymQuiz = useCallback(() => {
-    const items = shuffleArray(ACRONYM_ENTRIES).map((entry) => {
+    const items = shuffleArray(ACRONYM_ENTRIES.filter((entry) => !hiddenGlossary.has(entry.id))).map((entry) => {
       const distractors = shuffleArray(
-        ACRONYM_ENTRIES.filter((candidate) => candidate.id !== entry.id).map(
+        ACRONYM_ENTRIES.filter((candidate) => candidate.id !== entry.id && !hiddenGlossary.has(candidate.id)).map(
           (candidate) => candidate.fullForm
         )
       ).slice(0, 2);
@@ -1750,7 +1793,7 @@ export default function Home() {
     setAcronymIndex(0);
     setAcronymRatings([]);
     setView("acronym_quiz");
-  }, []);
+  }, [hiddenGlossary]);
 
   const finishExamSimulation = useCallback((timedOut = false, finalAnswers?: ExamAnswer[]) => {
     const answersToUse = finalAnswers ?? examAnswers;
@@ -1846,6 +1889,23 @@ export default function Home() {
     [acronymIndex, acronymQueue.length]
   );
 
+  const handleHideGlossary = useCallback(() => {
+    const entryId = acronymQueue[acronymIndex]?.entry.id;
+    if (!entryId) return;
+    hideGlossaryEntry(entryId);
+    const nextHidden = new Set(hiddenGlossary);
+    nextHidden.add(entryId);
+    setHiddenGlossary(nextHidden);
+    saveHiddenGlossary(nextHidden);
+
+    if (acronymIndex + 1 >= acronymQueue.length) {
+      if (acronymRatings.length === 0) setView("glossary");
+      else setView("acronym_result");
+    } else {
+      setAcronymIndex((current) => current + 1);
+    }
+  }, [acronymIndex, acronymQueue, acronymRatings.length, hiddenGlossary]);
+
   const handleExamNext = useCallback(() => {
     const question = examQueue[examIndex];
     if (!question || examSelectedIndex === null) return;
@@ -1919,6 +1979,7 @@ export default function Home() {
             const fresh = resetCards();
             setCards(fresh);
             setHidden(new Set());
+            setHiddenGlossary(new Set());
             setGamification(loadGamificationStats());
             setSelectedTopic(null);
             setView("dashboard");
@@ -1997,6 +2058,7 @@ export default function Home() {
           index={acronymIndex}
           total={acronymQueue.length}
           onAnswer={handleAcronymAnswer}
+          onHide={handleHideGlossary}
           onBack={() => setView("glossary")}
         />
       )}
