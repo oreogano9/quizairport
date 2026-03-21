@@ -337,6 +337,16 @@ export const QUESTIONS: Question[] = [
       "Per estendere l'ADC-A a un secondo scalo è sufficiente effettuare solo l'addestramento pratico nel nuovo scalo. Perché? La teoria è già stata appresa; quello che cambia è la specifica configurazione del nuovo aeroporto, che si acquisisce con la pratica. 💡 Ricorda: l'esame teorico non si ripete — basta imparare le strade del nuovo aeroporto in pratica.",
     topic: "ADC",
   },
+  {
+    id: "adc-16",
+    question:
+      "Per la mancata esposizione dell'abilitazione alla guida (tesserino ADC), quanti punti vengono decurtati?",
+    options: ["3 punti", "2 punti", "1 punto"],
+    correctIndex: 2,
+    explanation:
+      "La mancata esposizione del tesserino ADC comporta la decurtazione di 1 punto. Perché? L'esposizione immediata dell'abilitazione consente ai controlli di verificare sul posto che il conducente sia autorizzato a operare: senza tesserino visibile si rallentano i controlli e si indebolisce la disciplina operativa. 💡 Ricorda: tesserino ADC non esposto = infrazione minore, ma il punto lo perdi comunque.",
+    topic: "ADC",
+  },
 
   // ── SISTEMA SANZIONATORIO ────────────────────────────────────────────────────
   {
@@ -846,6 +856,32 @@ export const QUESTIONS: Question[] = [
     correctIndex: 2,
     explanation:
       "L'ABL (Apron Border Line) è una linea rossa che delimita il confine del piazzale. Perché? Attraversare l'ABL senza autorizzazione significa entrare nel percorso degli aeromobili: un veicolo che la attraversa può trovarsi davanti a un aereo in rullaggio. 💡 Ricorda: ABL rossa = confine invalicabile — come il bordo di una pista da corsa, non si attraversa senza autorizzazione.",
+    topic: "Segnaletica",
+  },
+  {
+    id: "seg-09",
+    question: "La segnaletica orizzontale di NPL:",
+    options: [
+      "Indica un'area pavimentata adibita esclusivamente alla sosta di mezzi e materiali",
+      "Delimita al suo interno un'area totalmente vietata al parcheggio di mezzi e materiali (NPA)",
+      "È costituita da una doppia linea continua bianca che delimita la viabilità veicolare",
+    ],
+    correctIndex: 1,
+    explanation:
+      "La NPL (No Parking Line) delimita la NPA, cioè un'area totalmente vietata al parcheggio di mezzi e materiali. Perché? In certe zone il parcheggio ostacolerebbe i percorsi operativi, la visibilità o le vie di fuga: la NPL rende immediato il confine da non oltrepassare con un veicolo in sosta. 💡 Ricorda: NPL = la linea; NPA = l'area vietata che quella linea racchiude.",
+    topic: "Segnaletica",
+  },
+  {
+    id: "seg-10",
+    question: "Gli start-up point posti sulle vie di rullaggio indicano:",
+    options: [
+      "Un punto di posizione intermedia d'attesa da cui l'aeromobile intraprende la manovra di rullaggio verso la pista",
+      "Il punto in cui l'aeromobile, una volta posizionato, è automaticamente autorizzato al decollo",
+      "Un punto segnalato con un cerchio tra due frecce verdi riservato ai veicoli di assistenza",
+    ],
+    correctIndex: 0,
+    explanation:
+      "Gli start-up point indicano un punto di attesa/intermedio sulle taxiway da cui l'aeromobile inizia o prosegue il rullaggio verso la pista. Perché? Servono a ordinare i movimenti a terra e a mantenere separati gli aeromobili in attesa, evitando congestione e conflitti nelle aree più vicine alla pista. 💡 Ricorda: start-up point = punto di attesa operativo, non autorizzazione automatica al decollo.",
     topic: "Segnaletica",
   },
 
