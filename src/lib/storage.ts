@@ -181,6 +181,13 @@ export function hideGlossaryEntry(id: string): void {
   saveHiddenGlossary(hidden);
 }
 
+export function unhideGlossaryEntry(id: string): void {
+  if (typeof window === "undefined") return;
+  const hidden = loadHiddenGlossary();
+  hidden.delete(id);
+  saveHiddenGlossary(hidden);
+}
+
 export function saveHiddenGlossary(hidden: Iterable<string>): void {
   if (typeof window === "undefined") return;
   localStorage.setItem(HIDDEN_GLOSSARY_KEY, JSON.stringify([...hidden]));

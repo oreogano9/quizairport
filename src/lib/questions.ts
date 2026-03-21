@@ -5,6 +5,7 @@ export interface Question {
   correctIndex: number;
   explanation: string;
   topic: string;
+  versionTag?: string;
   imageUrl?: string; // path relative to /public
 }
 
@@ -1800,8 +1801,9 @@ export const QUESTIONS: Question[] = [
   },
   {
     id: "v2-01",
+    versionTag: "v2",
     question:
-      "Quale documento originale deve essere obbligatoriamente conservato a bordo dei mezzi che transitano ai varchi doganali? (v2)",
+      "Quale documento originale deve essere obbligatoriamente conservato a bordo dei mezzi che transitano ai varchi doganali?",
     options: [
       "La polizza assicurativa RCT",
       "L'Autorizzazione alla Circolazione dei mezzi in Airside (ACA)",
@@ -1814,8 +1816,9 @@ export const QUESTIONS: Question[] = [
   },
   {
     id: "v2-02",
+    versionTag: "v2",
     question:
-      "In caso di perdita di idrocarburi a Fiumicino, quale numero interno ADR deve essere contattato immediatamente? (v2)",
+      "In caso di perdita di idrocarburi a Fiumicino, quale numero interno ADR deve essere contattato immediatamente?",
     options: ["06 6595 3432", "06 6595 3022", "06 6595 9370"],
     correctIndex: 1,
     explanation:
@@ -1824,8 +1827,9 @@ export const QUESTIONS: Question[] = [
   },
   {
     id: "v2-03",
+    versionTag: "v2",
     question:
-      "Qual è l'ordine di posizionamento dei carrelli vuoti in un traino misto a Fiumicino, partendo dalla motrice? (v2)",
+      "Qual è l'ordine di posizionamento dei carrelli vuoti in un traino misto a Fiumicino, partendo dalla motrice?",
     options: [
       "Carrelli portabagagli, carrelli ULD, dolly per pallet",
       "Dolly per pallet, carrelli per ULD, carrelli portabagagli",
@@ -1838,8 +1842,9 @@ export const QUESTIONS: Question[] = [
   },
   {
     id: "v2-04",
+    versionTag: "v2",
     question:
-      "A Ciampino, in caso di nebbia sul sedime aeroportuale, quale segnaletica luminosa viene attivata sulle pensiline dei varchi? (v2)",
+      "A Ciampino, in caso di nebbia sul sedime aeroportuale, quale segnaletica luminosa viene attivata sulle pensiline dei varchi?",
     options: [
       "Luci lampeggianti blu",
       "Tabelle rosse con luci lampeggianti accese",
@@ -1852,8 +1857,9 @@ export const QUESTIONS: Question[] = [
   },
   {
     id: "v2-05",
+    versionTag: "v2",
     question:
-      "Quale dispositivo è esentato dall'obbligo di parafiamma interno se il veicolo ne è già provvisto? (v2)",
+      "Quale dispositivo è esentato dall'obbligo di parafiamma interno se il veicolo ne è già provvisto?",
     options: [
       "Mezzi elettrici",
       "Marmitta catalitica o dispositivo equivalente (FAP)",
@@ -1866,8 +1872,9 @@ export const QUESTIONS: Question[] = [
   },
   {
     id: "v2-06",
+    versionTag: "v2",
     question:
-      "Nello scalo di Ciampino, per l'aviazione generale, con quali mezzi possono essere trasportati i passeggeri in apron? (v2)",
+      "Nello scalo di Ciampino, per l'aviazione generale, con quali mezzi possono essere trasportati i passeggeri in apron?",
     options: [
       "Esclusivamente con autobus Cobus",
       "Autovetture, van o minibus",
@@ -1880,8 +1887,9 @@ export const QUESTIONS: Question[] = [
   },
   {
     id: "v2-07",
+    versionTag: "v2",
     question:
-      "A Fiumicino, l'attraversamento del sottopasso che collega la zona nord a quella sud richiede l'autorizzazione di quali enti? (v2)",
+      "A Fiumicino, l'attraversamento del sottopasso che collega la zona nord a quella sud richiede l'autorizzazione di quali enti?",
     options: [
       "Solo ADR Security",
       "Polizia di Stato, ADR Security e Sicurezza Operativa",
@@ -1894,8 +1902,9 @@ export const QUESTIONS: Question[] = [
   },
   {
     id: "v2-08",
+    versionTag: "v2",
     question:
-      "Qual è la copertura azimutale richiesta per le luci ostacolo dei veicoli? (v2)",
+      "Qual è la copertura azimutale richiesta per le luci ostacolo dei veicoli?",
     options: ["180 gradi", "360 gradi", "90 gradi verso l'alto"],
     correctIndex: 1,
     explanation:
@@ -1904,8 +1913,9 @@ export const QUESTIONS: Question[] = [
   },
   {
     id: "v2-09",
+    versionTag: "v2",
     question:
-      "Quale sanzione accessoria è prevista se un'infrazione causa danni gravi a strutture aeroportuali? (v2)",
+      "Quale sanzione accessoria è prevista se un'infrazione causa danni gravi a strutture aeroportuali?",
     options: [
       "Decurtazione di 5 punti e revoca per un periodo commisurato alla gravità",
       "Sospensione immediata della patente civile",
@@ -1918,8 +1928,9 @@ export const QUESTIONS: Question[] = [
   },
   {
     id: "v2-10",
+    versionTag: "v2",
     question:
-      "A Fiumicino, quale colore identifica il tesserino (TIA) che autorizza l'accesso all'area cargo antistante i magazzini? (v2)",
+      "A Fiumicino, quale colore identifica il tesserino (TIA) che autorizza l'accesso all'area cargo antistante i magazzini?",
     options: ["Banda rossa", "Azzurro 4", "Banda gialla"],
     correctIndex: 1,
     explanation:
@@ -1928,8 +1939,9 @@ export const QUESTIONS: Question[] = [
   },
   {
     id: "v2-11",
+    versionTag: "v2",
     question:
-      "Qual è la dimensione dei pannelli con bandiera a scacchi bianco-rossa per i veicoli individuati dalle D.d.S.? (v2)",
+      "Qual è la dimensione dei pannelli con bandiera a scacchi bianco-rossa per i veicoli individuati dalle D.d.S.?",
     options: [
       "30x30 cm",
       "Normalmente 45x45 cm, riducibili fino a 15x15 cm",
@@ -1942,8 +1954,9 @@ export const QUESTIONS: Question[] = [
   },
   {
     id: "v2-12",
+    versionTag: "v2",
     question:
-      "In caso di Situational Awareness compromessa o incertezza sulla propria posizione in apron, cosa deve fare il conducente? (v2)",
+      "In caso di Situational Awareness compromessa o incertezza sulla propria posizione in apron, cosa deve fare il conducente?",
     options: [
       "Chiedere indicazioni via radio a un altro Handler",
       "Accendere le luci, comunicare la posizione a ADR e attendere il Follow-me",
@@ -1956,8 +1969,9 @@ export const QUESTIONS: Question[] = [
   },
   {
     id: "v2-13",
+    versionTag: "v2",
     question:
-      "Quale segnale indica il punto di inizio della virata per il pilota in ingresso piazzola? (v2)",
+      "Quale segnale indica il punto di inizio della virata per il pilota in ingresso piazzola?",
     options: ["Turn Bar (barra di virata)", "Lead-in line tratteggiata", "Stop Line 1"],
     correctIndex: 0,
     explanation:
@@ -1966,8 +1980,9 @@ export const QUESTIONS: Question[] = [
   },
   {
     id: "v2-14",
+    versionTag: "v2",
     question:
-      "I rifiuti di bordo scaricati dall'aeromobile devono essere contenuti in quali contenitori? (v2)",
+      "I rifiuti di bordo scaricati dall'aeromobile devono essere contenuti in quali contenitori?",
     options: [
       "Sacchi neri coperti",
       "Sacchi trasparenti che consentano l'individuazione dell'Handler",
@@ -1980,8 +1995,9 @@ export const QUESTIONS: Question[] = [
   },
   {
     id: "v2-15",
+    versionTag: "v2",
     question:
-      "A Fiumicino, nel traino di carrelli ULD carichi, dove deve essere posizionato il carico più pesante? (v2)",
+      "A Fiumicino, nel traino di carrelli ULD carichi, dove deve essere posizionato il carico più pesante?",
     options: [
       "In fondo al convoglio",
       "Piu vicino alla motrice",
@@ -1994,8 +2010,9 @@ export const QUESTIONS: Question[] = [
   },
   {
     id: "v2-16",
+    versionTag: "v2",
     question:
-      "In caso di nebbia fitta, quale comportamento è prescritto allo stop aeronautico prima di attraversare una taxiway? (v2)",
+      "In caso di nebbia fitta, quale comportamento è prescritto allo stop aeronautico prima di attraversare una taxiway?",
     options: [
       "Attraversare solo se si sente il rumore dei motori lontano",
       "Attendere in caso di mancanza di visibilità sufficiente al riconoscimento del Follow-me",
@@ -2008,8 +2025,9 @@ export const QUESTIONS: Question[] = [
   },
   {
     id: "v2-17",
+    versionTag: "v2",
     question:
-      "Qual è il limite massimo di carrelli per pallet (dolly) che è consentito trainare a Fiumicino in condizioni di carico? (v2)",
+      "Qual è il limite massimo di carrelli per pallet (dolly) che è consentito trainare a Fiumicino in condizioni di carico?",
     options: ["5 unità", "3 unità", "4 unità"],
     correctIndex: 1,
     explanation:
@@ -2018,8 +2036,9 @@ export const QUESTIONS: Question[] = [
   },
   {
     id: "v2-18",
+    versionTag: "v2",
     question:
-      "Il marking di identificazione della piazzola deve sovrapporsi alla linea lead-in a quale distanza dalla TCL? (v2)",
+      "Il marking di identificazione della piazzola deve sovrapporsi alla linea lead-in a quale distanza dalla TCL?",
     options: ["1 metro", "3 metri", "5 metri"],
     correctIndex: 1,
     explanation:
@@ -2028,8 +2047,9 @@ export const QUESTIONS: Question[] = [
   },
   {
     id: "v2-19",
+    versionTag: "v2",
     question:
-      "La linea di virata (turning line) deve terminare presso la posizione di sosta con un prolungamento rettilineo di almeno: (v2)",
+      "La linea di virata (turning line) deve terminare presso la posizione di sosta con un prolungamento rettilineo di almeno:",
     options: ["1 metro", "3 metri", "5 metri"],
     correctIndex: 1,
     explanation:
@@ -2038,8 +2058,9 @@ export const QUESTIONS: Question[] = [
   },
   {
     id: "v2-20",
+    versionTag: "v2",
     question:
-      "In caso di mancato superamento del test di recurrent training, entro quale finestra temporale è possibile ripetere la prova? (v2)",
+      "In caso di mancato superamento del test di recurrent training, entro quale finestra temporale è possibile ripetere la prova?",
     options: ["Entro 24 ore", "Dopo 3 giorni ed entro 14 giorni", "Dopo 7 giorni lavorativi"],
     correctIndex: 1,
     explanation:
@@ -2048,8 +2069,9 @@ export const QUESTIONS: Question[] = [
   },
   {
     id: "v2-21",
+    versionTag: "v2",
     question:
-      "L'iscrizione che indica la massima apertura alare ammissibile (Max Span) deve avere: (v2)",
+      "L'iscrizione che indica la massima apertura alare ammissibile (Max Span) deve avere:",
     options: [
       "Caratteri gialli su fondo rosso",
       "Caratteri neri su fondo giallo",
@@ -2062,8 +2084,9 @@ export const QUESTIONS: Question[] = [
   },
   {
     id: "v2-22",
+    versionTag: "v2",
     question:
-      "In caso di scarso contrasto della pavimentazione, con quale colore può essere bordata la linea ABL? (v2)",
+      "In caso di scarso contrasto della pavimentazione, con quale colore può essere bordata la linea ABL?",
     options: ["Nero", "Bianco", "Giallo"],
     correctIndex: 1,
     explanation:
@@ -2072,8 +2095,9 @@ export const QUESTIONS: Question[] = [
   },
   {
     id: "v2-23",
+    versionTag: "v2",
     question:
-      "Di che colore è il fondo del marking di identificazione della piazzola di sosta (Stand ID)? (v2)",
+      "Di che colore è il fondo del marking di identificazione della piazzola di sosta (Stand ID)?",
     options: ["Giallo", "Nero", "Rosso"],
     correctIndex: 1,
     explanation:
@@ -2082,8 +2106,9 @@ export const QUESTIONS: Question[] = [
   },
   {
     id: "v2-24",
+    versionTag: "v2",
     question:
-      "Qual è la frequenza radio della Torre UHF specifica per lo scalo di Fiumicino? (v2)",
+      "Qual è la frequenza radio della Torre UHF specifica per lo scalo di Fiumicino?",
     options: ["418.4 MHz", "445.775 MHz", "121.5 MHz"],
     correctIndex: 1,
     explanation:
@@ -2092,8 +2117,9 @@ export const QUESTIONS: Question[] = [
   },
   {
     id: "v2-25",
+    versionTag: "v2",
     question:
-      "Qual è la durata della formazione teorica prevista per il corso di Remedial Training? (v2)",
+      "Qual è la durata della formazione teorica prevista per il corso di Remedial Training?",
     options: ["30 minuti", "1 ora", "4 ore"],
     correctIndex: 1,
     explanation:
@@ -2102,8 +2128,9 @@ export const QUESTIONS: Question[] = [
   },
   {
     id: "v2-26",
+    versionTag: "v2",
     question:
-      "Qual è la durata dell'addestramento pratico previsto per il corso di Remedial Training? (v2)",
+      "Qual è la durata dell'addestramento pratico previsto per il corso di Remedial Training?",
     options: ["1 ora", "2 ore", "4 ore"],
     correctIndex: 1,
     explanation:
@@ -2112,8 +2139,9 @@ export const QUESTIONS: Question[] = [
   },
   {
     id: "v2-27",
+    versionTag: "v2",
     question:
-      "Qual è la distanza minima da mantenere davanti a un aeromobile fermo con motori in moto? (v2)",
+      "Qual è la distanza minima da mantenere davanti a un aeromobile fermo con motori in moto?",
     options: ["15 metri", "30 metri", "50 metri"],
     correctIndex: 1,
     explanation:
@@ -2122,8 +2150,9 @@ export const QUESTIONS: Question[] = [
   },
   {
     id: "v2-28",
+    versionTag: "v2",
     question:
-      "Qual è la distanza minima da mantenere dietro a un aeromobile fermo con motori in moto? (v2)",
+      "Qual è la distanza minima da mantenere dietro a un aeromobile fermo con motori in moto?",
     options: ["50 metri", "100 metri", "150 metri"],
     correctIndex: 1,
     explanation:
@@ -2132,8 +2161,9 @@ export const QUESTIONS: Question[] = [
   },
   {
     id: "v2-29",
+    versionTag: "v2",
     question:
-      "Dove sono installati i display AID (Airside Information Display) nello scalo di Fiumicino? (v2)",
+      "Dove sono installati i display AID (Airside Information Display) nello scalo di Fiumicino?",
     options: [
       "All'interno della TWR",
       "In prossimità dei varchi di accesso in Airside",
@@ -2146,8 +2176,9 @@ export const QUESTIONS: Question[] = [
   },
   {
     id: "v2-30",
+    versionTag: "v2",
     question:
-      "Come deve essere posizionata la stop line rispetto alla barra d'allineamento dello stand? (v2)",
+      "Come deve essere posizionata la stop line rispetto alla barra d'allineamento dello stand?",
     options: ["Parallela", "Ortogonale", "Inclinata di 45°"],
     correctIndex: 1,
     explanation:
@@ -2156,8 +2187,9 @@ export const QUESTIONS: Question[] = [
   },
   {
     id: "v2-31",
+    versionTag: "v2",
     question:
-      "Nello scalo di Ciampino, qual è il limite massimo di carrelli dolly/ULD trainabili? (v2)",
+      "Nello scalo di Ciampino, qual è il limite massimo di carrelli dolly/ULD trainabili?",
     options: ["3 unità", "4 unità", "5 unità"],
     correctIndex: 1,
     explanation:
@@ -2166,8 +2198,9 @@ export const QUESTIONS: Question[] = [
   },
   {
     id: "v2-32",
+    versionTag: "v2",
     question:
-      "Nello scalo di Ciampino, qual è il limite massimo di carrelli standard trainabili? (v2)",
+      "Nello scalo di Ciampino, qual è il limite massimo di carrelli standard trainabili?",
     options: ["3 unità", "5 unità", "4 unità"],
     correctIndex: 1,
     explanation:
@@ -2176,8 +2209,9 @@ export const QUESTIONS: Question[] = [
   },
   {
     id: "v2-33",
+    versionTag: "v2",
     question:
-      "Quale caratteristica deve avere l'adesivo QR-code se applicato esternamente al mezzo? (v2)",
+      "Quale caratteristica deve avere l'adesivo QR-code se applicato esternamente al mezzo?",
     options: ["Catarifrangente", "Resistente all'acqua", "Di colore rosso fluorescente"],
     correctIndex: 1,
     explanation:
@@ -2186,8 +2220,9 @@ export const QUESTIONS: Question[] = [
   },
   {
     id: "v2-34",
+    versionTag: "v2",
     question:
-      "In caso di attivazione delle LVP (bassa visibilità), cosa accade al rifornimento con passeggeri a bordo? (v2)",
+      "In caso di attivazione delle LVP (bassa visibilità), cosa accade al rifornimento con passeggeri a bordo?",
     options: [
       "Prosegue con scorta dei Vigili del Fuoco",
       "Viene sospeso",
@@ -2200,8 +2235,9 @@ export const QUESTIONS: Question[] = [
   },
   {
     id: "v2-35",
+    versionTag: "v2",
     question:
-      "Di che colore è la segnaletica orizzontale lead-in per l'ingresso in piazzola? (v2)",
+      "Di che colore è la segnaletica orizzontale lead-in per l'ingresso in piazzola?",
     options: ["Bianca", "Gialla", "Rossa"],
     correctIndex: 1,
     explanation:

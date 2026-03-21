@@ -21,16 +21,22 @@ import {
   loadGamificationStats,
   loadHidden,
   loadHiddenGlossary,
+  mergeCardsWithQuestionBank,
   recordStudyActivity,
   resetCards,
   saveCards,
+  saveGamificationStats,
   saveHidden,
   saveHiddenGlossary,
+  unhideGlossaryEntry,
+  unhideQuestion,
 } from "@/lib/storage";
 
 type View =
   | "dashboard"
   | "debug"
+  | "settings"
+  | "search"
   | "topic_detail"
   | "quiz"
   | "result"
@@ -61,8 +67,65 @@ interface ExamQuestionState {
   shuffled: ShuffledOption[];
 }
 
+interface SaveTransferPayload {
+  version: 1;
+  exportedAt: string;
+  cards: CardState[];
+  hidden: string[];
+  hiddenGlossary: string[];
+  gamification: GamificationStats;
+}
+
+type ImportMode = "overwrite" | "merge";
+
 function getQuestion(id: string): Question {
   return QUESTIONS.find((q) => q.id === id)!;
+}
+
+function mergeImportedCards(currentCards: CardState[], importedCards: CardState[]): CardState[] {
+  const byId = new Map<string, CardState>();
+  for (const card of currentCards) byId.set(card.questionId, card);
+  for (const card of importedCards) {
+    const current = byId.get(card.questionId);
+    if (!current) {
+      byId.set(card.questionId, card);
+      continue;
+    }
+
+    const currentScore =
+      current.repetitions * 1000 +
+      current.correctReviews * 10 +
+      current.totalReviews +
+      current.easeFactor;
+    const importedScore =
+      card.repetitions * 1000 +
+      card.correctReviews * 10 +
+      card.totalReviews +
+      card.easeFactor;
+
+    byId.set(card.questionId, importedScore >= currentScore ? card : current);
+  }
+
+  return mergeCardsWithQuestionBank([...byId.values()]);
+}
+
+function mergeGamificationStats(current: GamificationStats, incoming?: Partial<GamificationStats>): GamificationStats {
+  if (!incoming) return current;
+  return {
+    xp: Math.max(current.xp, incoming.xp ?? 0),
+    currentStreak: Math.max(current.currentStreak, incoming.currentStreak ?? 0),
+    bestStreak: Math.max(current.bestStreak, incoming.bestStreak ?? 0),
+    lastStudyDate:
+      !current.lastStudyDate || !incoming.lastStudyDate
+        ? current.lastStudyDate ?? incoming.lastStudyDate ?? null
+        : current.lastStudyDate > incoming.lastStudyDate
+          ? current.lastStudyDate
+          : incoming.lastStudyDate,
+    totalSessions: Math.max(current.totalSessions, incoming.totalSessions ?? 0),
+    examAttempts: Math.max(current.examAttempts, incoming.examAttempts ?? 0),
+    examPasses: Math.max(current.examPasses, incoming.examPasses ?? 0),
+    bestExamScore: Math.max(current.bestExamScore, incoming.bestExamScore ?? 0),
+  };
 }
 
 function shuffleArray<T>(items: T[]): T[] {
@@ -230,12 +293,11 @@ function getGlossaryEntry(value: string): GlossaryEntry | undefined {
 }
 
 function isV2Question(question: Question): boolean {
-  return question.question.includes("(v2)");
+  return question.versionTag === "v2";
 }
 
 function getQuestionDisplayText(raw: string): string {
-  const withoutV2 = raw.replace(/\s*\(v2\)\s*$/i, "").trim();
-  return withoutV2.replace(/\s+\(([A-Z0-9./-]{2,})\)/g, "").trim();
+  return raw.replace(/\s+\(([A-Z0-9./-]{2,})\)/g, "").trim();
 }
 
 function InlineGlossaryTerm({ entry, text }: { entry: GlossaryEntry; text: string }) {
@@ -494,7 +556,8 @@ function Dashboard({
   onStartExamSimulation,
   onOpenTopic,
   onOpenGlossary,
-  onOpenDebug,
+  onOpenSettings,
+  onOpenSearch,
   onReset,
 }: {
   cards: CardState[];
@@ -503,7 +566,8 @@ function Dashboard({
   onStartExamSimulation: () => void;
   onOpenTopic: (topic: string) => void;
   onOpenGlossary: () => void;
-  onOpenDebug: () => void;
+  onOpenSettings: () => void;
+  onOpenSearch: () => void;
   onReset: () => void;
 }) {
   const activeCards = cards.filter((card) => !hidden.has(card.questionId));
@@ -567,6 +631,12 @@ function Dashboard({
         ))}
       </div>
 
+      <div className="rounded-xl border border-slate-700 bg-slate-800/70 p-3 text-xs leading-relaxed text-slate-400">
+        <span className="font-semibold text-slate-300">Precisione</span>: percentuale di risposte corrette date finora.
+        <span className="mx-1 text-slate-600">•</span>
+        <span className="font-semibold text-slate-300">Domande Apprese</span>: domande consolidate con almeno 3 ripassi riusciti.
+      </div>
+
       <div className="space-y-2 rounded-xl bg-slate-800 p-4">
         <div className="flex justify-between text-sm">
           <span className="text-slate-300">Progresso totale</span>
@@ -599,6 +669,13 @@ function Dashboard({
         className="w-full rounded-xl border border-slate-700 bg-slate-800 py-3 text-sm font-semibold text-slate-200 transition-colors hover:bg-slate-700 active:bg-slate-600"
       >
         Glossario
+      </button>
+
+      <button
+        onClick={onOpenSearch}
+        className="w-full rounded-xl border border-slate-700 bg-slate-800 py-3 text-sm font-semibold text-slate-200 transition-colors hover:bg-slate-700 active:bg-slate-600"
+      >
+        Cerca domande
       </button>
 
       <button
@@ -683,10 +760,10 @@ function Dashboard({
 
       <div className="text-center">
         <button
-          onClick={onOpenDebug}
-          className="mb-4 text-xs text-slate-600 transition-colors hover:text-slate-400"
+          onClick={onOpenSettings}
+          className="mb-4 text-sm font-semibold text-slate-400 transition-colors hover:text-slate-200"
         >
-          Modalita debug
+          Impostazioni
         </button>
       </div>
 
@@ -704,12 +781,19 @@ function Dashboard({
   );
 }
 
-function DebugView({ hidden, onBack }: { hidden: Set<string>; onBack: () => void }) {
+function DebugView({
+  hidden,
+  onBack,
+}: {
+  hidden: Set<string>;
+  onBack: () => void;
+}) {
   const hiddenQuestions = QUESTIONS.filter((question) => hidden.has(question.id));
   const plainText = hiddenQuestions
     .map((question) => `${question.id}\n${getQuestionDisplayText(question.question)}`)
     .join("\n\n");
   const [copied, setCopied] = useState(false);
+  const [copyMessage, setCopyMessage] = useState<string | null>(null);
 
   return (
     <div className="mx-auto max-w-3xl space-y-4 px-4 py-6">
@@ -730,9 +814,14 @@ function DebugView({ hidden, onBack }: { hidden: Set<string>; onBack: () => void
           </div>
           <button
             onClick={async () => {
-              await navigator.clipboard.writeText(plainText);
-              setCopied(true);
-              window.setTimeout(() => setCopied(false), 1500);
+              try {
+                await navigator.clipboard.writeText(plainText);
+                setCopied(true);
+                setCopyMessage(null);
+                window.setTimeout(() => setCopied(false), 1500);
+              } catch {
+                setCopyMessage("Copia non riuscita in questo browser.");
+              }
             }}
             className="rounded-lg border border-slate-600 bg-slate-900 px-3 py-1.5 text-xs font-semibold text-slate-200 transition-colors hover:bg-slate-700"
           >
@@ -744,6 +833,276 @@ function DebugView({ hidden, onBack }: { hidden: Set<string>; onBack: () => void
           value={plainText}
           className="min-h-[24rem] w-full rounded-lg border border-slate-700 bg-slate-900 p-3 font-mono text-xs leading-relaxed text-slate-300 outline-none"
         />
+        {copyMessage && <div className="mt-2 text-xs text-slate-500">{copyMessage}</div>}
+      </div>
+    </div>
+  );
+}
+
+function SettingsView({
+  cards,
+  hidden,
+  hiddenGlossary,
+  gamification,
+  onImport,
+  onUnhideQuestion,
+  onUnhideGlossary,
+  onOpenDebug,
+  onBack,
+}: {
+  cards: CardState[];
+  hidden: Set<string>;
+  hiddenGlossary: Set<string>;
+  gamification: GamificationStats;
+  onImport: (payload: SaveTransferPayload, mode: "overwrite" | "merge") => { ok: boolean; message: string };
+  onUnhideQuestion: (id: string) => void;
+  onUnhideGlossary: (id: string) => void;
+  onOpenDebug: () => void;
+  onBack: () => void;
+}) {
+  const exportPayload: SaveTransferPayload = {
+    version: 1,
+    exportedAt: new Date().toISOString(),
+    cards,
+    hidden: [...hidden],
+    hiddenGlossary: [...hiddenGlossary],
+    gamification,
+  };
+  const hiddenQuestions = QUESTIONS.filter((question) => hidden.has(question.id));
+  const hiddenGlossaryEntries = ACRONYM_ENTRIES.filter((entry) => hiddenGlossary.has(entry.id));
+  const [copiedSave, setCopiedSave] = useState(false);
+  const [copyMessage, setCopyMessage] = useState<string | null>(null);
+  const [importText, setImportText] = useState("");
+  const [importMessage, setImportMessage] = useState<string | null>(null);
+
+  let parsedImport: SaveTransferPayload | null = null;
+  try {
+    const parsed = JSON.parse(importText);
+    if (parsed && parsed.version === 1 && Array.isArray(parsed.cards)) parsedImport = parsed;
+  } catch {}
+
+  const preview = parsedImport
+    ? {
+        cards: parsedImport.cards.length,
+        hidden: Array.isArray(parsedImport.hidden) ? parsedImport.hidden.length : 0,
+        hiddenGlossary: Array.isArray(parsedImport.hiddenGlossary) ? parsedImport.hiddenGlossary.length : 0,
+        exportedAt: parsedImport.exportedAt,
+      }
+    : null;
+
+  return (
+    <div className="mx-auto max-w-3xl space-y-4 px-4 py-6">
+      <div className="flex items-center gap-3">
+        <button onClick={onBack} className="shrink-0 p-1 text-slate-400 transition-colors hover:text-white">
+          <IconBack />
+        </button>
+        <div className="flex-1">
+          <div className="text-xl font-bold text-white">Impostazioni</div>
+          <div className="text-sm text-slate-400">Gestione salvataggio locale, elementi nascosti e strumenti di servizio.</div>
+        </div>
+      </div>
+
+      <div className="rounded-xl border border-slate-700 bg-slate-800 p-4">
+        <div className="mb-2 flex items-center justify-between gap-3">
+          <div className="text-sm font-semibold text-slate-200">Esporta progresso</div>
+          <button
+            onClick={async () => {
+              try {
+                await navigator.clipboard.writeText(JSON.stringify(exportPayload, null, 2));
+                setCopiedSave(true);
+                setCopyMessage(null);
+                window.setTimeout(() => setCopiedSave(false), 1500);
+              } catch {
+                setCopyMessage("Copia non riuscita in questo browser.");
+              }
+            }}
+            className="rounded-lg border border-slate-600 bg-slate-900 px-3 py-1.5 text-xs font-semibold text-slate-200 transition-colors hover:bg-slate-700"
+          >
+            {copiedSave ? "Copiato" : "Copia salvataggio"}
+          </button>
+        </div>
+        <textarea
+          readOnly
+          value={JSON.stringify(exportPayload, null, 2)}
+          className="min-h-[14rem] w-full rounded-lg border border-slate-700 bg-slate-900 p-3 font-mono text-xs leading-relaxed text-slate-300 outline-none"
+        />
+        {copyMessage && <div className="mt-2 text-xs text-slate-500">{copyMessage}</div>}
+      </div>
+
+      <div className="rounded-xl border border-slate-700 bg-slate-800 p-4">
+        <div className="mb-2 text-sm font-semibold text-slate-200">Importa progresso</div>
+        <textarea
+          value={importText}
+          onChange={(event) => setImportText(event.target.value)}
+          placeholder="Incolla qui il JSON esportato da un altro browser"
+          className="min-h-[14rem] w-full rounded-lg border border-slate-700 bg-slate-900 p-3 font-mono text-xs leading-relaxed text-slate-300 outline-none placeholder:text-slate-500"
+        />
+        {preview ? (
+          <div className="mt-3 rounded-lg border border-slate-700 bg-slate-900/50 p-3 text-xs text-slate-400">
+            <div className="font-semibold text-slate-300">Anteprima importazione</div>
+            <div className="mt-1">
+              {preview.cards} schede · {preview.hidden} domande nascoste · {preview.hiddenGlossary} voci glossario nascoste
+            </div>
+            <div className="mt-1">Esportato il: {preview.exportedAt || "data non disponibile"}</div>
+            <div className="mt-2 flex flex-wrap gap-2">
+              <button
+                onClick={() => {
+                  const result = onImport(parsedImport!, "overwrite");
+                  setImportMessage(result.message);
+                  if (result.ok) setImportText("");
+                }}
+                className="rounded-lg bg-blue-600 px-4 py-2 text-xs font-semibold text-white transition-colors hover:bg-blue-500"
+              >
+                Sovrascrivi
+              </button>
+              <button
+                onClick={() => {
+                  const result = onImport(parsedImport!, "merge");
+                  setImportMessage(result.message);
+                  if (result.ok) setImportText("");
+                }}
+                className="rounded-lg border border-slate-600 bg-slate-900 px-4 py-2 text-xs font-semibold text-slate-200 transition-colors hover:bg-slate-700"
+              >
+                Unisci
+              </button>
+            </div>
+          </div>
+        ) : importText.trim() ? (
+          <div className="mt-3 text-xs text-slate-500">Formato non valido: incolla un JSON di esportazione completo.</div>
+        ) : null}
+        {importMessage && <div className="mt-2 text-xs text-slate-400">{importMessage}</div>}
+      </div>
+
+      <div className="grid gap-4 sm:grid-cols-2">
+        <div className="rounded-xl border border-slate-700 bg-slate-800 p-4">
+          <div className="mb-2 text-sm font-semibold text-slate-200">Domande nascoste</div>
+          <div className="mb-3 text-xs text-slate-500">{hiddenQuestions.length} elementi</div>
+          <div className="max-h-72 space-y-2 overflow-auto">
+            {hiddenQuestions.length === 0 && <div className="text-xs text-slate-500">Nessuna domanda nascosta.</div>}
+            {hiddenQuestions.map((question) => (
+              <div key={question.id} className="rounded-lg border border-slate-700 bg-slate-900/50 p-3">
+                <div className="text-xs font-semibold text-slate-400">{question.id}</div>
+                <div className="mt-1 text-sm text-slate-200">{getQuestionDisplayText(question.question)}</div>
+                <button
+                  onClick={() => onUnhideQuestion(question.id)}
+                  className="mt-2 text-xs font-semibold text-blue-300 transition-colors hover:text-blue-200"
+                >
+                  Ripristina
+                </button>
+              </div>
+            ))}
+          </div>
+        </div>
+
+        <div className="rounded-xl border border-slate-700 bg-slate-800 p-4">
+          <div className="mb-2 text-sm font-semibold text-slate-200">Voci glossario nascoste</div>
+          <div className="mb-3 text-xs text-slate-500">{hiddenGlossaryEntries.length} elementi</div>
+          <div className="max-h-72 space-y-2 overflow-auto">
+            {hiddenGlossaryEntries.length === 0 && <div className="text-xs text-slate-500">Nessuna voce nascosta.</div>}
+            {hiddenGlossaryEntries.map((entry) => (
+              <div key={entry.id} className="rounded-lg border border-slate-700 bg-slate-900/50 p-3">
+                <div className={`inline-flex rounded-full px-2 py-0.5 text-xs font-semibold ${entry.color}`}>
+                  {entry.term}
+                </div>
+                <div className="mt-2 text-xs text-slate-400">{entry.fullForm || "Voce glossario"}</div>
+                <button
+                  onClick={() => onUnhideGlossary(entry.id)}
+                  className="mt-2 text-xs font-semibold text-blue-300 transition-colors hover:text-blue-200"
+                >
+                  Ripristina
+                </button>
+              </div>
+            ))}
+          </div>
+        </div>
+      </div>
+
+      <div className="text-center">
+        <button
+          onClick={onOpenDebug}
+          className="text-xs text-slate-500 transition-colors hover:text-slate-300"
+        >
+          Apri debug avanzato
+        </button>
+      </div>
+    </div>
+  );
+}
+
+function SearchQuestionsView({
+  hidden,
+  onBack,
+}: {
+  hidden: Set<string>;
+  onBack: () => void;
+}) {
+  const [query, setQuery] = useState("");
+  const normalized = query.trim().toLowerCase();
+  const results = QUESTIONS.filter((question) => {
+    if (!normalized) return true;
+    const haystack = [
+      question.question,
+      ...question.options,
+      question.explanation,
+      question.topic,
+      question.versionTag ?? "",
+    ]
+      .join(" ")
+      .toLowerCase();
+    return haystack.includes(normalized);
+  });
+
+  return (
+    <div className="mx-auto max-w-3xl space-y-4 px-4 py-6">
+      <div className="flex items-center gap-3">
+        <button onClick={onBack} className="shrink-0 p-1 text-slate-400 transition-colors hover:text-white">
+          <IconBack />
+        </button>
+        <div className="flex-1">
+          <div className="text-xl font-bold text-white">Cerca domande</div>
+          <div className="text-sm text-slate-400">Ricerca in testo domanda, risposte, spiegazione e argomento.</div>
+        </div>
+      </div>
+
+      <div className="rounded-xl border border-slate-700 bg-slate-800 p-3">
+        <input
+          autoFocus
+          value={query}
+          onChange={(event) => setQuery(event.target.value)}
+          placeholder="Cerca nel questionario"
+          className="w-full bg-transparent px-2 py-1 text-sm text-slate-100 outline-none placeholder:text-slate-500"
+        />
+      </div>
+
+      <div className="text-xs text-slate-500">{results.length} risultati</div>
+
+      <div className="space-y-2">
+        {results.map((question) => (
+          <div key={question.id} className="rounded-xl border border-slate-700 bg-slate-800 p-4">
+            <div className="mb-2 flex flex-wrap items-center gap-2">
+              <span className={`rounded-full px-2 py-0.5 text-xs font-medium ${topicColor(question.topic)}`}>
+                {question.topic}
+              </span>
+              {question.versionTag && (
+                <span className="rounded-full bg-slate-700 px-2 py-0.5 text-xs font-medium text-slate-200">
+                  {question.versionTag}
+                </span>
+              )}
+              {hidden.has(question.id) && (
+                <span className="rounded-full bg-red-900/40 px-2 py-0.5 text-xs font-medium text-red-300">
+                  Nascosta
+                </span>
+              )}
+            </div>
+            <div className="text-sm font-medium leading-relaxed text-slate-100">
+              <GlossaryText text={getQuestionDisplayText(question.question)} />
+            </div>
+            <div className="mt-3 text-xs text-slate-500">Risposta corretta</div>
+            <div className="mt-1 text-sm text-green-200">
+              <GlossaryText text={question.options[question.correctIndex]} />
+            </div>
+          </div>
+        ))}
       </div>
     </div>
   );
@@ -752,9 +1111,11 @@ function DebugView({ hidden, onBack }: { hidden: Set<string>; onBack: () => void
 function GlossaryView({
   onBack,
   onStartAcronymQuiz,
+  availableAcronymCount,
 }: {
   onBack: () => void;
   onStartAcronymQuiz: () => void;
+  availableAcronymCount: number;
 }) {
   const [expanded, setExpanded] = useState<Set<string>>(new Set());
   const [showAll, setShowAll] = useState(true);
@@ -809,11 +1170,17 @@ function GlossaryView({
         </button>
         <button
           onClick={onStartAcronymQuiz}
-          className="rounded-xl bg-blue-600 px-4 py-3 text-sm font-semibold text-white transition-colors hover:bg-blue-500"
+          disabled={availableAcronymCount === 0}
+          className="rounded-xl bg-blue-600 px-4 py-3 text-sm font-semibold text-white transition-colors hover:bg-blue-500 disabled:cursor-not-allowed disabled:opacity-40"
         >
           Quiz solo acronimi
         </button>
       </div>
+      {availableAcronymCount === 0 && (
+        <div className="rounded-xl border border-slate-700 bg-slate-800 p-3 text-sm text-slate-400">
+          Non ci sono voci disponibili per il quiz acronimi: sono tutte nascoste.
+        </div>
+      )}
 
       <div className="space-y-2">
         <div className="text-xs font-semibold uppercase tracking-wide text-slate-500">Filtra sezioni</div>
@@ -983,6 +1350,22 @@ function TopicDetail({
   const questions = QUESTIONS.filter((question) => question.topic === topic && !hidden.has(question.id));
   const [expanded, setExpanded] = useState<Set<string>>(new Set());
   const dueCount = getDueCards(cards, hidden, topic).length;
+  const hardestQuestions = questions
+    .map((question) => {
+      const card = cards.find((candidate) => candidate.questionId === question.id);
+      const totalReviews = card?.totalReviews ?? 0;
+      const accuracy = totalReviews === 0 ? null : (card!.correctReviews / totalReviews) * 100;
+      const repetitions = card?.repetitions ?? 0;
+      const struggleScore =
+        totalReviews === 0
+          ? -1
+          : (100 - (accuracy ?? 0)) * 0.7 + Math.max(0, 3 - repetitions) * 10 + (isDue(card!) ? 8 : 0);
+
+      return { question, card, accuracy, struggleScore };
+    })
+    .filter((item) => (item.card?.totalReviews ?? 0) > 0)
+    .sort((a, b) => b.struggleScore - a.struggleScore)
+    .slice(0, 3);
 
   const toggle = (id: string) => {
     setExpanded((current) => {
@@ -1013,6 +1396,33 @@ function TopicDetail({
           ? `Quiz su questo argomento · ${dueCount} da ripassare`
           : "Quiz su questo argomento · tutte le domande"}
       </button>
+
+      {hardestQuestions.length > 0 && (
+        <div className="space-y-3 rounded-xl border border-slate-700 bg-slate-800 p-4">
+          <div className="flex items-center justify-between">
+            <div className="text-sm font-semibold text-slate-200">Domande piu difficili per te</div>
+            <div className="text-xs text-slate-500">Basato sul tuo storico</div>
+          </div>
+          <div className="space-y-2">
+            {hardestQuestions.map(({ question, accuracy, card }) => (
+              <button
+                key={question.id}
+                onClick={() => toggle(question.id)}
+                className="w-full rounded-xl border border-slate-700 bg-slate-900/40 p-3 text-left transition-colors hover:bg-slate-700/60"
+              >
+                <div className="text-sm text-slate-100">
+                  <GlossaryText text={getQuestionDisplayText(question.question)} />
+                </div>
+                <div className="mt-2 flex flex-wrap gap-3 text-xs text-slate-500">
+                  <span>Precisione: {Math.round(accuracy ?? 0)}%</span>
+                  <span>Ripassi: {card?.repetitions ?? 0}</span>
+                  <span>Risposte: {card?.totalReviews ?? 0}</span>
+                </div>
+              </button>
+            ))}
+          </div>
+        </div>
+      )}
 
       <div className="space-y-2">
         {questions.map((question) => {
@@ -1561,20 +1971,44 @@ function ExamQuizCard({
 function ExamResultSession({
   answers,
   examQueue,
+  cards,
   totalQuestions,
   timedOut,
+  onRetakeSame,
+  onNewSimulation,
   onDone,
 }: {
   answers: ExamAnswer[];
   examQueue: ExamQuestionState[];
+  cards: CardState[];
   totalQuestions: number;
   timedOut: boolean;
+  onRetakeSame: () => void;
+  onNewSimulation: () => void;
   onDone: () => void;
 }) {
   const correct = answers.filter((answer) => answer.correct).length;
   const pct = totalQuestions === 0 ? 0 : Math.round((correct / totalQuestions) * 100);
   const passed = correct >= 18;
   const answerMap = new Map(answers.map((answer) => [answer.questionId, answer]));
+  const [filter, setFilter] = useState<"all" | "hardest">("all");
+  const hardestQuestionId =
+    examQueue
+      .map((item) => {
+        const card = cards.find((candidate) => candidate.questionId === item.question.id);
+        const totalReviews = card?.totalReviews ?? 0;
+        const accuracy = totalReviews === 0 ? 0 : card!.correctReviews / totalReviews;
+        const struggleScore =
+          totalReviews === 0
+            ? -1
+            : (1 - accuracy) * 100 + Math.max(0, 3 - (card?.repetitions ?? 0)) * 10;
+        return { questionId: item.question.id, struggleScore };
+      })
+      .sort((a, b) => b.struggleScore - a.struggleScore)[0]?.questionId ?? null;
+  const reviewItems =
+    filter === "hardest" && hardestQuestionId
+      ? examQueue.filter((item) => item.question.id === hardestQuestionId)
+      : examQueue;
 
   return (
     <div className="mx-auto max-w-2xl space-y-6 px-4 py-12 text-center">
@@ -1603,9 +2037,47 @@ function ExamResultSession({
           <div className="text-xs text-slate-400">Precisione</div>
         </div>
       </div>
+      <div className="grid grid-cols-2 gap-3">
+        <button
+          onClick={onRetakeSame}
+          className="rounded-xl border border-slate-700 bg-slate-800 py-3 text-sm font-semibold text-slate-200 transition-colors hover:bg-slate-700"
+        >
+          Rifai stesso set
+        </button>
+        <button
+          onClick={onNewSimulation}
+          className="rounded-xl border border-emerald-700/60 bg-emerald-900/30 py-3 text-sm font-semibold text-emerald-200 transition-colors hover:bg-emerald-900/50"
+        >
+          Nuova simulazione
+        </button>
+      </div>
       <div className="space-y-3 text-left">
-        <div className="text-sm font-semibold text-slate-300">Riepilogo domande</div>
-        {examQueue.map((item, index) => {
+        <div className="flex items-center justify-between gap-3">
+          <div className="text-sm font-semibold text-slate-300">Riepilogo domande</div>
+          <div className="flex gap-2">
+            <button
+              onClick={() => setFilter("all")}
+              className={`rounded-full px-3 py-1 text-xs font-semibold transition-colors ${
+                filter === "all"
+                  ? "bg-blue-900/40 text-blue-200"
+                  : "bg-slate-800 text-slate-400 hover:bg-slate-700"
+              }`}
+            >
+              Tutte
+            </button>
+            <button
+              onClick={() => setFilter("hardest")}
+              className={`rounded-full px-3 py-1 text-xs font-semibold transition-colors ${
+                filter === "hardest"
+                  ? "bg-blue-900/40 text-blue-200"
+                  : "bg-slate-800 text-slate-400 hover:bg-slate-700"
+              }`}
+            >
+              Piu difficile per te
+            </button>
+          </div>
+        </div>
+        {reviewItems.map((item, index) => {
           const answer = answerMap.get(item.question.id);
           const selectedText =
             answer && item.question.options[answer.selectedIndex]
@@ -1618,7 +2090,7 @@ function ExamResultSession({
               <div className="mb-3 flex items-start justify-between gap-3">
                 <div className="min-w-0">
                   <div className="mb-1 text-xs font-semibold uppercase tracking-wide text-slate-500">
-                    Domanda {index + 1}
+                    Domanda {examQueue.findIndex((candidate) => candidate.question.id === item.question.id) + 1}
                   </div>
                   <div className="text-sm leading-relaxed text-slate-100">
                     <GlossaryText text={getQuestionDisplayText(item.question.question)} />
@@ -1742,6 +2214,7 @@ export default function Home() {
   const [examSelectedIndex, setExamSelectedIndex] = useState<number | null>(null);
   const [examSecondsRemaining, setExamSecondsRemaining] = useState(25 * 60);
   const [examTimedOut, setExamTimedOut] = useState(false);
+  const availableAcronymCount = ACRONYM_ENTRIES.filter((entry) => !hiddenGlossary.has(entry.id)).length;
 
   useEffect(() => {
     setCards(loadCards());
@@ -1906,6 +2379,76 @@ export default function Home() {
     }
   }, [acronymIndex, acronymQueue, acronymRatings.length, hiddenGlossary]);
 
+  const handleImportSave = useCallback(
+    (payload: SaveTransferPayload, mode: ImportMode) => {
+      if (!payload || payload.version !== 1 || !Array.isArray(payload.cards)) {
+        return { ok: false, message: "Salvataggio non riconosciuto o versione non supportata." };
+      }
+
+      const importedCards = mergeCardsWithQuestionBank(payload.cards);
+      const importedHidden = new Set(Array.isArray(payload.hidden) ? payload.hidden : []);
+      const importedHiddenGlossary = new Set(Array.isArray(payload.hiddenGlossary) ? payload.hiddenGlossary : []);
+      const nextCards =
+        mode === "overwrite" ? importedCards : mergeImportedCards(cards, importedCards);
+      const nextHidden =
+        mode === "overwrite" ? importedHidden : new Set([...hidden, ...importedHidden]);
+      const nextHiddenGlossary =
+        mode === "overwrite"
+          ? importedHiddenGlossary
+          : new Set([...hiddenGlossary, ...importedHiddenGlossary]);
+      const nextGamification =
+        mode === "overwrite"
+          ? { ...loadGamificationStats(), ...(payload.gamification ?? {}) }
+          : mergeGamificationStats(gamification, payload.gamification);
+
+      setCards(nextCards);
+      setHidden(nextHidden);
+      setHiddenGlossary(nextHiddenGlossary);
+      setGamification(nextGamification);
+
+      saveCards(nextCards);
+      saveHidden(nextHidden);
+      saveHiddenGlossary(nextHiddenGlossary);
+      saveGamificationStats(nextGamification);
+
+      return {
+        ok: true,
+        message: mode === "overwrite" ? "Salvataggio sovrascritto correttamente." : "Salvataggio unito correttamente.",
+      };
+    },
+    [cards, gamification, hidden, hiddenGlossary]
+  );
+
+  const handleUnhideQuestion = useCallback((id: string) => {
+    unhideQuestion(id);
+    setHidden((current) => {
+      const next = new Set(current);
+      next.delete(id);
+      saveHidden(next);
+      return next;
+    });
+  }, []);
+
+  const handleUnhideGlossary = useCallback((id: string) => {
+    unhideGlossaryEntry(id);
+    setHiddenGlossary((current) => {
+      const next = new Set(current);
+      next.delete(id);
+      saveHiddenGlossary(next);
+      return next;
+    });
+  }, []);
+
+  const restartSameExamSimulation = useCallback(() => {
+    if (examQueue.length === 0) return;
+    setExamIndex(0);
+    setExamAnswers([]);
+    setExamSelectedIndex(null);
+    setExamSecondsRemaining(25 * 60);
+    setExamTimedOut(false);
+    setView("exam_quiz");
+  }, [examQueue.length]);
+
   const handleExamNext = useCallback(() => {
     const question = examQueue[examIndex];
     if (!question || examSelectedIndex === null) return;
@@ -1974,7 +2517,8 @@ export default function Home() {
             setView("topic_detail");
           }}
           onOpenGlossary={() => setView("glossary")}
-          onOpenDebug={() => setView("debug")}
+          onOpenSettings={() => setView("settings")}
+          onOpenSearch={() => setView("search")}
           onReset={() => {
             const fresh = resetCards();
             setCards(fresh);
@@ -1987,10 +2531,35 @@ export default function Home() {
         />
       )}
 
-      {view === "debug" && <DebugView hidden={hidden} onBack={() => setView("dashboard")} />}
+      {view === "debug" && (
+        <DebugView
+          hidden={hidden}
+          onBack={() => setView("dashboard")}
+        />
+      )}
+
+      {view === "settings" && (
+        <SettingsView
+          cards={cards}
+          hidden={hidden}
+          hiddenGlossary={hiddenGlossary}
+          gamification={gamification}
+          onImport={handleImportSave}
+          onUnhideQuestion={handleUnhideQuestion}
+          onUnhideGlossary={handleUnhideGlossary}
+          onOpenDebug={() => setView("debug")}
+          onBack={() => setView("dashboard")}
+        />
+      )}
+
+      {view === "search" && <SearchQuestionsView hidden={hidden} onBack={() => setView("dashboard")} />}
 
       {view === "glossary" && (
-        <GlossaryView onBack={() => setView("dashboard")} onStartAcronymQuiz={startAcronymQuiz} />
+        <GlossaryView
+          onBack={() => setView("dashboard")}
+          onStartAcronymQuiz={startAcronymQuiz}
+          availableAcronymCount={availableAcronymCount}
+        />
       )}
 
       {view === "topic_detail" && selectedTopic && (
@@ -2045,10 +2614,30 @@ export default function Home() {
         <ExamResultSession
           answers={examAnswers}
           examQueue={examQueue}
+          cards={cards}
           totalQuestions={examQueue.length}
           timedOut={examTimedOut}
+          onRetakeSame={restartSameExamSimulation}
+          onNewSimulation={startExamSimulation}
           onDone={() => setView("dashboard")}
         />
+      )}
+
+      {view === "acronym_quiz" && acronymQueue.length === 0 && (
+        <div className="mx-auto max-w-2xl space-y-4 px-4 py-8 text-center">
+          <div className="rounded-xl border border-slate-700 bg-slate-800 p-6">
+            <div className="text-lg font-semibold text-white">Nessuna voce disponibile</div>
+            <div className="mt-2 text-sm text-slate-400">
+              Tutte le voci del glossario utili per il quiz acronimi risultano nascoste.
+            </div>
+            <button
+              onClick={() => setView("glossary")}
+              className="mt-4 rounded-xl bg-blue-600 px-4 py-3 text-sm font-semibold text-white transition-colors hover:bg-blue-500"
+            >
+              Torna al glossario
+            </button>
+          </div>
+        </div>
       )}
 
       {view === "acronym_quiz" && acronymQueue[acronymIndex] && (
