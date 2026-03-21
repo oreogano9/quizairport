@@ -1798,6 +1798,416 @@ export const QUESTIONS: Question[] = [
       "La luce ostacolo EASA Type C va posizionata sulla sommità del mezzo, nella parte più visibile. Perché? La funzione della luce è rendere il mezzo individuabile da ogni direzione possibile; se montata troppo in basso o in posizione schermata perderebbe efficacia. 💡 Ricorda: luce ostacolo = il più in alto e visibile possibile.",
     topic: "Dotazione veicoli",
   },
+  {
+    id: "v2-01",
+    question:
+      "Quale documento originale deve essere obbligatoriamente conservato a bordo dei mezzi che transitano ai varchi doganali? (v2)",
+    options: [
+      "La polizza assicurativa RCT",
+      "L'Autorizzazione alla Circolazione dei mezzi in Airside (ACA)",
+      "Il libretto di circolazione originale, sempre e senza eccezioni",
+    ],
+    correctIndex: 1,
+    explanation:
+      "Per i mezzi che transitano ai varchi doganali deve essere conservata a bordo in originale l'ACA. Perché? In quelle aree serve poter verificare immediatamente il titolo autorizzativo specifico del mezzo alla circolazione in Airside. 💡 Ricorda: ai varchi doganali conta l'autorizzazione del mezzo: ACA originale a bordo.",
+    topic: "Dotazione veicoli",
+  },
+  {
+    id: "v2-02",
+    question:
+      "In caso di perdita di idrocarburi a Fiumicino, quale numero interno ADR deve essere contattato immediatamente? (v2)",
+    options: ["06 6595 3432", "06 6595 3022", "06 6595 9370"],
+    correctIndex: 1,
+    explanation:
+      "In caso di perdita di idrocarburi a Fiumicino va contattato immediatamente il numero ADR 06 6595 3022. Perché? Gli sversamenti richiedono un coordinamento rapido per mettere in sicurezza l'area, limitare il rischio incendio e impedire la contaminazione delle superfici operative. 💡 Ricorda: idrocarburi a FCO = chiama subito 06 6595 3022.",
+    topic: "Emergenze",
+  },
+  {
+    id: "v2-03",
+    question:
+      "Qual è l'ordine di posizionamento dei carrelli vuoti in un traino misto a Fiumicino, partendo dalla motrice? (v2)",
+    options: [
+      "Carrelli portabagagli, carrelli ULD, dolly per pallet",
+      "Dolly per pallet, carrelli per ULD, carrelli portabagagli",
+      "L'ordine è a discrezione del conducente purché non superino le 5 unità",
+    ],
+    correctIndex: 1,
+    explanation:
+      "Nel traino misto di carrelli vuoti a Fiumicino, partendo dalla motrice, l'ordine corretto è: dolly per pallet, carrelli per ULD, carrelli portabagagli. Perché? La disposizione del convoglio incide su stabilità, tracciamento in curva e facilità di controllo del traino. 💡 Ricorda: dal trattore verso il fondo si va dal più strutturato al più leggero.",
+    topic: "Taxiway e piazzole",
+  },
+  {
+    id: "v2-04",
+    question:
+      "A Ciampino, in caso di nebbia sul sedime aeroportuale, quale segnaletica luminosa viene attivata sulle pensiline dei varchi? (v2)",
+    options: [
+      "Luci lampeggianti blu",
+      "Tabelle rosse con luci lampeggianti accese",
+      "Display AID a messaggio variabile giallo",
+    ],
+    correctIndex: 1,
+    explanation:
+      "A Ciampino, in caso di nebbia sul sedime aeroportuale, sulle pensiline dei varchi vengono attivate tabelle rosse con luci lampeggianti accese. Perché? In condizioni di visibilità degradata serve un richiamo visivo immediato e inequivocabile per allertare chi entra in Airside. 💡 Ricorda: nebbia a CIA = rosso lampeggiante ai varchi.",
+    topic: "Bassa visibilità",
+  },
+  {
+    id: "v2-05",
+    question:
+      "Quale dispositivo è esentato dall'obbligo di parafiamma interno se il veicolo ne è già provvisto? (v2)",
+    options: [
+      "Mezzi elettrici",
+      "Marmitta catalitica o dispositivo equivalente (FAP)",
+      "Estintore a polvere da 6 kg",
+    ],
+    correctIndex: 1,
+    explanation:
+      "Il parafiamma interno non è richiesto se il veicolo è già provvisto di marmitta catalitica o di dispositivo equivalente come il FAP. Perché? Questi sistemi svolgono già una funzione di controllo delle emissioni e del rischio di innesco prevista dalle disposizioni tecniche. 💡 Ricorda: catalitica o FAP possono sostituire il requisito del parafiamma interno.",
+    topic: "Dotazione veicoli",
+  },
+  {
+    id: "v2-06",
+    question:
+      "Nello scalo di Ciampino, per l'aviazione generale, con quali mezzi possono essere trasportati i passeggeri in apron? (v2)",
+    options: [
+      "Esclusivamente con autobus Cobus",
+      "Autovetture, van o minibus",
+      "Solo con mezzi della Polizia di Stato",
+    ],
+    correctIndex: 1,
+    explanation:
+      "A Ciampino, per l'aviazione generale, i passeggeri possono essere trasportati in apron con autovetture, van o minibus. Perché? Le operazioni di aviazione generale hanno flussi e volumi diversi rispetto ai voli di linea, quindi possono impiegare mezzi più leggeri e flessibili. 💡 Ricorda: GA a CIA = auto, van o minibus, non solo Cobus.",
+    topic: "Taxiway e piazzole",
+  },
+  {
+    id: "v2-07",
+    question:
+      "A Fiumicino, l'attraversamento del sottopasso che collega la zona nord a quella sud richiede l'autorizzazione di quali enti? (v2)",
+    options: [
+      "Solo ADR Security",
+      "Polizia di Stato, ADR Security e Sicurezza Operativa",
+      "TWR ENAV e Vigili del Fuoco",
+    ],
+    correctIndex: 1,
+    explanation:
+      "A Fiumicino, l'attraversamento del sottopasso nord-sud richiede l'autorizzazione di Polizia di Stato, ADR Security e Sicurezza Operativa. Perché? Si tratta di un passaggio sensibile, dove oltre alla safety operativa contano anche controllo accessi e profili di security. 💡 Ricorda: sottopasso nord-sud FCO = tripla autorizzazione.",
+    topic: "Normativa",
+  },
+  {
+    id: "v2-08",
+    question:
+      "Qual è la copertura azimutale richiesta per le luci ostacolo dei veicoli? (v2)",
+    options: ["180 gradi", "360 gradi", "90 gradi verso l'alto"],
+    correctIndex: 1,
+    explanation:
+      "Le luci ostacolo dei veicoli devono garantire copertura azimutale a 360 gradi. Perché? Il mezzo deve essere visibile da ogni direzione possibile, non solo frontalmente o lateralmente, soprattutto in aree trafficate o con visibilità ridotta. 💡 Ricorda: luce ostacolo efficace = visibile tutto intorno.",
+    topic: "Dotazione veicoli",
+  },
+  {
+    id: "v2-09",
+    question:
+      "Quale sanzione accessoria è prevista se un'infrazione causa danni gravi a strutture aeroportuali? (v2)",
+    options: [
+      "Decurtazione di 5 punti e revoca per un periodo commisurato alla gravità",
+      "Sospensione immediata della patente civile",
+      "Solo una multa pecuniaria da parte di ENAC",
+    ],
+    correctIndex: 0,
+    explanation:
+      "Se un'infrazione causa danni gravi a strutture aeroportuali è prevista la decurtazione di 5 punti e la revoca per un periodo commisurato alla gravità del fatto. Perché? Il danneggiamento grave di infrastrutture in Airside può compromettere la sicurezza operativa dello scalo e richiede una risposta sanzionatoria molto severa. 💡 Ricorda: danni gravi alle strutture = massimo impatto anche sulla tua abilitazione.",
+    topic: "Sanzioni",
+  },
+  {
+    id: "v2-10",
+    question:
+      "A Fiumicino, quale colore identifica il tesserino (TIA) che autorizza l'accesso all'area cargo antistante i magazzini? (v2)",
+    options: ["Banda rossa", "Azzurro 4", "Banda gialla"],
+    correctIndex: 1,
+    explanation:
+      "A Fiumicino, il TIA che autorizza l'accesso all'area cargo antistante i magazzini è identificato come Azzurro 4. Perché? Le bande colore del TIA distinguono con precisione i diversi profili autorizzativi di accesso alle aree aeroportuali. 💡 Ricorda: cargo antistante magazzini FCO = TIA Azzurro 4.",
+    topic: "ADC",
+  },
+  {
+    id: "v2-11",
+    question:
+      "Qual è la dimensione dei pannelli con bandiera a scacchi bianco-rossa per i veicoli individuati dalle D.d.S.? (v2)",
+    options: [
+      "30x30 cm",
+      "Normalmente 45x45 cm, riducibili fino a 15x15 cm",
+      "Sempre 50x50 cm",
+    ],
+    correctIndex: 1,
+    explanation:
+      "I pannelli a scacchi bianco-rossi per i veicoli individuati dalle D.d.S. sono normalmente 45x45 cm, riducibili fino a 15x15 cm quando necessario. Perché? Devono essere ben visibili, ma la dimensione può essere adattata alle caratteristiche costruttive del mezzo senza perdere riconoscibilità. 💡 Ricorda: standard 45x45, minimo ridotto 15x15.",
+    topic: "Dotazione veicoli",
+  },
+  {
+    id: "v2-12",
+    question:
+      "In caso di Situational Awareness compromessa o incertezza sulla propria posizione in apron, cosa deve fare il conducente? (v2)",
+    options: [
+      "Chiedere indicazioni via radio a un altro Handler",
+      "Accendere le luci, comunicare la posizione a ADR e attendere il Follow-me",
+      "Proseguire lentamente verso il terminal più vicino",
+    ],
+    correctIndex: 1,
+    explanation:
+      "Se il conducente non è più sicuro della propria posizione in apron deve accendere le luci, comunicare la posizione a ADR e attendere il Follow-me. Perché? Muoversi quando si è disorientati in Airside aumenta il rischio di entrare in percorsi aeromobili o aree non autorizzate. 💡 Ricorda: se perdi l'orientamento, fermati, renditi visibile e fatti guidare.",
+    topic: "Emergenze",
+  },
+  {
+    id: "v2-13",
+    question:
+      "Quale segnale indica il punto di inizio della virata per il pilota in ingresso piazzola? (v2)",
+    options: ["Turn Bar (barra di virata)", "Lead-in line tratteggiata", "Stop Line 1"],
+    correctIndex: 0,
+    explanation:
+      "Il segnale che indica il punto di inizio della virata per il pilota in ingresso piazzola è la Turn Bar. Perché? La segnaletica di stand deve guidare l'aeromobile con precisione fino alla posizione di sosta, evitando errori di traiettoria nelle fasi finali dell'ingresso. 💡 Ricorda: Turn Bar = inizio virata verso lo stand.",
+    topic: "Segnaletica",
+  },
+  {
+    id: "v2-14",
+    question:
+      "I rifiuti di bordo scaricati dall'aeromobile devono essere contenuti in quali contenitori? (v2)",
+    options: [
+      "Sacchi neri coperti",
+      "Sacchi trasparenti che consentano l'individuazione dell'Handler",
+      "Contenitori metallici ignifughi",
+    ],
+    correctIndex: 1,
+    explanation:
+      "I rifiuti di bordo devono essere contenuti in sacchi trasparenti che consentano l'individuazione dell'Handler. Perché? La tracciabilità del rifiuto e dell'operatore responsabile è fondamentale per controlli, gestione operativa e corretta rimozione dalla piazzola. 💡 Ricorda: rifiuti di bordo = sacchi trasparenti e Handler identificabile.",
+    topic: "Taxiway e piazzole",
+  },
+  {
+    id: "v2-15",
+    question:
+      "A Fiumicino, nel traino di carrelli ULD carichi, dove deve essere posizionato il carico più pesante? (v2)",
+    options: [
+      "In fondo al convoglio",
+      "Piu vicino alla motrice",
+      "È indifferente purché i carrelli siano 5",
+    ],
+    correctIndex: 1,
+    explanation:
+      "Nel traino di carrelli ULD carichi a Fiumicino, il carico più pesante va posizionato più vicino alla motrice. Perché? Questo migliora stabilità, capacità di traino e controllo in frenata dell'intero convoglio. 💡 Ricorda: nei convogli carichi il peso maggiore va davanti, vicino al trattore.",
+    topic: "Taxiway e piazzole",
+  },
+  {
+    id: "v2-16",
+    question:
+      "In caso di nebbia fitta, quale comportamento è prescritto allo stop aeronautico prima di attraversare una taxiway? (v2)",
+    options: [
+      "Attraversare solo se si sente il rumore dei motori lontano",
+      "Attendere in caso di mancanza di visibilità sufficiente al riconoscimento del Follow-me",
+      "Procedere accendendo gli abbaglianti per farsi vedere",
+    ],
+    correctIndex: 1,
+    explanation:
+      "In caso di nebbia fitta, allo stop aeronautico bisogna attendere se non c'è visibilità sufficiente per riconoscere il Follow-me. Perché? Se non riesci a identificare con certezza i riferimenti visivi di sicurezza, attraversare una taxiway diventa un rischio grave di incursion. 💡 Ricorda: se nella nebbia non riconosci il Follow-me, non attraversi.",
+    topic: "Bassa visibilità",
+  },
+  {
+    id: "v2-17",
+    question:
+      "Qual è il limite massimo di carrelli per pallet (dolly) che è consentito trainare a Fiumicino in condizioni di carico? (v2)",
+    options: ["5 unità", "3 unità", "4 unità"],
+    correctIndex: 1,
+    explanation:
+      "A Fiumicino, in condizioni di carico, il limite massimo di dolly per pallet trainabili è 3 unità. Perché? Un convoglio di dolly carichi diventa rapidamente meno stabile e più difficile da gestire, soprattutto in frenata e nelle curve strette. 💡 Ricorda: dolly carichi a FCO = massimo 3.",
+    topic: "Taxiway e piazzole",
+  },
+  {
+    id: "v2-18",
+    question:
+      "Il marking di identificazione della piazzola deve sovrapporsi alla linea lead-in a quale distanza dalla TCL? (v2)",
+    options: ["1 metro", "3 metri", "5 metri"],
+    correctIndex: 1,
+    explanation:
+      "Il marking di identificazione della piazzola deve sovrapporsi alla lead-in line a 3 metri dalla TCL. Perché? Le distanze di posizionamento della segnaletica di stand sono standardizzate per garantire leggibilità al pilota e coerenza operativa. 💡 Ricorda: stand ID e lead-in si incontrano a 3 metri dalla TCL.",
+    topic: "Segnaletica",
+  },
+  {
+    id: "v2-19",
+    question:
+      "La linea di virata (turning line) deve terminare presso la posizione di sosta con un prolungamento rettilineo di almeno: (v2)",
+    options: ["1 metro", "3 metri", "5 metri"],
+    correctIndex: 1,
+    explanation:
+      "La turning line deve terminare presso la posizione di sosta con un prolungamento rettilineo di almeno 3 metri. Perché? Questo tratto finale aiuta a stabilizzare l'allineamento dell'aeromobile negli ultimi metri verso lo stand. 💡 Ricorda: turning line = finale diritto di almeno 3 metri.",
+    topic: "Segnaletica",
+  },
+  {
+    id: "v2-20",
+    question:
+      "In caso di mancato superamento del test di recurrent training, entro quale finestra temporale è possibile ripetere la prova? (v2)",
+    options: ["Entro 24 ore", "Dopo 3 giorni ed entro 14 giorni", "Dopo 7 giorni lavorativi"],
+    correctIndex: 1,
+    explanation:
+      "Se il test di recurrent training non viene superato, la prova può essere ripetuta dopo 3 giorni ed entro 14 giorni. Perché? La finestra concede un tempo minimo per il ripasso ma impedisce che il recupero venga rinviato troppo a lungo. 💡 Ricorda: retest recurrent = non subito, ma tra il giorno 3 e il giorno 14.",
+    topic: "ADC",
+  },
+  {
+    id: "v2-21",
+    question:
+      "L'iscrizione che indica la massima apertura alare ammissibile (Max Span) deve avere: (v2)",
+    options: [
+      "Caratteri gialli su fondo rosso",
+      "Caratteri neri su fondo giallo",
+      "Caratteri bianchi su fondo nero",
+    ],
+    correctIndex: 1,
+    explanation:
+      "L'indicazione Max Span deve avere caratteri neri su fondo giallo. Perché? La combinazione giallo-nero offre un contrasto elevato e una lettura immediata per informazioni operative critiche di piazzola. 💡 Ricorda: Max Span segue il classico codice di attenzione: nero su giallo.",
+    topic: "Segnaletica",
+  },
+  {
+    id: "v2-22",
+    question:
+      "In caso di scarso contrasto della pavimentazione, con quale colore può essere bordata la linea ABL? (v2)",
+    options: ["Nero", "Bianco", "Giallo"],
+    correctIndex: 1,
+    explanation:
+      "In caso di scarso contrasto della pavimentazione, la linea ABL può essere bordata di bianco. Perché? Il bordo bianco aumenta la percepibilità della ABL quando il fondo non consente un contrasto sufficiente. 💡 Ricorda: se la ABL si vede poco, il bianco la evidenzia.",
+    topic: "Segnaletica",
+  },
+  {
+    id: "v2-23",
+    question:
+      "Di che colore è il fondo del marking di identificazione della piazzola di sosta (Stand ID)? (v2)",
+    options: ["Giallo", "Nero", "Rosso"],
+    correctIndex: 1,
+    explanation:
+      "Il fondo del marking di identificazione dello stand è nero. Perché? Il fondo scuro consente un contrasto efficace con i caratteri previsti, migliorando leggibilità e riconoscibilità della piazzola. 💡 Ricorda: Stand ID = base nera.",
+    topic: "Segnaletica",
+  },
+  {
+    id: "v2-24",
+    question:
+      "Qual è la frequenza radio della Torre UHF specifica per lo scalo di Fiumicino? (v2)",
+    options: ["418.4 MHz", "445.775 MHz", "121.5 MHz"],
+    correctIndex: 1,
+    explanation:
+      "La frequenza radio UHF della Torre per lo scalo di Fiumicino è 445.775 MHz. Perché? Usare la frequenza corretta è essenziale per mantenere il contatto radio con la Torre nelle aree dove è richiesto. 💡 Ricorda: Torre FCO = 445.775 MHz.",
+    topic: "Area di Manovra",
+  },
+  {
+    id: "v2-25",
+    question:
+      "Qual è la durata della formazione teorica prevista per il corso di Remedial Training? (v2)",
+    options: ["30 minuti", "1 ora", "4 ore"],
+    correctIndex: 1,
+    explanation:
+      "La formazione teorica del Remedial Training dura 1 ora. Perché? Il percorso correttivo combina un richiamo concentrato dei contenuti teorici con una parte pratica mirata sulle criticità emerse. 💡 Ricorda: Remedial teorico = 1 ora.",
+    topic: "ADC",
+  },
+  {
+    id: "v2-26",
+    question:
+      "Qual è la durata dell'addestramento pratico previsto per il corso di Remedial Training? (v2)",
+    options: ["1 ora", "2 ore", "4 ore"],
+    correctIndex: 1,
+    explanation:
+      "L'addestramento pratico previsto per il Remedial Training dura 2 ore. Perché? La componente pratica serve a verificare e correggere direttamente sul campo i comportamenti operativi ritenuti critici. 💡 Ricorda: Remedial pratico = 2 ore.",
+    topic: "ADC",
+  },
+  {
+    id: "v2-27",
+    question:
+      "Qual è la distanza minima da mantenere davanti a un aeromobile fermo con motori in moto? (v2)",
+    options: ["15 metri", "30 metri", "50 metri"],
+    correctIndex: 1,
+    explanation:
+      "Davanti a un aeromobile fermo con motori in moto va mantenuta una distanza minima di 30 metri. Perché? Anche se fermo, l'aeromobile resta in una condizione operativa pericolosa per aspirazione, getto e movimenti improvvisi. 💡 Ricorda: davanti ai motori in moto = almeno 30 metri.",
+    topic: "Taxiway e piazzole",
+  },
+  {
+    id: "v2-28",
+    question:
+      "Qual è la distanza minima da mantenere dietro a un aeromobile fermo con motori in moto? (v2)",
+    options: ["50 metri", "100 metri", "150 metri"],
+    correctIndex: 1,
+    explanation:
+      "Dietro a un aeromobile fermo con motori in moto va mantenuta una distanza minima di 100 metri. Perché? Il getto dei motori può essere estremamente pericoloso anche a distanza considerevole e spostare veicoli, persone o materiali. 💡 Ricorda: dietro ai motori in moto = almeno 100 metri.",
+    topic: "Taxiway e piazzole",
+  },
+  {
+    id: "v2-29",
+    question:
+      "Dove sono installati i display AID (Airside Information Display) nello scalo di Fiumicino? (v2)",
+    options: [
+      "All'interno della TWR",
+      "In prossimità dei varchi di accesso in Airside",
+      "Presso ogni piazzola di sosta",
+    ],
+    correctIndex: 1,
+    explanation:
+      "A Fiumicino, i display AID sono installati in prossimità dei varchi di accesso in Airside. Perché? Devono essere consultabili proprio nel punto in cui l'operatore entra nell'area interna e ha bisogno delle informazioni operative più aggiornate. 💡 Ricorda: AID = vicino ai varchi Airside.",
+    topic: "Dotazione veicoli",
+  },
+  {
+    id: "v2-30",
+    question:
+      "Come deve essere posizionata la stop line rispetto alla barra d'allineamento dello stand? (v2)",
+    options: ["Parallela", "Ortogonale", "Inclinata di 45°"],
+    correctIndex: 1,
+    explanation:
+      "La stop line deve essere ortogonale rispetto alla barra d'allineamento dello stand. Perché? La geometria della segnaletica di piazzola è progettata per dare riferimenti visivi chiari e coerenti ai mezzi e al personale durante l'assistenza. 💡 Ricorda: stop line e barra d'allineamento si incontrano a 90 gradi.",
+    topic: "Segnaletica",
+  },
+  {
+    id: "v2-31",
+    question:
+      "Nello scalo di Ciampino, qual è il limite massimo di carrelli dolly/ULD trainabili? (v2)",
+    options: ["3 unità", "4 unità", "5 unità"],
+    correctIndex: 1,
+    explanation:
+      "Nello scalo di Ciampino il limite massimo di carrelli dolly/ULD trainabili è 4 unità. Perché? Il limite tiene conto degli spazi più ridotti e della necessità di mantenere il convoglio pienamente controllabile nelle aree operative dello scalo. 💡 Ricorda: CIA dolly/ULD = massimo 4.",
+    topic: "Taxiway e piazzole",
+  },
+  {
+    id: "v2-32",
+    question:
+      "Nello scalo di Ciampino, qual è il limite massimo di carrelli standard trainabili? (v2)",
+    options: ["3 unità", "5 unità", "4 unità"],
+    correctIndex: 1,
+    explanation:
+      "Nello scalo di Ciampino il limite massimo di carrelli standard trainabili è 5 unità. Perché? I carrelli standard hanno caratteristiche diverse dai dolly/ULD e permettono un convoglio leggermente più lungo, entro i limiti operativi fissati dallo scalo. 💡 Ricorda: CIA standard = massimo 5.",
+    topic: "Taxiway e piazzole",
+  },
+  {
+    id: "v2-33",
+    question:
+      "Quale caratteristica deve avere l'adesivo QR-code se applicato esternamente al mezzo? (v2)",
+    options: ["Catarifrangente", "Resistente all'acqua", "Di colore rosso fluorescente"],
+    correctIndex: 1,
+    explanation:
+      "Se applicato esternamente al mezzo, l'adesivo QR-code deve essere resistente all'acqua. Perché? Deve rimanere leggibile ed efficiente anche in presenza di pioggia, lavaggi e agenti atmosferici tipici dell'operatività aeroportuale. 💡 Ricorda: QR-code esterno = waterproof.",
+    topic: "Dotazione veicoli",
+  },
+  {
+    id: "v2-34",
+    question:
+      "In caso di attivazione delle LVP (bassa visibilità), cosa accade al rifornimento con passeggeri a bordo? (v2)",
+    options: [
+      "Prosegue con scorta dei Vigili del Fuoco",
+      "Viene sospeso",
+      "Prosegue solo se il mezzo ha l'OBU attivo",
+    ],
+    correctIndex: 1,
+    explanation:
+      "In caso di attivazione delle LVP, il rifornimento con passeggeri a bordo viene sospeso. Perché? In bassa visibilità si riduce la capacità di controllare rapidamente un'eventuale emergenza durante un'operazione già di per sé critica. 💡 Ricorda: LVP + rifornimento con passeggeri = stop.",
+    topic: "Bassa visibilità",
+  },
+  {
+    id: "v2-35",
+    question:
+      "Di che colore è la segnaletica orizzontale lead-in per l'ingresso in piazzola? (v2)",
+    options: ["Bianca", "Gialla", "Rossa"],
+    correctIndex: 1,
+    explanation:
+      "La segnaletica orizzontale lead-in per l'ingresso in piazzola è di colore giallo. Perché? Il giallo identifica i percorsi e i riferimenti destinati al movimento degli aeromobili a terra. 💡 Ricorda: come centerline e taxiway, anche la lead-in è gialla.",
+    topic: "Segnaletica",
+  },
 
   // ── DOMANDE CON IMMAGINE ──────────────────────────────────────────────────────
   {

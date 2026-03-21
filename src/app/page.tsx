@@ -13,13 +13,26 @@ import {
   RATING_GOOD,
   RATING_HARD,
 } from "@/lib/sm2";
-import { hideQuestion, loadCards, loadHidden, resetCards, saveCards, saveHidden } from "@/lib/storage";
+import {
+  GamificationStats,
+  hideQuestion,
+  loadCards,
+  loadGamificationStats,
+  loadHidden,
+  recordStudyActivity,
+  resetCards,
+  saveCards,
+  saveHidden,
+} from "@/lib/storage";
 
 type View =
   | "dashboard"
+  | "traguardi"
   | "topic_detail"
   | "quiz"
   | "result"
+  | "exam_quiz"
+  | "exam_result"
   | "glossary"
   | "acronym_quiz"
   | "acronym_result";
@@ -32,6 +45,17 @@ interface ShuffledOption {
 interface AcronymQuizItem {
   entry: GlossaryEntry & { fullForm: string };
   options: string[];
+}
+
+interface ExamAnswer {
+  questionId: string;
+  selectedIndex: number;
+  correct: boolean;
+}
+
+interface ExamQuestionState {
+  question: Question;
+  shuffled: ShuffledOption[];
 }
 
 function getQuestion(id: string): Question {
@@ -124,6 +148,133 @@ function formatNextReview(card: CardState): string {
   if (diff < 7) return `tra ${diff} giorni`;
   if (diff < 30) return `tra ${Math.round(diff / 7)} sett.`;
   return `tra ${Math.round(diff / 30)} mesi`;
+}
+
+function getXpProgress(xp: number): { level: number; current: number; needed: number } {
+  let level = 1;
+  let remaining = xp;
+  let needed = 120;
+  while (remaining >= needed) {
+    remaining -= needed;
+    level += 1;
+    needed += 40;
+  }
+  return { level, current: remaining, needed };
+}
+
+function getExamReadiness({
+  cards,
+  hidden,
+  stats,
+}: {
+  cards: CardState[];
+  hidden: Set<string>;
+  stats: GamificationStats;
+}): { score: number; label: string } {
+  const activeCards = cards.filter((card) => !hidden.has(card.questionId));
+  const masteryRatio =
+    activeCards.length === 0 ? 0 : activeCards.filter((card) => card.repetitions >= 3).length / activeCards.length;
+  const answeredCards = activeCards.filter((card) => card.totalReviews > 0);
+  const accuracyRatio =
+    answeredCards.length === 0
+      ? 0
+      : answeredCards.reduce(
+          (sum, card) => sum + (card.totalReviews === 0 ? 0 : card.correctReviews / card.totalReviews),
+          0
+        ) / answeredCards.length;
+  const examRatio = stats.bestExamScore / 20;
+  const score = Math.round((masteryRatio * 0.45 + accuracyRatio * 0.35 + examRatio * 0.2) * 100);
+  const label = score >= 80 ? "Alta" : score >= 60 ? "In crescita" : score >= 40 ? "Intermedia" : "Da costruire";
+  return { score, label };
+}
+
+function getBadgeMilestones(cards: CardState[], hidden: Set<string>, stats: GamificationStats) {
+  const activeCards = cards.filter((card) => !hidden.has(card.questionId));
+  const masteredCount = activeCards.filter((card) => card.repetitions >= 3).length;
+  const totalReviews = activeCards.reduce((sum, card) => sum + card.totalReviews, 0);
+  const dueCount = getDueCards(cards, hidden).length;
+  const newCount = activeCards.filter((card) => card.totalReviews === 0).length;
+  const badges = [
+    {
+      id: "streak-3",
+      label: "3 giorni di fila",
+      achieved: stats.bestStreak >= 3,
+      tone: "bg-amber-900/40 text-amber-200 border-amber-700/60",
+    },
+    {
+      id: "streak-7",
+      label: "Settimana piena",
+      achieved: stats.bestStreak >= 7,
+      tone: "bg-orange-900/40 text-orange-200 border-orange-700/60",
+    },
+    {
+      id: "master-25",
+      label: "25 apprese",
+      achieved: masteredCount >= 25,
+      tone: "bg-emerald-900/40 text-emerald-200 border-emerald-700/60",
+    },
+    {
+      id: "master-75",
+      label: "75 apprese",
+      achieved: masteredCount >= 75,
+      tone: "bg-emerald-950/50 text-emerald-100 border-emerald-700/60",
+    },
+    {
+      id: "reviews-100",
+      label: "100 ripassi",
+      achieved: totalReviews >= 100,
+      tone: "bg-blue-900/40 text-blue-200 border-blue-700/60",
+    },
+    {
+      id: "reviews-300",
+      label: "300 ripassi",
+      achieved: totalReviews >= 300,
+      tone: "bg-blue-950/50 text-blue-100 border-blue-700/60",
+    },
+    {
+      id: "fresh-start",
+      label: "Primo ripasso",
+      achieved: totalReviews >= 1,
+      tone: "bg-slate-700/70 text-slate-100 border-slate-600",
+    },
+    {
+      id: "queue-clear",
+      label: "Ripassi del giorno chiusi",
+      achieved: dueCount === 0 && totalReviews > 0,
+      tone: "bg-cyan-900/40 text-cyan-200 border-cyan-700/60",
+    },
+    {
+      id: "new-cards-done",
+      label: "Nessuna nuova in attesa",
+      achieved: newCount === 0 && activeCards.length > 0,
+      tone: "bg-teal-900/40 text-teal-200 border-teal-700/60",
+    },
+    {
+      id: "exam-pass",
+      label: "Prima idoneita",
+      achieved: stats.examPasses >= 1,
+      tone: "bg-violet-900/40 text-violet-200 border-violet-700/60",
+    },
+    {
+      id: "exam-perfect",
+      label: "20/20 simulazione",
+      achieved: stats.bestExamScore >= 20,
+      tone: "bg-fuchsia-900/40 text-fuchsia-200 border-fuchsia-700/60",
+    },
+    {
+      id: "exam-three",
+      label: "3 simulazioni concluse",
+      achieved: stats.examAttempts >= 3,
+      tone: "bg-purple-900/40 text-purple-200 border-purple-700/60",
+    },
+    {
+      id: "exam-streak",
+      label: "2 idoneita",
+      achieved: stats.examPasses >= 2,
+      tone: "bg-violet-950/50 text-violet-100 border-violet-700/60",
+    },
+  ];
+  return badges;
 }
 
 function escapeRegExp(value: string): string {
@@ -303,6 +454,65 @@ function GlossaryText({ text, interactive = true }: { text: string; interactive?
   );
 }
 
+function ExplanationText({
+  text,
+  interactive = true,
+  size = "sm",
+}: {
+  text: string;
+  interactive?: boolean;
+  size?: "xs" | "sm";
+}) {
+  const normalized = text.replace(/\s+/g, " ").trim();
+  const whyIndex = normalized.indexOf("Perché?");
+  const rememberIndex = normalized.indexOf("💡 Ricorda:");
+
+  let intro = normalized;
+  let why = "";
+  let remember = "";
+
+  if (whyIndex >= 0) {
+    intro = normalized.slice(0, whyIndex).trim();
+    if (rememberIndex >= 0 && rememberIndex > whyIndex) {
+      why = normalized.slice(whyIndex + "Perché?".length, rememberIndex).trim();
+      remember = normalized.slice(rememberIndex + "💡 Ricorda:".length).trim();
+    } else {
+      why = normalized.slice(whyIndex + "Perché?".length).trim();
+    }
+  } else if (rememberIndex >= 0) {
+    intro = normalized.slice(0, rememberIndex).trim();
+    remember = normalized.slice(rememberIndex + "💡 Ricorda:".length).trim();
+  }
+
+  const bodyClass = size === "xs" ? "text-xs" : "text-sm";
+
+  return (
+    <div className="space-y-3">
+      {intro && (
+        <div className={`${bodyClass} leading-relaxed text-slate-200`}>
+          <GlossaryText text={intro} interactive={interactive} />
+        </div>
+      )}
+      {why && (
+        <div className="rounded-lg border border-slate-700 bg-slate-950/40 p-3">
+          <div className="mb-1 text-[10px] font-semibold uppercase tracking-wide text-slate-500">Perche</div>
+          <div className={`${bodyClass} leading-relaxed text-slate-300`}>
+            <GlossaryText text={why} interactive={interactive} />
+          </div>
+        </div>
+      )}
+      {remember && (
+        <div className="rounded-lg border border-blue-900/60 bg-blue-950/20 p-3">
+          <div className="mb-1 text-[10px] font-semibold uppercase tracking-wide text-blue-300">Ricorda</div>
+          <div className={`${bodyClass} leading-relaxed text-blue-100`}>
+            <GlossaryText text={remember} interactive={interactive} />
+          </div>
+        </div>
+      )}
+    </div>
+  );
+}
+
 function IconBack() {
   return (
     <svg
@@ -389,16 +599,22 @@ function ConfirmRow({
 function Dashboard({
   cards,
   hidden,
+  gamification,
   onStartQuiz,
+  onStartExamSimulation,
   onOpenTopic,
   onOpenGlossary,
+  onOpenTraguardi,
   onReset,
 }: {
   cards: CardState[];
   hidden: Set<string>;
+  gamification: GamificationStats;
   onStartQuiz: () => void;
+  onStartExamSimulation: () => void;
   onOpenTopic: (topic: string) => void;
   onOpenGlossary: () => void;
+  onOpenTraguardi: () => void;
   onReset: () => void;
 }) {
   const activeCards = cards.filter((card) => !hidden.has(card.questionId));
@@ -408,17 +624,40 @@ function Dashboard({
   const totalReviews = activeCards.reduce((sum, card) => sum + card.totalReviews, 0);
   const correctReviews = activeCards.reduce((sum, card) => sum + card.correctReviews, 0);
   const accuracy = totalReviews === 0 ? 0 : Math.round((correctReviews / totalReviews) * 100);
-
-  const topicMap: Record<string, { total: number; mastered: number; due: number }> = {};
+  const hasStartedStudying = totalReviews > 0;
+  const levelProgress = getXpProgress(gamification.xp);
+  const readiness = getExamReadiness({ cards, hidden, stats: gamification });
+  const topicMap: Record<string, { total: number; mastered: number; due: number; reviews: number; accuracySum: number }> = {};
   for (const question of QUESTIONS) {
     if (hidden.has(question.id)) continue;
-    if (!topicMap[question.topic]) topicMap[question.topic] = { total: 0, mastered: 0, due: 0 };
+    if (!topicMap[question.topic]) {
+      topicMap[question.topic] = { total: 0, mastered: 0, due: 0, reviews: 0, accuracySum: 0 };
+    }
     topicMap[question.topic].total += 1;
     const card = cards.find((candidate) => candidate.questionId === question.id);
     if (!card) continue;
     if (card.repetitions >= 3) topicMap[question.topic].mastered += 1;
     if (isDue(card)) topicMap[question.topic].due += 1;
+    if (card.totalReviews > 0) {
+      topicMap[question.topic].reviews += 1;
+      topicMap[question.topic].accuracySum += card.correctReviews / card.totalReviews;
+    }
   }
+  const weakTopics = Object.entries(topicMap)
+    .map(([topic, value]) => {
+      const mastery = value.total === 0 ? 0 : value.mastered / value.total;
+      const accuracyValue = value.reviews === 0 ? 0.5 : value.accuracySum / value.reviews;
+      const pressure = value.total === 0 ? 0 : value.due / value.total;
+      const score = mastery * 0.45 + accuracyValue * 0.3 + (1 - pressure) * 0.25;
+      return {
+        topic,
+        ...value,
+        accuracy: Math.round(accuracyValue * 100),
+        score,
+      };
+    })
+    .sort((a, b) => a.score - b.score)
+    .slice(0, 3);
 
   return (
     <div className="mx-auto max-w-2xl space-y-6 px-4 py-8">
@@ -427,11 +666,47 @@ function Dashboard({
         <div className="text-sm text-slate-400">ADC-A · Fiumicino / Ciampino</div>
       </div>
 
+      <div className="rounded-2xl border border-slate-700 bg-gradient-to-br from-slate-800 via-slate-800 to-slate-900 p-5">
+        <div className="flex items-start justify-between gap-4">
+          <div>
+            <div className="text-xs font-semibold uppercase tracking-[0.18em] text-slate-500">Percorso</div>
+            <div className="mt-2 flex items-end gap-3">
+              <div className="text-3xl font-bold text-white">Livello {levelProgress.level}</div>
+              <div className="rounded-full bg-amber-900/30 px-3 py-1 text-sm font-semibold text-amber-200">
+                {gamification.currentStreak} giorni di fila
+              </div>
+            </div>
+            <div className="mt-2 text-sm text-slate-400">
+              {gamification.xp} punti studio · record streak {gamification.bestStreak} giorni
+            </div>
+          </div>
+          <div className="rounded-2xl border border-emerald-800/60 bg-emerald-950/30 px-4 py-3 text-right">
+            <div className="text-[11px] font-semibold uppercase tracking-wide text-emerald-400">Prontezza esame</div>
+            <div className="mt-1 text-2xl font-bold text-emerald-200">{readiness.score}%</div>
+            <div className="text-xs text-emerald-300/80">{readiness.label}</div>
+          </div>
+        </div>
+        <div className="mt-4">
+          <div className="mb-2 flex justify-between text-xs text-slate-500">
+            <span>Avanzamento livello</span>
+            <span>
+              {levelProgress.current}/{levelProgress.needed} punti
+            </span>
+          </div>
+          <div className="h-2.5 w-full rounded-full bg-slate-700">
+            <div
+              className="h-2.5 rounded-full bg-gradient-to-r from-blue-500 to-emerald-500 transition-all duration-500"
+              style={{ width: `${(levelProgress.current / levelProgress.needed) * 100}%` }}
+            />
+          </div>
+        </div>
+      </div>
+
       <div className="grid grid-cols-2 gap-3 sm:grid-cols-4">
         {[
           { label: "Da ripassare", value: dueCount, color: "text-yellow-400" },
           { label: "Nuove", value: newCount, color: "text-blue-400" },
-          { label: "Padroneggiate", value: masteredCount, color: "text-green-400" },
+          { label: "Domande Apprese", value: masteredCount, color: "text-green-400" },
           { label: "Precisione", value: `${accuracy}%`, color: "text-purple-400" },
         ].map(({ label, value, color }) => (
           <div key={label} className="rounded-xl bg-slate-800 p-4 text-center">
@@ -475,6 +750,56 @@ function Dashboard({
         Glossario
       </button>
 
+      <button
+        onClick={onStartExamSimulation}
+        className="w-full rounded-xl border border-emerald-700/60 bg-emerald-900/30 py-3 text-sm font-semibold text-emerald-200 transition-colors hover:bg-emerald-900/50 active:bg-emerald-950/60"
+      >
+        Simulazione Esame ADC
+      </button>
+
+      {hasStartedStudying && (
+        <div className="space-y-3 rounded-xl bg-slate-800 p-4">
+          <div className="flex items-center justify-between">
+            <div className="text-sm font-semibold text-slate-200">Focus consigliato</div>
+            <div className="text-xs text-slate-500">Topic da consolidare</div>
+          </div>
+          <div className="grid gap-2">
+            {weakTopics.map((topic) => (
+              <button
+                key={topic.topic}
+                onClick={() => onOpenTopic(topic.topic)}
+                className="rounded-xl border border-slate-700 bg-slate-900/40 p-3 text-left transition-colors hover:bg-slate-700/60"
+              >
+                <div className="flex items-center justify-between gap-3">
+                  <span className={`rounded-full px-2 py-0.5 text-xs font-medium ${topicColor(topic.topic)}`}>
+                    {topic.topic}
+                  </span>
+                  <span className="text-xs text-slate-500">{topic.due} da ripassare</span>
+                </div>
+                <div className="mt-2 grid grid-cols-3 gap-2 text-xs text-slate-400">
+                  <div>
+                    <span className="block text-slate-500">Apprese</span>
+                    <span className="font-semibold text-slate-200">
+                      {topic.mastered}/{topic.total}
+                    </span>
+                  </div>
+                  <div>
+                    <span className="block text-slate-500">Precisione</span>
+                    <span className="font-semibold text-slate-200">{topic.accuracy}%</span>
+                  </div>
+                  <div>
+                    <span className="block text-slate-500">Pressione</span>
+                    <span className="font-semibold text-slate-200">
+                      {topic.total === 0 ? 0 : Math.round((topic.due / topic.total) * 100)}%
+                    </span>
+                  </div>
+                </div>
+              </button>
+            ))}
+          </div>
+        </div>
+      )}
+
       <div className="space-y-2">
         <div className="grid gap-2">
           {Object.entries(topicMap)
@@ -507,6 +832,15 @@ function Dashboard({
 
       <div className="text-center">
         <button
+          onClick={onOpenTraguardi}
+          className="mb-4 text-sm font-semibold text-slate-400 transition-colors hover:text-slate-200"
+        >
+          Apri traguardi
+        </button>
+      </div>
+
+      <div className="text-center">
+        <button
           onClick={() => {
             if (confirm("Sei sicuro? Tutti i progressi verranno eliminati.")) onReset();
           }}
@@ -514,6 +848,76 @@ function Dashboard({
         >
           Azzera tutti i progressi
         </button>
+      </div>
+    </div>
+  );
+}
+
+function TraguardiView({
+  cards,
+  hidden,
+  gamification,
+  onBack,
+}: {
+  cards: CardState[];
+  hidden: Set<string>;
+  gamification: GamificationStats;
+  onBack: () => void;
+}) {
+  const badges = getBadgeMilestones(cards, hidden, gamification);
+  const achieved = badges.filter((badge) => badge.achieved).length;
+
+  return (
+    <div className="mx-auto max-w-3xl space-y-4 px-4 py-6">
+      <div className="flex items-center gap-3">
+        <button onClick={onBack} className="shrink-0 p-1 text-slate-400 transition-colors hover:text-white">
+          <IconBack />
+        </button>
+        <div className="flex-1">
+          <div className="text-xl font-bold text-white">Traguardi</div>
+          <div className="text-sm text-slate-400">
+            {achieved} completati su {badges.length}. Indicatori di continuita, consolidamento e preparazione.
+          </div>
+        </div>
+      </div>
+
+      <div className="rounded-2xl border border-slate-700 bg-slate-800 p-4">
+        <div className="mb-2 flex justify-between text-sm text-slate-300">
+          <span>Avanzamento complessivo</span>
+          <span className="text-slate-400">
+            {achieved}/{badges.length}
+          </span>
+        </div>
+        <div className="h-2.5 w-full rounded-full bg-slate-700">
+          <div
+            className="h-2.5 rounded-full bg-gradient-to-r from-emerald-500 to-blue-500 transition-all duration-500"
+            style={{ width: `${(achieved / badges.length) * 100}%` }}
+          />
+        </div>
+      </div>
+
+      <div className="grid gap-3 sm:grid-cols-2">
+        {badges.map((badge) => (
+          <div
+            key={badge.id}
+            className={`rounded-xl border p-4 ${
+              badge.achieved
+                ? `${badge.tone}`
+                : "border-slate-700 bg-slate-800 text-slate-400"
+            }`}
+          >
+            <div className="flex items-center justify-between gap-3">
+              <div className="text-sm font-semibold">{badge.label}</div>
+              <span
+                className={`rounded-full px-2 py-0.5 text-[11px] font-semibold ${
+                  badge.achieved ? "bg-black/20 text-current" : "bg-slate-900/60 text-slate-500"
+                }`}
+              >
+                {badge.achieved ? "Raggiunto" : "In corso"}
+              </span>
+            </div>
+          </div>
+        ))}
       </div>
     </div>
   );
@@ -530,12 +934,14 @@ function GlossaryView({
   const [showAll, setShowAll] = useState(true);
   const [query, setQuery] = useState("");
   const [searchOpen, setSearchOpen] = useState(false);
+  const [activeCategory, setActiveCategory] = useState<GlossaryEntry["category"] | "all">("all");
 
   const normalizedQuery = query.trim().toLowerCase();
   const sections = GLOSSARY_BY_CATEGORY.map(({ category, label, entries }) => ({
     category,
     label,
     entries: entries.filter((entry) => {
+      if (activeCategory !== "all" && entry.category !== activeCategory) return false;
       if (!normalizedQuery) return true;
       return (
         entry.term.toLowerCase().includes(normalizedQuery) ||
@@ -581,6 +987,35 @@ function GlossaryView({
         >
           Quiz solo acronimi
         </button>
+      </div>
+
+      <div className="space-y-2">
+        <div className="text-xs font-semibold uppercase tracking-wide text-slate-500">Filtra sezioni</div>
+        <div className="flex flex-wrap gap-2">
+          <button
+            onClick={() => setActiveCategory("all")}
+            className={`rounded-full border px-3 py-1.5 text-xs font-semibold transition-colors ${
+              activeCategory === "all"
+                ? "border-blue-600 bg-blue-900/40 text-blue-200"
+                : "border-slate-700 bg-slate-800 text-slate-400 hover:bg-slate-700"
+            }`}
+          >
+            Tutte
+          </button>
+          {GLOSSARY_BY_CATEGORY.map(({ category, label }) => (
+            <button
+              key={category}
+              onClick={() => setActiveCategory(category)}
+              className={`rounded-full border px-3 py-1.5 text-xs font-semibold transition-colors ${
+                activeCategory === category
+                  ? "border-blue-600 bg-blue-900/40 text-blue-200"
+                  : "border-slate-700 bg-slate-800 text-slate-400 hover:bg-slate-700"
+              }`}
+            >
+              {label}
+            </button>
+          ))}
+        </div>
       </div>
 
       <div className="space-y-5">
@@ -803,9 +1238,7 @@ function TopicDetail({
                     </p>
                   </div>
                   <div className="rounded-lg bg-slate-900/50 p-3">
-                    <p className="text-xs leading-relaxed text-slate-400">
-                      <GlossaryText text={question.explanation} />
-                    </p>
+                    <ExplanationText text={question.explanation} size="xs" />
                   </div>
                 </div>
               )}
@@ -919,8 +1352,8 @@ function QuizCard({
 
       {revealed && (
         <div className="rounded-xl border border-slate-700 bg-slate-800 p-4 text-sm leading-relaxed text-slate-300">
-          <span className="font-semibold text-slate-100">Spiegazione: </span>
-          <GlossaryText text={question.explanation} />
+          <div className="mb-2 text-sm font-semibold text-slate-100">Spiegazione</div>
+          <ExplanationText text={question.explanation} interactive={revealed} size="sm" />
         </div>
       )}
 
@@ -1153,6 +1586,227 @@ function RisultatoSessione({
   );
 }
 
+function formatExamTime(secondsRemaining: number): string {
+  const minutes = Math.floor(secondsRemaining / 60);
+  const seconds = secondsRemaining % 60;
+  return `${String(minutes).padStart(2, "0")}:${String(seconds).padStart(2, "0")}`;
+}
+
+function ExamQuizCard({
+  item,
+  index,
+  total,
+  selectedIndex,
+  onSelect,
+  onNext,
+  onBack,
+  secondsRemaining,
+}: {
+  item: ExamQuestionState;
+  index: number;
+  total: number;
+  selectedIndex: number | null;
+  onSelect: (index: number) => void;
+  onNext: () => void;
+  onBack: () => void;
+  secondsRemaining: number;
+}) {
+  const progressPct = ((index - 1) / total) * 100;
+  const { question, shuffled } = item;
+
+  return (
+    <div className="mx-auto max-w-2xl space-y-4 px-4 py-4">
+      <div className="flex items-center gap-3">
+        <button
+          onClick={onBack}
+          className="shrink-0 p-1 text-slate-400 transition-colors hover:text-white"
+          title="Interrompi simulazione"
+        >
+          <IconBack />
+        </button>
+        <div className="h-1.5 flex-1 rounded-full bg-slate-700">
+          <div className="h-1.5 rounded-full bg-emerald-500 transition-all" style={{ width: `${progressPct}%` }} />
+        </div>
+        <span className="shrink-0 text-xs tabular-nums text-slate-500">
+          {index}/{total}
+        </span>
+      </div>
+
+      <div className="flex items-center justify-between gap-3">
+        <span className="rounded-full bg-emerald-900/40 px-3 py-1 text-xs font-semibold text-emerald-300">
+          Simulazione Esame ADC
+        </span>
+        <span className="rounded-full bg-slate-800 px-3 py-1 text-sm font-semibold tabular-nums text-white">
+          {formatExamTime(secondsRemaining)}
+        </span>
+      </div>
+
+      <div className="rounded-xl border border-slate-700 bg-slate-800/70 p-4 text-sm text-slate-300">
+        20 domande · 25 minuti · superi con almeno 18 corrette. Questa modalità non modifica il progresso normale.
+      </div>
+
+      {question.imageUrl && (
+        <div className="overflow-hidden rounded-xl border border-slate-700 bg-slate-800">
+          {/* eslint-disable-next-line @next/next/no-img-element */}
+          <img src={question.imageUrl} alt="Immagine della domanda" className="max-h-64 w-full object-contain" />
+        </div>
+      )}
+
+      <div className="text-lg font-medium leading-snug text-white">{question.question}</div>
+
+      <div className="space-y-2">
+        {shuffled.map((option, optionIndex) => {
+          const isSelected = selectedIndex === optionIndex;
+          return (
+            <button
+              key={optionIndex}
+              onClick={() => onSelect(optionIndex)}
+              className={`w-full rounded-xl border px-4 py-3 text-left text-sm leading-snug transition-all ${
+                isSelected
+                  ? "border-emerald-500 bg-emerald-900/30 text-emerald-100"
+                  : "border-slate-700 bg-slate-800 text-slate-200 hover:bg-slate-700"
+              }`}
+            >
+              <span className="mr-2 text-slate-500">{["A", "B", "C"][optionIndex]}.</span>
+              {option.text}
+            </button>
+          );
+        })}
+      </div>
+
+      <button
+        onClick={onNext}
+        disabled={selectedIndex === null}
+        className="w-full rounded-xl bg-emerald-600 py-4 text-lg font-semibold text-white transition-all hover:bg-emerald-500 disabled:cursor-not-allowed disabled:opacity-40"
+      >
+        {index >= total ? "Concludi simulazione" : "Domanda successiva"}
+      </button>
+
+      {selectedIndex === null && (
+        <p className="text-center text-xs text-slate-600">Seleziona una risposta per continuare</p>
+      )}
+    </div>
+  );
+}
+
+function ExamResultSession({
+  answers,
+  examQueue,
+  totalQuestions,
+  timedOut,
+  onDone,
+}: {
+  answers: ExamAnswer[];
+  examQueue: ExamQuestionState[];
+  totalQuestions: number;
+  timedOut: boolean;
+  onDone: () => void;
+}) {
+  const correct = answers.filter((answer) => answer.correct).length;
+  const pct = totalQuestions === 0 ? 0 : Math.round((correct / totalQuestions) * 100);
+  const passed = correct >= 18;
+  const answerMap = new Map(answers.map((answer) => [answer.questionId, answer]));
+
+  return (
+    <div className="mx-auto max-w-2xl space-y-6 px-4 py-12 text-center">
+      <div className="relative inline-flex items-center justify-center">
+        <ProgressRing pct={pct} />
+        <span className="absolute text-2xl font-bold text-white">{correct}/20</span>
+      </div>
+      <div className="space-y-1">
+        <div className="text-xl font-bold text-white">
+          {passed ? "Simulazione superata" : "Simulazione non superata"}
+        </div>
+        <div className="text-sm text-slate-400">
+          {passed ? "Hai raggiunto la soglia minima di 18 risposte corrette." : "Servono almeno 18 risposte corrette su 20."}
+        </div>
+        {timedOut && <div className="text-sm text-amber-400">Tempo scaduto.</div>}
+      </div>
+      <div className="grid grid-cols-2 gap-3">
+        <div className="rounded-xl bg-slate-800 p-3">
+          <div className={`text-2xl font-bold ${passed ? "text-green-400" : "text-red-400"}`}>
+            {passed ? "Idoneo" : "Non idoneo"}
+          </div>
+          <div className="text-xs text-slate-400">Esito</div>
+        </div>
+        <div className="rounded-xl bg-slate-800 p-3">
+          <div className="text-2xl font-bold text-blue-400">{pct}%</div>
+          <div className="text-xs text-slate-400">Precisione</div>
+        </div>
+      </div>
+      <div className="space-y-3 text-left">
+        <div className="text-sm font-semibold text-slate-300">Riepilogo domande</div>
+        {examQueue.map((item, index) => {
+          const answer = answerMap.get(item.question.id);
+          const selectedText =
+            answer && item.question.options[answer.selectedIndex]
+              ? item.question.options[answer.selectedIndex]
+              : null;
+          const correctText = item.question.options[item.question.correctIndex];
+
+          return (
+            <div key={item.question.id} className="rounded-xl border border-slate-700 bg-slate-800 p-4">
+              <div className="mb-3 flex items-start justify-between gap-3">
+                <div className="min-w-0">
+                  <div className="mb-1 text-xs font-semibold uppercase tracking-wide text-slate-500">
+                    Domanda {index + 1}
+                  </div>
+                  <div className="text-sm leading-relaxed text-slate-100">
+                    <GlossaryText text={item.question.question} />
+                  </div>
+                </div>
+                <span
+                  className={`shrink-0 rounded-full px-2.5 py-1 text-xs font-semibold ${
+                    !answer
+                      ? "bg-slate-700 text-slate-300"
+                      : answer.correct
+                        ? "bg-green-900/40 text-green-300"
+                        : "bg-red-900/40 text-red-300"
+                  }`}
+                >
+                  {!answer ? "Non risposta" : answer.correct ? "Corretta" : "Errata"}
+                </span>
+              </div>
+
+              <div className="space-y-2">
+                <div className="rounded-lg border border-slate-700 bg-slate-900/60 p-3">
+                  <div className="mb-1 text-xs font-semibold uppercase tracking-wide text-slate-500">
+                    Tua risposta
+                  </div>
+                  <div className={`${answer?.correct ? "text-green-200" : "text-red-200"} text-sm leading-relaxed`}>
+                    {selectedText ? <GlossaryText text={selectedText} /> : <span className="text-slate-500">Nessuna risposta</span>}
+                  </div>
+                </div>
+
+                {(!answer || !answer.correct) && (
+                  <div className="rounded-lg border border-green-800/60 bg-green-900/20 p-3">
+                    <div className="mb-1 text-xs font-semibold uppercase tracking-wide text-green-400">
+                      Risposta corretta
+                    </div>
+                    <div className="text-sm leading-relaxed text-green-200">
+                      <GlossaryText text={correctText} />
+                    </div>
+                  </div>
+                )}
+
+                <div className="rounded-lg border border-slate-700 bg-slate-900/40 p-3">
+                  <ExplanationText text={item.question.explanation} size="xs" />
+                </div>
+              </div>
+            </div>
+          );
+        })}
+      </div>
+      <button
+        onClick={onDone}
+        className="w-full rounded-xl bg-blue-600 py-4 text-lg font-semibold text-white transition-all hover:bg-blue-500"
+      >
+        Torna alla dashboard
+      </button>
+    </div>
+  );
+}
+
 function AcronymResultSession({
   ratings,
   onDone,
@@ -1211,10 +1865,18 @@ export default function Home() {
   const [acronymQueue, setAcronymQueue] = useState<AcronymQuizItem[]>([]);
   const [acronymIndex, setAcronymIndex] = useState(0);
   const [acronymRatings, setAcronymRatings] = useState<number[]>([]);
+  const [gamification, setGamification] = useState<GamificationStats>(loadGamificationStats());
+  const [examQueue, setExamQueue] = useState<ExamQuestionState[]>([]);
+  const [examIndex, setExamIndex] = useState(0);
+  const [examAnswers, setExamAnswers] = useState<ExamAnswer[]>([]);
+  const [examSelectedIndex, setExamSelectedIndex] = useState<number | null>(null);
+  const [examSecondsRemaining, setExamSecondsRemaining] = useState(25 * 60);
+  const [examTimedOut, setExamTimedOut] = useState(false);
 
   useEffect(() => {
     setCards(loadCards());
     setHidden(loadHidden());
+    setGamification(loadGamificationStats());
   }, []);
 
   const startQuiz = useCallback(
@@ -1255,6 +1917,36 @@ export default function Home() {
     setView("acronym_quiz");
   }, []);
 
+  const finishExamSimulation = useCallback((timedOut = false, finalAnswers?: ExamAnswer[]) => {
+    const answersToUse = finalAnswers ?? examAnswers;
+    const correct = answersToUse.filter((answer) => answer.correct).length;
+    const passed = correct >= 18;
+    setGamification((current) =>
+      recordStudyActivity(current, {
+        xp: passed ? 90 : 45,
+        sessionIncrement: 1,
+        examScore: correct,
+        passedExam: passed,
+      })
+    );
+    setExamTimedOut(timedOut);
+    setView("exam_result");
+  }, [examAnswers]);
+
+  const startExamSimulation = useCallback(() => {
+    const pool = shuffleArray(QUESTIONS)
+      .slice(0, 20)
+      .map((question) => ({ question, shuffled: shuffleOptions(question) }));
+    setExamQueue(pool);
+    setExamIndex(0);
+    setExamAnswers([]);
+    setExamSelectedIndex(null);
+    setExamSecondsRemaining(25 * 60);
+    setExamTimedOut(false);
+    setSelectedTopic(null);
+    setView("exam_quiz");
+  }, []);
+
   const handleRate = useCallback(
     (rating: number) => {
       const currentCard = queue[queueIndex];
@@ -1264,6 +1956,12 @@ export default function Home() {
       );
       setCards(newCards);
       saveCards(newCards);
+      setGamification((current) =>
+        recordStudyActivity(current, {
+          xp: rating >= RATING_HARD ? 12 : 6,
+          sessionIncrement: queueIndex === 0 ? 1 : 0,
+        })
+      );
       setSessionRatings((current) => [...current, rating]);
       setSessionCards((current) => [...current, currentCard]);
       if (queueIndex + 1 >= queue.length) setView("result");
@@ -1300,12 +1998,62 @@ export default function Home() {
 
   const handleAcronymAnswer = useCallback(
     (rating: number) => {
+      setGamification((current) =>
+        recordStudyActivity(current, {
+          xp: rating >= RATING_HARD ? 8 : 4,
+          sessionIncrement: acronymIndex === 0 ? 1 : 0,
+        })
+      );
       setAcronymRatings((current) => [...current, rating]);
       if (acronymIndex + 1 >= acronymQueue.length) setView("acronym_result");
       else setAcronymIndex((current) => current + 1);
     },
     [acronymIndex, acronymQueue.length]
   );
+
+  const handleExamNext = useCallback(() => {
+    const question = examQueue[examIndex];
+    if (!question || examSelectedIndex === null) return;
+
+    const selectedOption = question.shuffled[examSelectedIndex];
+    const correct = selectedOption.originalIndex === question.question.correctIndex;
+
+    const nextAnswer = {
+      questionId: question.question.id,
+      selectedIndex: selectedOption.originalIndex,
+      correct,
+    };
+    const nextAnswers = [...examAnswers, nextAnswer];
+    setExamAnswers(nextAnswers);
+
+    if (examIndex + 1 >= examQueue.length) {
+      finishExamSimulation(false, nextAnswers);
+      return;
+    }
+
+    setExamIndex((current) => current + 1);
+    setExamSelectedIndex(null);
+  }, [examAnswers, examIndex, examQueue, examSelectedIndex, finishExamSimulation]);
+
+  useEffect(() => {
+    if (view !== "exam_quiz") return;
+    if (examSecondsRemaining <= 0) {
+      finishExamSimulation(true);
+      return;
+    }
+
+    const timer = window.setInterval(() => {
+      setExamSecondsRemaining((current) => {
+        if (current <= 1) {
+          window.clearInterval(timer);
+          return 0;
+        }
+        return current - 1;
+      });
+    }, 1000);
+
+    return () => window.clearInterval(timer);
+  }, [examSecondsRemaining, finishExamSimulation, view]);
 
   if (cards.length === 0) {
     return (
@@ -1321,22 +2069,35 @@ export default function Home() {
         <Dashboard
           cards={cards}
           hidden={hidden}
+          gamification={gamification}
           onStartQuiz={() => {
             setSelectedTopic(null);
             startQuiz();
           }}
+          onStartExamSimulation={startExamSimulation}
           onOpenTopic={(topic) => {
             setSelectedTopic(topic);
             setView("topic_detail");
           }}
           onOpenGlossary={() => setView("glossary")}
+          onOpenTraguardi={() => setView("traguardi")}
           onReset={() => {
             const fresh = resetCards();
             setCards(fresh);
             setHidden(new Set());
+            setGamification(loadGamificationStats());
             setSelectedTopic(null);
             setView("dashboard");
           }}
+        />
+      )}
+
+      {view === "traguardi" && (
+        <TraguardiView
+          cards={cards}
+          hidden={hidden}
+          gamification={gamification}
+          onBack={() => setView("dashboard")}
         />
       )}
 
@@ -1375,6 +2136,30 @@ export default function Home() {
           sessionCards={sessionCards}
           ratings={sessionRatings}
           onDone={() => setView(selectedTopic ? "topic_detail" : "dashboard")}
+        />
+      )}
+
+      {view === "exam_quiz" && examQueue[examIndex] && (
+        <ExamQuizCard
+          key={`${examQueue[examIndex].question.id}-${examIndex}`}
+          item={examQueue[examIndex]}
+          index={examIndex + 1}
+          total={examQueue.length}
+          selectedIndex={examSelectedIndex}
+          onSelect={setExamSelectedIndex}
+          onNext={handleExamNext}
+          onBack={() => setView("dashboard")}
+          secondsRemaining={examSecondsRemaining}
+        />
+      )}
+
+      {view === "exam_result" && (
+        <ExamResultSession
+          answers={examAnswers}
+          examQueue={examQueue}
+          totalQuestions={examQueue.length}
+          timedOut={examTimedOut}
+          onDone={() => setView("dashboard")}
         />
       )}
 

@@ -3,6 +3,104 @@ import { QUESTIONS } from "./questions";
 
 const STORAGE_KEY = "patente_quiz_cards";
 const HIDDEN_KEY  = "patente_quiz_hidden";
+const GAMIFICATION_KEY = "patente_quiz_gamification";
+
+export interface GamificationStats {
+  xp: number;
+  currentStreak: number;
+  bestStreak: number;
+  lastStudyDate: string | null;
+  totalSessions: number;
+  examAttempts: number;
+  examPasses: number;
+  bestExamScore: number;
+}
+
+export function createInitialGamificationStats(): GamificationStats {
+  return {
+    xp: 0,
+    currentStreak: 0,
+    bestStreak: 0,
+    lastStudyDate: null,
+    totalSessions: 0,
+    examAttempts: 0,
+    examPasses: 0,
+    bestExamScore: 0,
+  };
+}
+
+function getTodayKey(): string {
+  const now = new Date();
+  const year = now.getFullYear();
+  const month = String(now.getMonth() + 1).padStart(2, "0");
+  const day = String(now.getDate()).padStart(2, "0");
+  return `${year}-${month}-${day}`;
+}
+
+function getPreviousDayKey(dateKey: string): string {
+  const [year, month, day] = dateKey.split("-").map(Number);
+  const date = new Date(year, month - 1, day);
+  date.setDate(date.getDate() - 1);
+  const prevYear = date.getFullYear();
+  const prevMonth = String(date.getMonth() + 1).padStart(2, "0");
+  const prevDay = String(date.getDate()).padStart(2, "0");
+  return `${prevYear}-${prevMonth}-${prevDay}`;
+}
+
+export function loadGamificationStats(): GamificationStats {
+  if (typeof window === "undefined") return createInitialGamificationStats();
+  try {
+    const raw = localStorage.getItem(GAMIFICATION_KEY);
+    if (!raw) return createInitialGamificationStats();
+    return { ...createInitialGamificationStats(), ...(JSON.parse(raw) as Partial<GamificationStats>) };
+  } catch {
+    return createInitialGamificationStats();
+  }
+}
+
+export function saveGamificationStats(stats: GamificationStats): void {
+  if (typeof window === "undefined") return;
+  localStorage.setItem(GAMIFICATION_KEY, JSON.stringify(stats));
+}
+
+export function recordStudyActivity(
+  stats: GamificationStats,
+  {
+    xp = 0,
+    sessionIncrement = 0,
+    examScore,
+    passedExam = false,
+  }: {
+    xp?: number;
+    sessionIncrement?: number;
+    examScore?: number;
+    passedExam?: boolean;
+  } = {}
+): GamificationStats {
+  const today = getTodayKey();
+  let currentStreak = stats.currentStreak;
+
+  if (stats.lastStudyDate !== today) {
+    if (stats.lastStudyDate === getPreviousDayKey(today)) currentStreak += 1;
+    else currentStreak = 1;
+  }
+
+  const next: GamificationStats = {
+    ...stats,
+    xp: stats.xp + xp,
+    currentStreak,
+    bestStreak: Math.max(stats.bestStreak, currentStreak),
+    lastStudyDate: today,
+    totalSessions: stats.totalSessions + sessionIncrement,
+    examAttempts: stats.examAttempts + (typeof examScore === "number" ? 1 : 0),
+    examPasses: stats.examPasses + (passedExam ? 1 : 0),
+    bestExamScore:
+      typeof examScore === "number" ? Math.max(stats.bestExamScore, examScore) : stats.bestExamScore,
+  };
+
+  saveGamificationStats(next);
+  return next;
+}
 
 export function loadCards(): CardState[] {
   if (typeof window === "undefined") return createInitialCards();
@@ -26,6 +124,7 @@ export function resetCards(): CardState[] {
   if (typeof window !== "undefined") {
     localStorage.setItem(STORAGE_KEY, JSON.stringify(fresh));
     localStorage.removeItem(HIDDEN_KEY);
+    localStorage.removeItem(GAMIFICATION_KEY);
   }
   return fresh;
 }
