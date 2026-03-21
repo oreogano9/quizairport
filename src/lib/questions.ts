@@ -383,9 +383,9 @@ export const QUESTIONS: Question[] = [
     id: "san-05",
     question: "Quanti punti vengono decurtati per mancato rispetto della segnaletica stradale (orizzontale o verticale) in Airside?",
     options: ["1 punto", "2 punti", "4 punti"],
-    correctIndex: 0,
+    correctIndex: 1,
     explanation:
-      "Mancato rispetto della segnaletica stradale = 1 punto decurtato. Perché? La segnaletica in Airside non è decorativa: ogni cartello ha un significato operativo preciso legato alla sicurezza degli aeromobili. Ignorarla può portare a incidenti anche gravi. 💡 Ricorda: 1 punto, ma non è «solo» segnaletica — in Airside ogni segno conta.",
+      "Mancato rispetto della segnaletica veicolare = 2 punti decurtati. Perché? La segnaletica in Airside non è decorativa: ogni cartello ha un significato operativo preciso legato alla sicurezza degli aeromobili. La sanzione più pesante di 1 solo punto riflette la gravità di ignorare indicazioni cruciali per la circolazione. 💡 Ricorda: 2 punti — quasi metà dell'ADC in un colpo solo.",
     topic: "Sanzioni",
   },
   {
@@ -575,9 +575,9 @@ export const QUESTIONS: Question[] = [
     id: "vel-02",
     question: "Qual è il limite di velocità nell'area di smistamento bagagli?",
     options: ["5 km/h", "10 km/h", "15 km/h"],
-    correctIndex: 1,
+    correctIndex: 0,
     explanation:
-      "Il limite di velocità nell'area smistamento bagagli è 10 km/h. Perché? Quest'area è ad alta densità di personale a piedi che lavora con le teste basse sui nastri: una velocità ridotta dà il tempo di frenare davanti a una persona che sbuca improvvisamente. 💡 Ricorda: 10 km/h = passo veloce di una persona che corre — si può fermare in tempo.",
+      "Il limite di velocità nell'area smistamento bagagli è 5 km/h. Perché? Quest'area è ad altissima densità di personale a piedi che lavora con le teste basse sui nastri: la velocità minima è indispensabile per fermarsi in tempo davanti a una persona che sbuca improvvisamente da dietro un nastro. 💡 Ricorda: 5 km/h = passo di camminata veloce — quasi a passo d'uomo.",
     topic: "Velocità",
   },
   {
@@ -605,10 +605,10 @@ export const QUESTIONS: Question[] = [
   {
     id: "vel-05",
     question: "In prossimità dei cantieri, qual è il limite di velocità?",
-    options: ["5 km/h", "20 km/h", "30 km/h"],
+    options: ["5 km/h", "10 km/h", "30 km/h"],
     correctIndex: 1,
     explanation:
-      "In prossimità dei cantieri il limite è 20 km/h. Perché? I cantieri in Airside hanno personale a piedi, attrezzature sporgenti e percorsi modificati: ridurre la velocità dà il tempo di reagire a situazioni inaspettate. 💡 Ricorda: cantiere = imprevedibile — 20 km/h lascia margine di reazione.",
+      "In prossimità dei cantieri il limite è 10 km/h. Perché? I cantieri in Airside hanno personale a piedi, attrezzature sporgenti e percorsi modificati imprevedibili: una velocità molto ridotta garantisce il tempo di reazione necessario in un ambiente caotico. 💡 Ricorda: cantiere = quasi passo d'uomo — 10 km/h, non 20.",
     topic: "Velocità",
   },
 
@@ -621,9 +621,9 @@ export const QUESTIONS: Question[] = [
       "Su tutti gli altri veicoli e mezzi, compresi quelli di emergenza",
       "Su tutti gli altri veicoli e mezzi, esclusi i veicoli di soccorso in emergenza con luce blu e sirena",
     ],
-    correctIndex: 2,
+    correctIndex: 1,
     explanation:
-      "L'aeromobile (anche se trainato) ha la precedenza su tutti i veicoli, tranne i mezzi di soccorso in emergenza con luce blu rotante e sirena. Perché? Un aeromobile non può frenare bruscamente né cambiare direzione istantaneamente: se un veicolo non cede, l'aereo non può evitarlo e il danno è enorme. 💡 Ricorda: la gerarchia in Airside è Emergenza (blu+sirena) > Aereo > Tutto il resto.",
+      "L'aeromobile (anche se trainato) ha la precedenza assoluta su TUTTI i veicoli, compresi i mezzi di soccorso in emergenza. Perché? Un aeromobile non può frenare bruscamente né cambiare direzione istantaneamente: anche un mezzo di emergenza deve cedere la precedenza per non causare un incidente catastrofico. I soccorsi possono derogare ai limiti di velocità e alla segnaletica, ma mai alla precedenza verso gli aeromobili. 💡 Ricorda: aeromobile = PRIORITÀ 1 assoluta — nessuno lo batte, neanche i soccorsi.",
     topic: "Precedenze",
   },
   {
@@ -634,9 +634,9 @@ export const QUESTIONS: Question[] = [
       "Su tutti gli altri veicoli ma non sugli aeromobili",
       "Solo sulle veicolari, non sui piazzali",
     ],
-    correctIndex: 0,
+    correctIndex: 1,
     explanation:
-      "I mezzi di soccorso con luce blu e sirena hanno precedenza assoluta su tutti, compresi gli aeromobili in rullaggio. Perché? In un'emergenza ogni secondo conta: nessun altro obiettivo — nemmeno un aereo in movimento — può giustificare un ritardo dei soccorsi. 💡 Ricorda: blu+sirena = via libera totale, SEMPRE — anche davanti a un Boeing.",
+      "I mezzi di soccorso con luce blu e sirena hanno precedenza su tutti i veicoli, ma NON sugli aeromobili. Perché? Gli aeromobili occupano la Priorità 1 assoluta: anche un mezzo di emergenza deve cedere la precedenza a un aereo perché una collisione causerebbe danni incomparabilmente più gravi. I soccorsi possono derogare a velocità e segnaletica, ma mai alla precedenza verso gli aeromobili. 💡 Ricorda: soccorsi = Priorità 3 (dopo gli aerei e i trainaggi) — in emergenza vai veloce, ma l'aereo passa sempre.",
     topic: "Precedenze",
   },
   {
@@ -725,12 +725,12 @@ export const QUESTIONS: Question[] = [
     question: "È possibile utilizzare le luci abbaglianti in Airside?",
     options: [
       "Sì, nelle ore notturne",
-      "Sì, in condizioni di scarsa visibilità",
+      "Solo per ispezioni su piste o aree a verde in scarsa illuminazione, se non causano abbagliamento ad altri",
       "In nessun caso",
     ],
-    correctIndex: 2,
+    correctIndex: 1,
     explanation:
-      "L'uso delle luci abbaglianti è vietato in qualsiasi circostanza in Airside. Perché? Gli abbaglianti possono accecare temporaneamente piloti, marshaller o altri conducenti, causando disorientamento in un ambiente dove ogni secondo conta. 💡 Ricorda: abbaglianti = mai in Airside — non vuoi accecare un pilota che sta rullando.",
+      "Gli abbaglianti sono vietati nella quasi totalità dei casi, ma sono consentiti eccezionalmente per ispezioni su piste di volo o aree a verde in condizioni di scarsa illuminazione, purché non causino abbagliamento ad altri. Perché? Accecare piloti o marshaller è pericolosissimo; l'eccezione è limitata a contesti isolati dove non vi sono altri utenti che potrebbero essere abbagliati. 💡 Ricorda: abbaglianti = quasi mai — l'unica eccezione è l'ispezione in zona isolata senza rischio di abbagliare qualcuno.",
     topic: "Luci",
   },
   {
@@ -815,7 +815,7 @@ export const QUESTIONS: Question[] = [
   },
   {
     id: "seg-06",
-    question: "I pannelli a scacchi bianchi e neri posti sulle fiancate dei veicoli a cosa servono?",
+    question: "I pannelli a scacchi rossi e bianchi posti sulle fiancate dei veicoli a cosa servono?",
     options: [
       "Indicano che il mezzo è autorizzato ad accedere in Area di Manovra",
       "Sono un elemento di conspicuous color per l'alta visibilità",
@@ -823,7 +823,7 @@ export const QUESTIONS: Question[] = [
     ],
     correctIndex: 1,
     explanation:
-      "I pannelli a scacchi bianchi e neri sulle fiancate dei veicoli sono un requisito di conspicuous color per l'alta visibilità. Perché? In un ambiente con aeromobili in movimento, il veicolo deve essere immediatamente distinguibile a distanza dai piloti in cabina di pilotaggio e dai marshaller. 💡 Ricorda: scacchi bianchi e neri = «guardami!» — come le giacche dei ciclisti di notte.",
+      "I pannelli a scacchi rossi e bianchi sulle fiancate dei veicoli sono un requisito di conspicuous color per l'alta visibilità. Perché? In un ambiente con aeromobili in movimento, il veicolo deve essere immediatamente distinguibile a distanza dai piloti in cabina di pilotaggio e dai marshaller. Il rosso e bianco garantisce il massimo contrasto visivo. 💡 Ricorda: scacchi rosso/bianco = «guardami!» — il rosso è il colore più visibile anche in condizioni di luce difficile.",
     topic: "Segnaletica",
   },
   {
@@ -945,13 +945,13 @@ export const QUESTIONS: Question[] = [
     id: "tax-08",
     question: "Il transito e la sosta sotto le ali e sui pozzetti di rifornimento dell'aeromobile:",
     options: [
-      "È consentito solo ai mezzi antincendio",
+      "È consentito solo ai veicoli di rifornimento carburante, se indispensabile per l'operazione",
       "È consentito solo ai veicoli della compagnia aerea proprietaria dell'aeromobile",
-      "È assolutamente vietato a chiunque",
+      "È assolutamente vietato a chiunque senza eccezioni",
     ],
-    correctIndex: 2,
+    correctIndex: 0,
     explanation:
-      "Il transito e la sosta sotto le ali e sui pozzetti di rifornimento sono assolutamente vietati a chiunque. Perché? Le ali contengono i serbatoi di carburante e i pozzetti gestiscono i flussi: sostare lì in caso di sversamento o anomalia significa essere esposti a rischio incendio. 💡 Ricorda: sotto le ali = zona rossa assoluta — neanche per «un secondo».",
+      "Il transito e la sosta sotto le ali e sui pozzetti di rifornimento sono vietati a tutti, con l'unica eccezione dei veicoli di rifornimento carburante quando la loro presenza è indispensabile per l'operazione. Perché? Le ali contengono i serbatoi di carburante: solo il personale di rifornimento, addestrato appositamente, può operare in quella zona con le dovute precauzioni. 💡 Ricorda: sotto le ali = proibito a tutti TRANNE i rifornitori in servizio — e anche loro devono rispettare regole rigide.",
     topic: "Taxiway e piazzole",
   },
 
@@ -961,12 +961,12 @@ export const QUESTIONS: Question[] = [
     question: "Lungo le vie di scorrimento (veicolari) è consentita la sosta dei veicoli?",
     options: [
       "Sì, sempre",
-      "Solo se temporanea",
+      "Solo per i mezzi adibiti al traino aeromobili, per esigenze operative",
       "Mai, in nessun caso",
     ],
-    correctIndex: 2,
+    correctIndex: 1,
     explanation:
-      "Lungo le veicolari la sosta è vietata in qualsiasi circostanza. Perché? Le veicolari sono le arterie di scorrimento del traffico in Airside: un veicolo parcheggiato restringe la carreggiata e può causare situazioni pericolose in caso di emergenza che richieda il passaggio rapido. 💡 Ricorda: veicolare = autostrada interna — non si parcheggia, si scorre.",
+      "Lungo le veicolari la sosta è vietata, tranne per i mezzi adibiti al traino aeromobili che possono sostare per esigenze operative. Perché? Le veicolari sono le arterie di scorrimento: un veicolo parcheggiato restringe la carreggiata, ma il traino di un aeromobile è un'operazione che può richiedere soste temporanee sulla viabilità per manovrare. 💡 Ricorda: veicolare = vietata la sosta, ECCETTO i trattori in operazione di traino.",
     topic: "Parcheggio e sosta",
   },
   {
@@ -1174,13 +1174,13 @@ export const QUESTIONS: Question[] = [
     id: "eme-03",
     question: "In caso di incidente aereo, i mezzi di soccorso possono derogare a:",
     options: [
-      "Il rispetto dei limiti di velocità",
+      "Solo ai limiti di velocità e alla segnaletica (non alla precedenza verso gli aeromobili)",
       "L'obbligo di dare precedenza agli aeromobili",
-      "Entrambe le precedenti",
+      "Tutte le regole di circolazione senza eccezioni",
     ],
-    correctIndex: 2,
+    correctIndex: 0,
     explanation:
-      "In emergenza aeronautica i mezzi di soccorso possono derogare ai limiti di velocità e all'obbligo di dare precedenza agli aeromobili. Perché? In un'emergenza ogni secondo conta per salvare vite: la legislazione permette ai soccorritori di violare le regole ordinarie perché il beneficio (vite salvate) supera il rischio. 💡 Ricorda: soccorso in emergenza = carta bianca — velocità e precedenze sospese.",
+      "In emergenza aeronautica i mezzi di soccorso possono derogare ai limiti di velocità e alla segnaletica, ma MAI all'obbligo di dare precedenza agli aeromobili. Perché? Gli aeromobili rimangono Priorità 1 assoluta anche in emergenza: una collisione tra un mezzo di soccorso e un aereo causerebbe danni incomparabilmente maggiori. 💡 Ricorda: soccorsi in emergenza = veloci e ignorano i semafori, ma cedono SEMPRE agli aerei.",
     topic: "Emergenze",
   },
   {
@@ -1331,9 +1331,9 @@ export const QUESTIONS: Question[] = [
       "Su tutti i veicoli compresi gli aeromobili in rullaggio",
       "Solo sulle veicolari, non in piazzola",
     ],
-    correctIndex: 1,
+    correctIndex: 0,
     explanation:
-      "I mezzi di emergenza (antincendio/ambulanza) con luce blu hanno precedenza assoluta su tutti, compresi gli aeromobili in rullaggio. Perché? Un ritardo di un mezzo di soccorso in un'emergenza aeronautica può significare la differenza tra vita e morte: nulla può ostacolarli. 💡 Ricorda: blu + sirena = priorità assoluta — anche davanti a un Boeing 737 che rulla.",
+      "I mezzi di emergenza (antincendio/ambulanza) con luce blu hanno precedenza su tutti i veicoli, ma NON sugli aeromobili. Perché? Gli aeromobili sono sempre Priorità 1: anche in emergenza, il mezzo di soccorso deve cedere la precedenza all'aereo per evitare una collisione catastrofica. I soccorsi possono andare veloci e ignorare la segnaletica, ma devono sempre cedere agli aeromobili. 💡 Ricorda: blu non batte l'aereo — l'aereo è sempre il re della strada in Airside.",
     topic: "Mezzi speciali",
   },
   {
