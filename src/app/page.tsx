@@ -570,6 +570,8 @@ function Dashboard({
   onOpenSearch: () => void;
   onReset: () => void;
 }) {
+  const [resetStep, setResetStep] = useState<0 | 1 | 2>(0);
+  const [resetPhrase, setResetPhrase] = useState("");
   const activeCards = cards.filter((card) => !hidden.has(card.questionId));
   const dueCount = getDueCards(cards, hidden).length;
   const newCount = activeCards.filter((card) => card.totalReviews === 0).length;
@@ -629,12 +631,6 @@ function Dashboard({
             <div className="mt-1 text-xs text-slate-400">{label}</div>
           </div>
         ))}
-      </div>
-
-      <div className="rounded-xl border border-slate-700 bg-slate-800/70 p-3 text-xs leading-relaxed text-slate-400">
-        <span className="font-semibold text-slate-300">Precisione</span>: percentuale di risposte corrette date finora.
-        <span className="mx-1 text-slate-600">•</span>
-        <span className="font-semibold text-slate-300">Domande Apprese</span>: domande consolidate con almeno 3 ripassi riusciti.
       </div>
 
       <div className="space-y-2 rounded-xl bg-slate-800 p-4">
@@ -770,13 +766,83 @@ function Dashboard({
       <div className="text-center">
         <button
           onClick={() => {
-            if (confirm("Sei sicuro? Tutti i progressi verranno eliminati.")) onReset();
+            setResetStep(1);
+            setResetPhrase("");
           }}
           className="text-xs text-slate-600 transition-colors hover:text-slate-400"
         >
           Azzera tutti i progressi
         </button>
       </div>
+
+      {resetStep > 0 && (
+        <div className="fixed inset-0 z-50 flex items-center justify-center bg-slate-950/80 px-4 backdrop-blur-sm">
+          <div className="w-full max-w-md rounded-2xl border border-slate-700 bg-slate-900 p-5 shadow-2xl">
+            {resetStep === 1 ? (
+              <div className="space-y-4">
+                <div className="space-y-1">
+                  <div className="text-lg font-semibold text-white">Conferma azzeramento</div>
+                  <div className="text-sm leading-relaxed text-slate-400">
+                    Questa azione elimina tutto il progresso locale, incluse domande nascoste e stato del glossario.
+                  </div>
+                </div>
+                <div className="grid grid-cols-2 gap-3">
+                  <button
+                    onClick={() => setResetStep(0)}
+                    className="rounded-xl border border-slate-700 bg-slate-800 py-3 text-sm font-semibold text-slate-200 transition-colors hover:bg-slate-700"
+                  >
+                    No
+                  </button>
+                  <button
+                    onClick={() => setResetStep(2)}
+                    className="rounded-xl bg-red-600 py-3 text-sm font-semibold text-white transition-colors hover:bg-red-500"
+                  >
+                    Si, continua
+                  </button>
+                </div>
+              </div>
+            ) : (
+              <div className="space-y-4">
+                <div className="space-y-1">
+                  <div className="text-lg font-semibold text-white">Conferma finale</div>
+                  <div className="text-sm leading-relaxed text-slate-400">
+                    Per confermare davvero, scrivi <span className="font-semibold text-slate-200">ACCETTO</span>.
+                  </div>
+                </div>
+                <input
+                  autoFocus
+                  value={resetPhrase}
+                  onChange={(event) => setResetPhrase(event.target.value)}
+                  placeholder="Scrivi ACCETTO"
+                  className="w-full rounded-xl border border-slate-700 bg-slate-800 px-4 py-3 text-sm text-slate-100 outline-none placeholder:text-slate-500"
+                />
+                <div className="grid grid-cols-2 gap-3">
+                  <button
+                    onClick={() => {
+                      setResetStep(0);
+                      setResetPhrase("");
+                    }}
+                    className="rounded-xl border border-slate-700 bg-slate-800 py-3 text-sm font-semibold text-slate-200 transition-colors hover:bg-slate-700"
+                  >
+                    Annulla
+                  </button>
+                  <button
+                    onClick={() => {
+                      onReset();
+                      setResetStep(0);
+                      setResetPhrase("");
+                    }}
+                    disabled={resetPhrase.trim().toUpperCase() !== "ACCETTO"}
+                    className="rounded-xl bg-red-600 py-3 text-sm font-semibold text-white transition-colors hover:bg-red-500 disabled:cursor-not-allowed disabled:opacity-40"
+                  >
+                    Azzera tutto
+                  </button>
+                </div>
+              </div>
+            )}
+          </div>
+        </div>
+      )}
     </div>
   );
 }
