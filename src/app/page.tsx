@@ -1661,6 +1661,7 @@ function QuizCard({
   onBackToMenu,
   index,
   total,
+  primaryTotal,
   reinforcementMode = false,
 }: {
   card: CardState;
@@ -1670,6 +1671,7 @@ function QuizCard({
   onBackToMenu: () => void;
   index: number;
   total: number;
+  primaryTotal: number;
   reinforcementMode?: boolean;
 }) {
   const question = getQuestion(card.questionId);
@@ -1681,6 +1683,13 @@ function QuizCard({
   const correctShuffledIndex = shuffled.findIndex(
     (option) => option.originalIndex === question.correctIndex
   );
+  const primaryProgressPct =
+    primaryTotal === 0 ? 0 : (Math.min(index, primaryTotal) / primaryTotal) * 100;
+  const reinforcementTotal = Math.max(0, total - primaryTotal);
+  const reinforcementProgressPct =
+    reinforcementTotal === 0 || index < primaryTotal
+      ? 0
+      : (Math.min(index - primaryTotal, reinforcementTotal) / reinforcementTotal) * 100;
 
   return (
     <div className="mx-auto max-w-2xl space-y-4 px-4 py-4">
@@ -1692,15 +1701,32 @@ function QuizCard({
         >
           <IconBack />
         </button>
-        <div className="h-1.5 flex-1 rounded-full bg-slate-700">
-          <div
-            className="h-1.5 rounded-full bg-blue-500 transition-all"
-            style={{ width: `${(index / total) * 100}%` }}
-          />
+        <div className="flex-1 space-y-1">
+          <div className="h-1.5 rounded-full bg-slate-700">
+            <div
+              className="h-1.5 rounded-full bg-blue-500 transition-all"
+              style={{ width: `${primaryProgressPct}%` }}
+            />
+          </div>
+          {reinforcementTotal > 0 && (
+            <div className="h-1 rounded-full bg-slate-800">
+              <div
+                className="h-1 rounded-full bg-orange-400 transition-all"
+                style={{ width: `${reinforcementProgressPct}%` }}
+              />
+            </div>
+          )}
         </div>
-        <span className="shrink-0 text-xs tabular-nums text-slate-500">
-          {index}/{total}
-        </span>
+        <div className="shrink-0 text-right text-xs tabular-nums text-slate-500">
+          <div>
+            {Math.min(index + 1, primaryTotal)}/{primaryTotal}
+          </div>
+          {reinforcementTotal > 0 && (
+            <div className="text-[10px] text-orange-300">
+              +{Math.max(0, index + 1 - primaryTotal)}/{reinforcementTotal}
+            </div>
+          )}
+        </div>
       </div>
 
       <div className="flex flex-wrap items-center gap-2">
@@ -2396,6 +2422,7 @@ export default function Home() {
   const [selectedTopic, setSelectedTopic] = useState<string | null>(null);
   const [queue, setQueue] = useState<CardState[]>([]);
   const [queueIndex, setQueueIndex] = useState(0);
+  const [primaryBatchSize, setPrimaryBatchSize] = useState(0);
   const [sessionRatings, setSessionRatings] = useState<number[]>([]);
   const [sessionCards, setSessionCards] = useState<CardState[]>([]);
   const [quizChainExcludedIds, setQuizChainExcludedIds] = useState<string[]>([]);
@@ -2433,6 +2460,7 @@ export default function Home() {
       if (batch.length === 0) return;
       setQueue(batch);
       setQueueIndex(0);
+      setPrimaryBatchSize(batch.length);
       setSessionRatings([]);
       setSessionCards([]);
       if (updatedCards !== cards) {
@@ -2820,6 +2848,7 @@ export default function Home() {
           }}
           index={queueIndex}
           total={queue.length}
+          primaryTotal={primaryBatchSize}
           reinforcementMode={sessionCards.some(
             (answeredCard) => answeredCard.questionId === queue[queueIndex].questionId
           )}
