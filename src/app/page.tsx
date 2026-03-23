@@ -1661,6 +1661,7 @@ function QuizCard({
   onBackToMenu,
   index,
   total,
+  reinforcementMode = false,
 }: {
   card: CardState;
   onRate: (rating: number) => void;
@@ -1669,6 +1670,7 @@ function QuizCard({
   onBackToMenu: () => void;
   index: number;
   total: number;
+  reinforcementMode?: boolean;
 }) {
   const question = getQuestion(card.questionId);
   const [shuffled] = useState(() => shuffleOptions(question));
@@ -1705,6 +1707,11 @@ function QuizCard({
         <span className={`rounded-full px-2 py-0.5 text-xs font-medium ${topicColor(question.topic)}`}>
           {question.topic}
         </span>
+        {reinforcementMode && (
+          <span className="rounded-full bg-orange-900/40 px-2 py-0.5 text-xs font-medium text-orange-300">
+            Rinforzo
+          </span>
+        )}
         {isV2Question(question) && (
           <span className="rounded-full bg-slate-700 px-2 py-0.5 text-xs font-medium text-slate-200">
             v2
@@ -2502,12 +2509,29 @@ export default function Home() {
           sessionIncrement: queueIndex === 0 ? 1 : 0,
         })
       );
-      setSessionRatings((current) => [...current, rating]);
-      setSessionCards((current) => [...current, currentCard]);
-      if (queueIndex + 1 >= queue.length) setView("result");
-      else setQueueIndex((current) => current + 1);
+      const nextRatings = [...sessionRatings, rating];
+      const nextSessionCards = [...sessionCards, currentCard];
+      setSessionRatings(nextRatings);
+      setSessionCards(nextSessionCards);
+
+      const shouldRequeue = rating <= RATING_HARD;
+      if (shouldRequeue) {
+        const delay = rating === RATING_AGAIN ? 2 : 4;
+        const insertAt = Math.min(queue.length, queueIndex + 1 + delay);
+        const nextQueue = [...queue];
+        nextQueue.splice(insertAt, 0, updatedCard);
+        setQueue(nextQueue);
+        setQueueIndex((current) => current + 1);
+        return;
+      }
+
+      if (queueIndex + 1 >= queue.length) {
+        setView("result");
+      } else {
+        setQueueIndex((current) => current + 1);
+      }
     },
-    [cards, queue, queueIndex]
+    [cards, queue, queueIndex, sessionCards, sessionRatings]
   );
 
   const handleHide = useCallback(() => {
@@ -2796,6 +2820,9 @@ export default function Home() {
           }}
           index={queueIndex}
           total={queue.length}
+          reinforcementMode={sessionCards.some(
+            (answeredCard) => answeredCard.questionId === queue[queueIndex].questionId
+          )}
         />
       )}
 
