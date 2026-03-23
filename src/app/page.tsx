@@ -76,8 +76,23 @@ interface SaveTransferPayload {
   gamification: GamificationStats;
 }
 
+interface ActiveQuizSessionSnapshot {
+  version: 1;
+  selectedTopic: string | null;
+  queueQuestionIds: string[];
+  queueIndex: number;
+  primaryBatchSize: number;
+  sessionRatings: number[];
+  sessionCardIds: string[];
+  quizChainExcludedIds: string[];
+  currentQuizCardKey: string | null;
+  currentQuizSelectedIndex: number | null;
+  currentQuizShuffled: ShuffledOption[] | null;
+}
+
 type ImportMode = "overwrite" | "merge";
 const QUIZ_BATCH_SIZE = 20;
+const ACTIVE_QUIZ_SESSION_KEY = "patente_quiz_active_session";
 
 function getQuestion(id: string): Question {
   return QUESTIONS.find((q) => q.id === id)!;
@@ -127,6 +142,42 @@ function mergeGamificationStats(current: GamificationStats, incoming?: Partial<G
     examPasses: Math.max(current.examPasses, incoming.examPasses ?? 0),
     bestExamScore: Math.max(current.bestExamScore, incoming.bestExamScore ?? 0),
   };
+}
+
+function loadActiveQuizSession(): ActiveQuizSessionSnapshot | null {
+  if (typeof window === "undefined") return null;
+  try {
+    const raw = localStorage.getItem(ACTIVE_QUIZ_SESSION_KEY);
+    if (!raw) return null;
+    const parsed = JSON.parse(raw) as Partial<ActiveQuizSessionSnapshot>;
+    if (parsed.version !== 1 || !Array.isArray(parsed.queueQuestionIds)) return null;
+    return {
+      version: 1,
+      selectedTopic: parsed.selectedTopic ?? null,
+      queueQuestionIds: parsed.queueQuestionIds,
+      queueIndex: typeof parsed.queueIndex === "number" ? parsed.queueIndex : 0,
+      primaryBatchSize: typeof parsed.primaryBatchSize === "number" ? parsed.primaryBatchSize : 0,
+      sessionRatings: Array.isArray(parsed.sessionRatings) ? parsed.sessionRatings : [],
+      sessionCardIds: Array.isArray(parsed.sessionCardIds) ? parsed.sessionCardIds : [],
+      quizChainExcludedIds: Array.isArray(parsed.quizChainExcludedIds) ? parsed.quizChainExcludedIds : [],
+      currentQuizCardKey: typeof parsed.currentQuizCardKey === "string" ? parsed.currentQuizCardKey : null,
+      currentQuizSelectedIndex:
+        typeof parsed.currentQuizSelectedIndex === "number" ? parsed.currentQuizSelectedIndex : null,
+      currentQuizShuffled: Array.isArray(parsed.currentQuizShuffled) ? parsed.currentQuizShuffled : null,
+    };
+  } catch {
+    return null;
+  }
+}
+
+function saveActiveQuizSession(snapshot: ActiveQuizSessionSnapshot): void {
+  if (typeof window === "undefined") return;
+  localStorage.setItem(ACTIVE_QUIZ_SESSION_KEY, JSON.stringify(snapshot));
+}
+
+function clearActiveQuizSession(): void {
+  if (typeof window === "undefined") return;
+  localStorage.removeItem(ACTIVE_QUIZ_SESSION_KEY);
 }
 
 function shuffleArray<T>(items: T[]): T[] {
@@ -288,6 +339,10 @@ function ratingColor(n: number): string {
     "bg-blue-600 hover:bg-blue-500 active:bg-blue-700",
     "bg-green-600 hover:bg-green-500 active:bg-green-700",
   ][n] ?? "";
+}
+
+function ratingBarColor(n: number): string {
+  return ["bg-red-500", "bg-orange-400", "bg-blue-500", "bg-green-500"][n] ?? "bg-slate-600";
 }
 
 function ratingIntervalHint(card: CardState, rating: number): string {
@@ -1659,9 +1714,13 @@ function QuizCard({
   onHide,
   onResetCard,
   onBackToMenu,
+  selected,
+  onSelect,
+  shuffled,
   index,
   total,
   primaryTotal,
+  sessionRatings,
   reinforcementMode = false,
 }: {
   card: CardState;
@@ -1669,22 +1728,31 @@ function QuizCard({
   onHide: () => void;
   onResetCard: () => void;
   onBackToMenu: () => void;
+  selected: number | null;
+  onSelect: (index: number) => void;
+  shuffled: ShuffledOption[];
   index: number;
   total: number;
   primaryTotal: number;
+  sessionRatings: number[];
   reinforcementMode?: boolean;
 }) {
   const question = getQuestion(card.questionId);
-  const [shuffled] = useState(() => shuffleOptions(question));
-  const [selected, setSelected] = useState<number | null>(null);
   const [cardAction, setCardAction] = useState<null | "hide" | "reset">(null);
   const revealed = selected !== null;
 
   const correctShuffledIndex = shuffled.findIndex(
     (option) => option.originalIndex === question.correctIndex
   );
-  const primaryProgressPct =
-    primaryTotal === 0 ? 0 : (Math.min(index, primaryTotal) / primaryTotal) * 100;
+  const primaryRatings = sessionRatings.slice(0, primaryTotal);
+  const primaryAnsweredCount = primaryRatings.length;
+  const primaryCounts = [RATING_AGAIN, RATING_HARD, RATING_GOOD, RATING_EASY].map(
+    (rating) => primaryRatings.filter((value) => value === rating).length
+  );
+  const primarySegments = [
+    ...primaryCounts.map((count, rating) => ({ count, className: ratingBarColor(rating) })),
+    { count: Math.max(0, primaryTotal - primaryAnsweredCount), className: "bg-slate-700" },
+  ].filter((segment) => segment.count > 0);
   const reinforcementTotal = Math.max(0, total - primaryTotal);
   const reinforcementProgressPct =
     reinforcementTotal === 0 || index < primaryTotal
@@ -1702,11 +1770,14 @@ function QuizCard({
           <IconBack />
         </button>
         <div className="flex-1 space-y-1">
-          <div className="h-1.5 rounded-full bg-slate-700">
-            <div
-              className="h-1.5 rounded-full bg-blue-500 transition-all"
-              style={{ width: `${primaryProgressPct}%` }}
-            />
+          <div className="flex h-1.5 overflow-hidden rounded-full bg-slate-800">
+            {primarySegments.map((segment, segmentIndex) => (
+              <div
+                key={`${segment.className}-${segmentIndex}`}
+                className={`${segment.className} h-full transition-all`}
+                style={{ width: `${(segment.count / primaryTotal) * 100}%` }}
+              />
+            ))}
           </div>
           {reinforcementTotal > 0 && (
             <div className="h-1 rounded-full bg-slate-800">
@@ -1719,7 +1790,7 @@ function QuizCard({
         </div>
         <div className="shrink-0 text-right text-xs tabular-nums text-slate-500">
           <div>
-            {Math.min(index + 1, primaryTotal)}/{primaryTotal}
+            {Math.min(primaryAnsweredCount + 1, primaryTotal)}/{primaryTotal}
           </div>
           {reinforcementTotal > 0 && (
             <div className="text-[10px] text-orange-300">
@@ -1781,7 +1852,7 @@ function QuizCard({
               key={optionIndex}
               className={className}
               onClick={() => {
-                if (!revealed) setSelected(optionIndex);
+                if (!revealed) onSelect(optionIndex);
               }}
             >
               <span className="mr-2 text-slate-500">{["A", "B", "C"][optionIndex]}.</span>
@@ -2426,6 +2497,9 @@ export default function Home() {
   const [sessionRatings, setSessionRatings] = useState<number[]>([]);
   const [sessionCards, setSessionCards] = useState<CardState[]>([]);
   const [quizChainExcludedIds, setQuizChainExcludedIds] = useState<string[]>([]);
+  const [currentQuizCardKey, setCurrentQuizCardKey] = useState<string | null>(null);
+  const [currentQuizSelectedIndex, setCurrentQuizSelectedIndex] = useState<number | null>(null);
+  const [currentQuizShuffled, setCurrentQuizShuffled] = useState<ShuffledOption[] | null>(null);
   const [acronymQueue, setAcronymQueue] = useState<AcronymQuizItem[]>([]);
   const [acronymIndex, setAcronymIndex] = useState(0);
   const [acronymRatings, setAcronymRatings] = useState<number[]>([]);
@@ -2440,11 +2514,72 @@ export default function Home() {
   const availableAcronymCount = ACRONYM_ENTRIES.filter((entry) => !hiddenGlossary.has(entry.id)).length;
 
   useEffect(() => {
-    setCards(loadCards());
+    const loadedCards = loadCards();
+    setCards(loadedCards);
     setHidden(loadHidden());
     setHiddenGlossary(loadHiddenGlossary());
     setGamification(loadGamificationStats());
+
+    const activeSession = loadActiveQuizSession();
+    if (!activeSession) return;
+
+    const restoredQueue = activeSession.queueQuestionIds
+      .map((questionId) => loadedCards.find((card) => card.questionId === questionId))
+      .filter((card): card is CardState => Boolean(card));
+    const restoredSessionCards = activeSession.sessionCardIds
+      .map((questionId) => loadedCards.find((card) => card.questionId === questionId))
+      .filter((card): card is CardState => Boolean(card));
+
+    if (restoredQueue.length === 0) {
+      clearActiveQuizSession();
+      return;
+    }
+
+    setSelectedTopic(activeSession.selectedTopic);
+    setQueue(restoredQueue);
+    setQueueIndex(Math.min(activeSession.queueIndex, Math.max(0, restoredQueue.length - 1)));
+    setPrimaryBatchSize(activeSession.primaryBatchSize);
+    setSessionRatings(activeSession.sessionRatings);
+    setSessionCards(restoredSessionCards);
+    setQuizChainExcludedIds(activeSession.quizChainExcludedIds);
+    setCurrentQuizCardKey(activeSession.currentQuizCardKey);
+    setCurrentQuizSelectedIndex(activeSession.currentQuizSelectedIndex);
+    setCurrentQuizShuffled(activeSession.currentQuizShuffled);
+    setView("quiz");
   }, []);
+
+  useEffect(() => {
+    if (view !== "quiz") {
+      clearActiveQuizSession();
+      return;
+    }
+    if (!queue[queueIndex]) return;
+    saveActiveQuizSession({
+      version: 1,
+      selectedTopic,
+      queueQuestionIds: queue.map((card) => card.questionId),
+      queueIndex,
+      primaryBatchSize,
+      sessionRatings,
+      sessionCardIds: sessionCards.map((card) => card.questionId),
+      quizChainExcludedIds,
+      currentQuizCardKey,
+      currentQuizSelectedIndex,
+      currentQuizShuffled,
+    });
+  }, [
+    currentQuizCardKey,
+    currentQuizSelectedIndex,
+    currentQuizShuffled,
+    primaryBatchSize,
+    queue,
+    queueIndex,
+    quizChainExcludedIds,
+    selectedTopic,
+    sessionCards,
+    sessionRatings,
+    view,
+  ]);
 
   useEffect(() => {
     if (typeof window === "undefined") return;
@@ -2452,6 +2587,15 @@ export default function Home() {
       window.scrollTo({ top: 0, behavior: "smooth" });
     }
   }, [view, queueIndex, examIndex, acronymIndex]);
+
+  useEffect(() => {
+    if (view !== "quiz" || !queue[queueIndex]) return;
+    const cardKey = `${queue[queueIndex].questionId}-${queueIndex}`;
+    if (currentQuizCardKey === cardKey && currentQuizShuffled) return;
+    setCurrentQuizCardKey(cardKey);
+    setCurrentQuizSelectedIndex(null);
+    setCurrentQuizShuffled(shuffleOptions(getQuestion(queue[queueIndex].questionId)));
+  }, [currentQuizCardKey, currentQuizShuffled, queue, queueIndex, view]);
 
   const startQuiz = useCallback(
     (topic?: string, excludedQuestionIds: Iterable<string> = []) => {
@@ -2463,6 +2607,9 @@ export default function Home() {
       setPrimaryBatchSize(batch.length);
       setSessionRatings([]);
       setSessionCards([]);
+      setCurrentQuizCardKey(null);
+      setCurrentQuizSelectedIndex(null);
+      setCurrentQuizShuffled(null);
       if (updatedCards !== cards) {
         setCards(updatedCards);
         saveCards(updatedCards);
@@ -2541,6 +2688,9 @@ export default function Home() {
       const nextSessionCards = [...sessionCards, currentCard];
       setSessionRatings(nextRatings);
       setSessionCards(nextSessionCards);
+      setCurrentQuizCardKey(null);
+      setCurrentQuizSelectedIndex(null);
+      setCurrentQuizShuffled(null);
 
       const shouldRequeue = rating <= RATING_HARD;
       if (shouldRequeue) {
@@ -2570,6 +2720,9 @@ export default function Home() {
     nextHidden.add(id);
     setHidden(nextHidden);
     saveHidden(nextHidden);
+    setCurrentQuizCardKey(null);
+    setCurrentQuizSelectedIndex(null);
+    setCurrentQuizShuffled(null);
     if (queueIndex + 1 >= queue.length) {
       if (sessionCards.length === 0) setView("dashboard");
       else setView("result");
@@ -2842,13 +2995,20 @@ export default function Home() {
           onRate={handleRate}
           onHide={handleHide}
           onResetCard={handleResetCard}
+          selected={currentQuizSelectedIndex}
+          onSelect={setCurrentQuizSelectedIndex}
+          shuffled={currentQuizShuffled ?? shuffleOptions(getQuestion(queue[queueIndex].questionId))}
           onBackToMenu={() => {
             setQuizChainExcludedIds([]);
+            setCurrentQuizCardKey(null);
+            setCurrentQuizSelectedIndex(null);
+            setCurrentQuizShuffled(null);
             setView(selectedTopic ? "topic_detail" : "dashboard");
           }}
           index={queueIndex}
           total={queue.length}
           primaryTotal={primaryBatchSize}
+          sessionRatings={sessionRatings}
           reinforcementMode={sessionCards.some(
             (answeredCard) => answeredCard.questionId === queue[queueIndex].questionId
           )}
