@@ -22,6 +22,7 @@ export interface CardState {
 
 const MIN_EASE = 1.3;
 const INITIAL_EASE = 2.5;
+const MAX_STUDY_WINDOW_INTERVAL = 6;
 
 export function createCardState(questionId: string): CardState {
   return {
@@ -55,9 +56,24 @@ export function applyRating(card: CardState, rating: number): CardState {
     if (repetitions === 0) {
       interval = 1;
     } else if (repetitions === 1) {
-      interval = 6;
+      interval =
+        rating === RATING_HARD ? 2 :
+        rating === RATING_GOOD ? 3 :
+        4;
     } else {
-      interval = Math.round(interval * easeFactor);
+      if (rating === RATING_HARD) {
+        interval = Math.min(MAX_STUDY_WINDOW_INTERVAL - 2, Math.max(interval + 1, Math.round(interval * 1.2)));
+      } else if (rating === RATING_GOOD) {
+        interval = Math.min(
+          MAX_STUDY_WINDOW_INTERVAL - 1,
+          Math.max(interval + 1, Math.round(interval * Math.max(1.35, easeFactor - 0.65)))
+        );
+      } else {
+        interval = Math.min(
+          MAX_STUDY_WINDOW_INTERVAL,
+          Math.max(interval + 1, Math.round(interval * Math.max(1.5, easeFactor - 0.45)))
+        );
+      }
     }
     repetitions += 1;
   }
