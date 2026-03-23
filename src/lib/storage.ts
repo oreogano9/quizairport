@@ -197,9 +197,24 @@ export function createInitialCards(): CardState[] {
   return QUESTIONS.map((q) => createCardState(q.id));
 }
 
+function normalizeCardState(card: CardState): CardState {
+  const base = createCardState(card.questionId);
+  return {
+    ...base,
+    ...card,
+    struggleScore: typeof card.struggleScore === "number" ? card.struggleScore : base.struggleScore,
+    recentHardStreak:
+      typeof card.recentHardStreak === "number" ? card.recentHardStreak : base.recentHardStreak,
+    stabilityBoostSessionsLeft:
+      typeof card.stabilityBoostSessionsLeft === "number"
+        ? card.stabilityBoostSessionsLeft
+        : base.stabilityBoostSessionsLeft,
+  };
+}
+
 export function mergeCardsWithQuestionBank(saved: CardState[]): CardState[] {
   const questionIds = new Set(QUESTIONS.map((question) => question.id));
-  const pruned = saved.filter((card) => questionIds.has(card.questionId));
+  const pruned = saved.filter((card) => questionIds.has(card.questionId)).map(normalizeCardState);
   const savedIds = new Set(pruned.map((card) => card.questionId));
   const newCards = QUESTIONS
     .filter((question) => !savedIds.has(question.id))

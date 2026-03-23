@@ -15,6 +15,9 @@ export interface CardState {
   lastRating: number | null;
   totalReviews: number;
   correctReviews: number;
+  struggleScore: number;
+  recentHardStreak: number;
+  stabilityBoostSessionsLeft: number;
 }
 
 const MIN_EASE = 1.3;
@@ -30,6 +33,9 @@ export function createCardState(questionId: string): CardState {
     lastRating: null,
     totalReviews: 0,
     correctReviews: 0,
+    struggleScore: 0,
+    recentHardStreak: 0,
+    stabilityBoostSessionsLeft: 0,
   };
 }
 
@@ -38,7 +44,7 @@ export function applyRating(card: CardState, rating: number): CardState {
   const totalReviews = card.totalReviews + 1;
   const correctReviews = card.correctReviews + (isCorrect ? 1 : 0);
 
-  let { interval, easeFactor, repetitions } = card;
+  let { interval, easeFactor, repetitions, struggleScore, recentHardStreak, stabilityBoostSessionsLeft } = card;
 
   if (rating === RATING_AGAIN) {
     // Failed — reset
@@ -65,6 +71,25 @@ export function applyRating(card: CardState, rating: number): CardState {
 
   easeFactor = Math.max(MIN_EASE, easeFactor + easeAdjustment);
 
+  if (rating === RATING_AGAIN) {
+    struggleScore = Math.min(100, struggleScore + 32);
+    recentHardStreak += 1;
+    stabilityBoostSessionsLeft = Math.max(stabilityBoostSessionsLeft, 3);
+  } else if (rating === RATING_HARD) {
+    struggleScore = Math.min(100, struggleScore + 18);
+    recentHardStreak += 1;
+    stabilityBoostSessionsLeft = Math.max(stabilityBoostSessionsLeft, 3);
+  } else if (rating === RATING_GOOD) {
+    struggleScore = Math.max(0, struggleScore - (recentHardStreak > 0 ? 6 : 10));
+    recentHardStreak = Math.max(0, recentHardStreak - 1);
+  } else {
+    struggleScore = Math.max(
+      0,
+      struggleScore - (recentHardStreak > 0 || stabilityBoostSessionsLeft > 0 ? 4 : 14)
+    );
+    recentHardStreak = Math.max(0, recentHardStreak - 1);
+  }
+
   const nextReviewDate = new Date();
   nextReviewDate.setDate(nextReviewDate.getDate() + interval);
 
@@ -77,6 +102,9 @@ export function applyRating(card: CardState, rating: number): CardState {
     lastRating: rating,
     totalReviews,
     correctReviews,
+    struggleScore,
+    recentHardStreak,
+    stabilityBoostSessionsLeft,
   };
 }
 

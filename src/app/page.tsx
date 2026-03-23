@@ -77,6 +77,7 @@ interface SaveTransferPayload {
 }
 
 type ImportMode = "overwrite" | "merge";
+const QUIZ_BATCH_SIZE = 20;
 
 function getQuestion(id: string): Question {
   return QUESTIONS.find((q) => q.id === id)!;
@@ -144,6 +145,105 @@ function getDueCards(cards: CardState[], hidden: Set<string>, topic?: string): C
       !hidden.has(card.questionId) &&
       (!topic || getQuestion(card.questionId).topic === topic)
   );
+}
+
+function getQuizPoolCandidates(
+  cards: CardState[],
+  hidden: Set<string>,
+  topic?: string,
+  excludedQuestionIds: Set<string> = new Set()
+): CardState[] {
+  return cards.filter(
+    (card) =>
+      !hidden.has(card.questionId) &&
+      !excludedQuestionIds.has(card.questionId) &&
+      (!topic || getQuestion(card.questionId).topic === topic)
+  );
+}
+
+function compareDueCards(a: CardState, b: CardState): number {
+  const dueDiff =
+    new Date(a.nextReviewDate).getTime() - new Date(b.nextReviewDate).getTime();
+  return (
+    b.stabilityBoostSessionsLeft - a.stabilityBoostSessionsLeft ||
+    b.struggleScore - a.struggleScore ||
+    b.recentHardStreak - a.recentHardStreak ||
+    dueDiff ||
+    a.questionId.localeCompare(b.questionId)
+  );
+}
+
+function compareFragileCards(a: CardState, b: CardState): number {
+  return (
+    b.stabilityBoostSessionsLeft - a.stabilityBoostSessionsLeft ||
+    b.struggleScore - a.struggleScore ||
+    b.recentHardStreak - a.recentHardStreak ||
+    b.totalReviews - a.totalReviews ||
+    a.questionId.localeCompare(b.questionId)
+  );
+}
+
+function compareStableCards(a: CardState, b: CardState): number {
+  const aIsNew = a.totalReviews === 0 ? 1 : 0;
+  const bIsNew = b.totalReviews === 0 ? 1 : 0;
+  return (
+    bIsNew - aIsNew ||
+    b.totalReviews - a.totalReviews ||
+    a.questionId.localeCompare(b.questionId)
+  );
+}
+
+function buildQuizBatch(
+  cards: CardState[],
+  hidden: Set<string>,
+  topic?: string,
+  excludedQuestionIds: Set<string> = new Set()
+): { batch: CardState[]; updatedCards: CardState[]; remainingPoolCount: number } {
+  const pool = getQuizPoolCandidates(cards, hidden, topic, excludedQuestionIds);
+  const dueCards = pool.filter(isDue).sort(compareDueCards);
+  const fragileCards = pool
+    .filter(
+      (card) =>
+        !isDue(card) &&
+        (card.stabilityBoostSessionsLeft > 0 || card.struggleScore > 0 || card.recentHardStreak > 0)
+    )
+    .sort(compareFragileCards);
+  const stableCards = pool
+    .filter(
+      (card) =>
+        !isDue(card) &&
+        card.stabilityBoostSessionsLeft === 0 &&
+        card.struggleScore === 0 &&
+        card.recentHardStreak === 0
+    )
+    .sort(compareStableCards);
+
+  const ordered = [...dueCards, ...fragileCards, ...stableCards];
+  const batchIds = new Set<string>();
+  const selected = ordered.filter((card) => {
+    if (batchIds.has(card.questionId)) return false;
+    if (batchIds.size >= QUIZ_BATCH_SIZE) return false;
+    batchIds.add(card.questionId);
+    return true;
+  });
+
+  const selectedIds = new Set(selected.map((card) => card.questionId));
+  const updatedCards = cards.map((card) => {
+    if (!selectedIds.has(card.questionId) || card.stabilityBoostSessionsLeft <= 0) return card;
+    return {
+      ...card,
+      stabilityBoostSessionsLeft: Math.max(0, card.stabilityBoostSessionsLeft - 1),
+    };
+  });
+  const updatedSelected = selected.map(
+    (card) => updatedCards.find((candidate) => candidate.questionId === card.questionId) ?? card
+  );
+
+  return {
+    batch: updatedSelected,
+    updatedCards,
+    remainingPoolCount: Math.max(0, pool.length - updatedSelected.length),
+  };
 }
 
 function shuffleOptions(question: Question): ShuffledOption[] {
@@ -574,6 +674,7 @@ function Dashboard({
   const [resetPhrase, setResetPhrase] = useState("");
   const activeCards = cards.filter((card) => !hidden.has(card.questionId));
   const dueCount = getDueCards(cards, hidden).length;
+  const availableQuizCount = activeCards.length;
   const newCount = activeCards.filter((card) => card.totalReviews === 0).length;
   const masteredCount = activeCards.filter((card) => card.repetitions >= 3).length;
   const totalReviews = activeCards.reduce((sum, card) => sum + card.totalReviews, 0);
@@ -652,12 +753,12 @@ function Dashboard({
 
       <button
         onClick={onStartQuiz}
-        disabled={dueCount === 0}
+        disabled={availableQuizCount === 0}
         className="w-full rounded-xl bg-blue-600 py-4 text-lg font-semibold text-white transition-all hover:bg-blue-500 active:bg-blue-700 disabled:cursor-not-allowed disabled:opacity-40"
       >
-        {dueCount > 0
-          ? `Inizia ripasso · ${dueCount} ${dueCount === 1 ? "domanda" : "domande"}`
-          : "Nessuna domanda da ripassare ora"}
+        {availableQuizCount > 0
+          ? `Inizia ripasso · fino a ${Math.min(QUIZ_BATCH_SIZE, availableQuizCount)} domande`
+          : "Nessuna domanda disponibile"}
       </button>
 
       <button
@@ -1877,15 +1978,19 @@ function AcronymQuizCard({
 function RisultatoSessione({
   sessionCards,
   ratings,
+  remainingCount,
+  onContinue,
   onDone,
 }: {
   sessionCards: CardState[];
   ratings: number[];
+  remainingCount: number;
+  onContinue: () => void;
   onDone: () => void;
 }) {
   const total = sessionCards.length;
   const correct = ratings.filter((rating) => rating >= RATING_HARD).length;
-  const pct = Math.round((correct / total) * 100);
+  const pct = total === 0 ? 0 : Math.round((correct / total) * 100);
 
   return (
     <div className="mx-auto max-w-2xl space-y-6 px-4 py-12 text-center">
@@ -1912,6 +2017,23 @@ function RisultatoSessione({
           </div>
         ))}
       </div>
+      {remainingCount > 0 ? (
+        <div className="space-y-3">
+          <div className="text-sm text-slate-400">
+            Pool rimanente: {remainingCount} {remainingCount === 1 ? "domanda" : "domande"}
+          </div>
+          <button
+            onClick={onContinue}
+            className="w-full rounded-xl border border-slate-700 bg-slate-800 py-4 text-lg font-semibold text-slate-100 transition-all hover:bg-slate-700"
+          >
+            Altre 20 domande
+          </button>
+        </div>
+      ) : (
+        <div className="rounded-xl border border-slate-700 bg-slate-800 p-4 text-sm text-slate-400">
+          Nessun&apos;altra domanda disponibile nel pool rimanente.
+        </div>
+      )}
       <button
         onClick={onDone}
         className="w-full rounded-xl bg-blue-600 py-4 text-lg font-semibold text-white transition-all hover:bg-blue-500"
@@ -2269,6 +2391,7 @@ export default function Home() {
   const [queueIndex, setQueueIndex] = useState(0);
   const [sessionRatings, setSessionRatings] = useState<number[]>([]);
   const [sessionCards, setSessionCards] = useState<CardState[]>([]);
+  const [quizChainExcludedIds, setQuizChainExcludedIds] = useState<string[]>([]);
   const [acronymQueue, setAcronymQueue] = useState<AcronymQuizItem[]>([]);
   const [acronymIndex, setAcronymIndex] = useState(0);
   const [acronymRatings, setAcronymRatings] = useState<number[]>([]);
@@ -2297,18 +2420,18 @@ export default function Home() {
   }, [view, queueIndex, examIndex, acronymIndex]);
 
   const startQuiz = useCallback(
-    (topic?: string) => {
-      let due = getDueCards(cards, hidden, topic);
-      if (topic && due.length === 0) {
-        due = cards.filter(
-          (card) => !hidden.has(card.questionId) && getQuestion(card.questionId).topic === topic
-        );
-      }
-      if (due.length === 0) return;
-      setQueue(shuffleArray(due));
+    (topic?: string, excludedQuestionIds: Iterable<string> = []) => {
+      const excluded = new Set(excludedQuestionIds);
+      const { batch, updatedCards } = buildQuizBatch(cards, hidden, topic, excluded);
+      if (batch.length === 0) return;
+      setQueue(batch);
       setQueueIndex(0);
       setSessionRatings([]);
       setSessionCards([]);
+      if (updatedCards !== cards) {
+        setCards(updatedCards);
+        saveCards(updatedCards);
+      }
       setView("quiz");
     },
     [cards, hidden]
@@ -2412,6 +2535,19 @@ export default function Home() {
     saveCards(newCards);
     setQueue((current) => current.map((card, index) => (index === queueIndex ? fresh : card)));
   }, [cards, queue, queueIndex]);
+
+  const remainingQuizPoolCount = getQuizPoolCandidates(
+    cards,
+    hidden,
+    selectedTopic ?? undefined,
+    new Set([...quizChainExcludedIds, ...queue.map((card) => card.questionId)])
+  ).length;
+
+  const continueQuizWithNextBatch = useCallback(() => {
+    const nextExcluded = [...quizChainExcludedIds, ...queue.map((card) => card.questionId)];
+    setQuizChainExcludedIds(nextExcluded);
+    startQuiz(selectedTopic ?? undefined, nextExcluded);
+  }, [queue, quizChainExcludedIds, selectedTopic, startQuiz]);
 
   const handleAcronymAnswer = useCallback(
     (rating: number) => {
@@ -2575,6 +2711,7 @@ export default function Home() {
           hidden={hidden}
           onStartQuiz={() => {
             setSelectedTopic(null);
+            setQuizChainExcludedIds([]);
             startQuiz();
           }}
           onStartExamSimulation={startExamSimulation}
@@ -2591,6 +2728,7 @@ export default function Home() {
             setHidden(new Set());
             setHiddenGlossary(new Set());
             setGamification(loadGamificationStats());
+            setQuizChainExcludedIds([]);
             setSelectedTopic(null);
             setView("dashboard");
           }}
@@ -2635,9 +2773,13 @@ export default function Home() {
           hidden={hidden}
           onBack={() => {
             setSelectedTopic(null);
+            setQuizChainExcludedIds([]);
             setView("dashboard");
           }}
-          onStartFocusedQuiz={() => startQuiz(selectedTopic)}
+          onStartFocusedQuiz={() => {
+            setQuizChainExcludedIds([]);
+            startQuiz(selectedTopic);
+          }}
         />
       )}
 
@@ -2648,7 +2790,10 @@ export default function Home() {
           onRate={handleRate}
           onHide={handleHide}
           onResetCard={handleResetCard}
-          onBackToMenu={() => setView(selectedTopic ? "topic_detail" : "dashboard")}
+          onBackToMenu={() => {
+            setQuizChainExcludedIds([]);
+            setView(selectedTopic ? "topic_detail" : "dashboard");
+          }}
           index={queueIndex}
           total={queue.length}
         />
@@ -2658,7 +2803,12 @@ export default function Home() {
         <RisultatoSessione
           sessionCards={sessionCards}
           ratings={sessionRatings}
-          onDone={() => setView(selectedTopic ? "topic_detail" : "dashboard")}
+          remainingCount={remainingQuizPoolCount}
+          onContinue={continueQuizWithNextBatch}
+          onDone={() => {
+            setQuizChainExcludedIds([]);
+            setView(selectedTopic ? "topic_detail" : "dashboard");
+          }}
         />
       )}
 
